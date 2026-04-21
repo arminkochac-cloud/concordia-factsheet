@@ -4,154 +4,228 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concordia Celes Hotel - Digital Fact Sheet</title>
+    <!-- Modern Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+        :root {
+            --primary-navy: #002347;
+            --primary-gold: #D4AF37;
+            --light-gold: #f9f4e8;
+            --bg-color: #f4f7f6;
+            --text-main: #333333;
+            --white: #ffffff;
+        }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f4f6f8;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top right, #ffffff, #f4f7f6);
+            color: var(--text-main);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
-        /* Header Tasarımı */
+        /* --- Header Tasarımı (Modern Gradient ve Kavis) --- */
         .header {
-            background-color: #002b5e; /* Lacivert */
-            color: #fff;
+            background: linear-gradient(135deg, #00152c 0%, var(--primary-navy) 100%);
+            color: var(--white);
             text-align: center;
-            padding: 30px 20px;
-            border-bottom: 5px solid #d4af37; /* Altın Sarısı */
+            padding: 40px 20px 50px 20px;
+            border-bottom: 5px solid var(--primary-gold);
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .header h1 {
-            font-size: 24px;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 2px;
             margin-bottom: 5px;
-            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header p {
             font-size: 14px;
-            color: #d4af37;
-            font-weight: 600;
+            color: var(--primary-gold);
+            font-weight: 500;
+            letter-spacing: 3px;
         }
 
-        /* İçerik Konteyneri */
+        /* --- Ana Konteyner ve Animasyon --- */
         .container {
             max-width: 800px;
-            margin: 20px auto;
-            padding: 0 15px;
+            margin: -25px auto 40px auto; /* Header'ın üstüne hafif biner */
+            padding: 0 20px;
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        /* Akordeon Butonları */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Modern Akordeon (Dil Butonları) --- */
         .accordion {
-            background-color: #fff;
-            color: #002b5e;
+            background-color: var(--white);
+            color: var(--primary-navy);
             cursor: pointer;
-            padding: 18px;
+            padding: 20px 25px;
             width: 100%;
             border: none;
+            border-radius: 12px;
             text-align: left;
             outline: none;
             font-size: 16px;
-            font-weight: 700;
-            transition: 0.4s;
-            margin-bottom: 5px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
         }
 
-        .accordion:hover, .active {
-            background-color: #002b5e;
-            color: #fff;
+        .accordion:hover {
+            box-shadow: 0 8px 25px rgba(0,35,71,0.15);
+            transform: translateY(-2px);
         }
 
-        /* Akordeon Sağdaki Artı/Eksi İkonu */
-        .accordion::after {
-            content: '\002B'; /* Artı İşareti */
-            font-size: 20px;
-            font-weight: bold;
+        .accordion.active {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            border-radius: 12px 12px 0 0;
+            margin-bottom: 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateY(0);
         }
 
-        .active::after {
-            content: "\2212"; /* Eksi İşareti */
+        /* Bayrak ve Metin Hizalaması */
+        .lang-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .lang-title span.flag {
+            font-size: 24px;
         }
 
-        /* Açılan Panel Tasarımı */
+        /* Sağdaki + ve - İkonu */
+        .accordion .icon {
+            font-size: 24px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+        .accordion.active .icon {
+            transform: rotate(45deg); /* + ikonunu X yapar */
+        }
+
+        /* --- Açılan Panel Tasarımı --- */
         .panel {
-            padding: 0 18px;
-            background-color: white;
+            background-color: var(--white);
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            border-radius: 0 0 8px 8px;
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+            border-radius: 0 0 12px 12px;
             margin-bottom: 15px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.03);
+            position: relative;
+            z-index: 1;
         }
 
         .panel-content {
-            padding: 15px 0;
+            padding: 25px;
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
 
         .panel h3 {
-            color: #d4af37;
-            font-size: 16px;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
+            color: var(--primary-navy);
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            display: inline-block;
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 3px;
         }
 
         .panel p {
-            font-size: 14px;
+            font-size: 13px;
             margin-bottom: 10px;
+            color: #555;
+            line-height: 1.7;
         }
 
+        /* Modern Listeler */
         .panel ul {
-            list-style-type: none;
+            list-style: none;
             padding-left: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        /* Tablet ve Masaüstü için liste yan yana */
+        @media (min-width: 600px) {
+            .panel ul {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         .panel ul li {
-            font-size: 14px;
-            margin-bottom: 6px;
-            padding-left: 15px;
-            position: relative;
+            font-size: 13px;
+            color: #444;
+            background: #f9f9f9;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 3px solid var(--primary-gold);
+            display: flex;
+            justify-content: space-between;
+        }
+        .panel ul li strong {
+            color: var(--primary-navy);
         }
 
-        .panel ul li::before {
-            content: "•";
-            color: #d4af37;
-            font-weight: bold;
-            display: inline-block;
-            width: 15px;
-            position: absolute;
-            left: 0;
-        }
-
-        /* Wi-Fi Vurgu Kutusu */
+        /* --- Vurgulu Wi-Fi Kutusu --- */
         .wifi-box {
-            background-color: #eef3f8;
-            border-left: 4px solid #002b5e;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 4px;
+            background: linear-gradient(135deg, #f0f7fa 0%, #e3f2fd 100%);
+            border-left: 4px solid #0277bd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #01579b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .wifi-box i {
+            font-size: 20px;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             font-size: 12px;
-            color: #777;
-            margin-top: 20px;
+            color: #888;
+        }
+        .footer span {
+            color: var(--primary-gold);
+            font-weight: 600;
         }
     </style>
 </head>
@@ -165,85 +239,91 @@
     <div class="container">
 
         <!-- TÜRKÇE -->
-        <button class="accordion">🇹🇷 TÜRKÇE (TR)</button>
+        <button class="accordion">
+            <div class="lang-title"><span class="flag">🇹🇷</span> TÜRKÇE (TR)</div>
+            <span class="icon">+</span>
+        </button>
         <div class="panel">
             <div class="panel-content">
                 <div class="wifi-box">
-                    <strong>Wi-Fi Bilgisi:</strong> Lobi alanında Wi-Fi ücretsizdir. Tüm otel genelinde Wi-Fi ücretlidir (1 Gün: 1€ / 1 Hafta: 5€ - Kişi başı).
+                    <span>📡 <strong>Wi-Fi Bilgisi:</strong> Lobi alanında Wi-Fi ücretsizdir. Tüm otel genelinde Wi-Fi ücretlidir (1 Gün: 1€ / 1 Hafta: 5€ - Kişi başı).</span>
                 </div>
                 
                 <h3>ULTRA HER ŞEY DAHİL KONSEPTİ</h3>
                 <ul>
-                    <li><strong>Kahvaltı:</strong> 07:00 – 10:00</li>
-                    <li><strong>Geç Kahvaltı:</strong> 10:00 – 10:30</li>
-                    <li><strong>Öğle Yemeği:</strong> 12:30 – 14:30</li>
-                    <li><strong>Snack (Atıştırmalık):</strong> 11:00 – 16:00</li>
-                    <li><strong>Gözleme:</strong> 11:00 – 16:00</li>
-                    <li><strong>Burger World:</strong> 11:00 – 16:00</li>
-                    <li><strong>Dondurma (01.06 - 30.09):</strong> 14:00 – 17:00</li>
-                    <li><strong>Pastane:</strong> 11:00 – 17:00</li>
-                    <li><strong>Akşam Yemeği:</strong> 19:00 – 21:00</li>
-                    <li><strong>A'la Carte Restoran:</strong> 19:00 – 21:00 (Rezervasyonlu)</li>
-                    <li><strong>Gece Çorbası:</strong> 23:00 – 24:00</li>
+                    <li><strong>Kahvaltı:</strong> <span>07:00 – 10:00</span></li>
+                    <li><strong>Geç Kahvaltı:</strong> <span>10:00 – 10:30</span></li>
+                    <li><strong>Öğle Yemeği:</strong> <span>12:30 – 14:30</span></li>
+                    <li><strong>Snack (Atıştırmalık):</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Gözleme:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Dondurma (01.06-30.09):</strong> <span>14:00 – 17:00</span></li>
+                    <li><strong>Pastane:</strong> <span>11:00 – 17:00</span></li>
+                    <li><strong>Akşam Yemeği:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>A'la Carte Restoran:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>Gece Çorbası:</strong> <span>23:00 – 24:00</span></li>
                 </ul>
 
                 <h3>BARLAR (Ücretsiz İçecekler)</h3>
                 <ul>
-                    <li><strong>Lobi Bar:</strong> 10:00 – 23:00</li>
-                    <li><strong>Havuz Bar:</strong> 10:00 – 23:00</li>
-                    <li><strong>Snack Bar:</strong> 10:00 – 17:00</li>
-                    <li><strong>Restoran Bar:</strong> 12:30 – 21:00</li>
-                    <li><strong>Disco Bar:</strong> 24:00 – 02:00 (Tüm içecekler ücretsiz)</li>
+                    <li><strong>Lobi Bar:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Havuz Bar:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Snack Bar:</strong> <span>10:00 – 17:00</span></li>
+                    <li><strong>Restoran Bar:</strong> <span>12:30 – 21:00</span></li>
+                    <li><strong>Disco Bar:</strong> <span>24:00 – 02:00</span></li>
                 </ul>
 
-                <h3>ÜCRETSİZ HİZMETLER & AKTİVİTELER</h3>
+                <h3>ÜCRETSİZ HİZMETLER</h3>
                 <p>Hamam & Sauna, Plaj/Havuz Şezlong ve Şemsiye, Plaj Havlusu (Günlük değişim ücreti 1€), Animasyon, Mini Futbol, Basketbol, Voleybol, Masa Tenisi, Dart, Fitness Salonu, Mini Club (3-12 yaş).</p>
 
                 <h3>ÜCRETLİ HİZMETLER</h3>
                 <p>Tüm otel geneli Wi-Fi, Kasa (Oda içi), Masaj ve Güzellik Merkezi, Doktor, Çamaşırhane, Telefon/Faks, Türk Kahvesi, Taze Sıkılmış Meyve Suları, Bilardo, Su Sporları, Araç kiralama, Işıklandırmalı Tenis kortu.</p>
 
                 <h3>ÖNEMLİ BİLGİLER</h3>
-                <p>Evcil hayvan kabul edilmemektedir.<br>Kredi Kartları: Visa, MasterCard, Maestro.</p>
+                <p>Evcil hayvan kabul edilmemektedir.<br>Geçerli Kartlar: Visa, MasterCard, Maestro.</p>
             </div>
         </div>
 
         <!-- ENGLISH -->
-        <button class="accordion">🇬🇧 ENGLISH (EN)</button>
+        <button class="accordion">
+            <div class="lang-title"><span class="flag">🇬🇧</span> ENGLISH (EN)</div>
+            <span class="icon">+</span>
+        </button>
         <div class="panel">
             <div class="panel-content">
                 <div class="wifi-box">
-                    <strong>Wi-Fi Info:</strong> Wi-Fi is free in the Lobby. High-speed Wi-Fi in all hotel areas is with an extra charge (1 Day: 1€ / 1 Week: 5€ per person).
+                    <span>📡 <strong>Wi-Fi Info:</strong> Wi-Fi is free in the Lobby. High-speed Wi-Fi in all hotel areas is extra charge (1 Day: 1€ / 1 Week: 5€ per person).</span>
                 </div>
                 
-                <h3>ULTRA ALL-INCLUSIVE CONCEPT</h3>
+                <h3>ULTRA ALL-INCLUSIVE</h3>
                 <ul>
-                    <li><strong>Breakfast:</strong> 07:00 – 10:00</li>
-                    <li><strong>Late Breakfast:</strong> 10:00 – 10:30</li>
-                    <li><strong>Lunch:</strong> 12:30 – 14:30</li>
-                    <li><strong>Snack:</strong> 11:00 – 16:00</li>
-                    <li><strong>Gözleme (Pancake):</strong> 11:00 – 16:00</li>
-                    <li><strong>Burger World:</strong> 11:00 – 16:00</li>
-                    <li><strong>Ice-cream (01.06 - 30.09):</strong> 14:00 – 17:00</li>
-                    <li><strong>Patisserie:</strong> 11:00 – 17:00</li>
-                    <li><strong>Dinner:</strong> 19:00 – 21:00</li>
-                    <li><strong>A'la Carte Restaurant:</strong> 19:00 – 21:00 (Reservation required)</li>
-                    <li><strong>Night Soup:</strong> 23:00 – 24:00</li>
+                    <li><strong>Breakfast:</strong> <span>07:00 – 10:00</span></li>
+                    <li><strong>Late Breakfast:</strong> <span>10:00 – 10:30</span></li>
+                    <li><strong>Lunch:</strong> <span>12:30 – 14:30</span></li>
+                    <li><strong>Snack:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Gözleme (Pancake):</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Ice-cream (01.06-30.09):</strong> <span>14:00 – 17:00</span></li>
+                    <li><strong>Patisserie:</strong> <span>11:00 – 17:00</span></li>
+                    <li><strong>Dinner:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>A'la Carte:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>Night Soup:</strong> <span>23:00 – 24:00</span></li>
                 </ul>
 
                 <h3>BARS (Free Drinks)</h3>
                 <ul>
-                    <li><strong>Lobby Bar:</strong> 10:00 – 23:00</li>
-                    <li><strong>Pool Bar:</strong> 10:00 – 23:00</li>
-                    <li><strong>Snack Bar:</strong> 10:00 – 17:00</li>
-                    <li><strong>Restaurant Bar:</strong> 12:30 – 21:00</li>
-                    <li><strong>Disco Bar:</strong> 24:00 – 02:00 (All drinks FREE)</li>
+                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Pool Bar:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Snack Bar:</strong> <span>10:00 – 17:00</span></li>
+                    <li><strong>Restaurant Bar:</strong> <span>12:30 – 21:00</span></li>
+                    <li><strong>Disco Bar:</strong> <span>24:00 – 02:00</span></li>
                 </ul>
 
-                <h3>FREE OF CHARGE SERVICES</h3>
-                <p>Turkish Bath & Sauna, Sunbeds/Umbrellas at Beach and Pool, Beach Towel (Daily towel change is 1€), Animation shows, Mini Football, Basketball, Volleyball, Table Tennis, Dart, Fitness center, Mini Club (3-12 ages).</p>
+                <h3>FREE SERVICES</h3>
+                <p>Turkish Bath & Sauna, Sunbeds/Umbrellas, Beach Towel (Daily change is 1€), Animation shows, Mini Football, Basketball, Volleyball, Table Tennis, Dart, Fitness center, Mini Club (3-12 ages).</p>
 
                 <h3>WITH EXTRA CHARGE</h3>
-                <p>Wi-Fi (all hotel), Safe box, Massage & Beauty Center, Doctor, Laundry, Telephone/Fax, Turkish Coffee, Fresh Fruit Juices, Billiard, Water Sports, Rent a car, Tennis (with light).</p>
+                <p>Wi-Fi (all hotel), Safe box, Massage & Beauty Center, Doctor, Laundry, Telephone/Fax, Turkish Coffee, Fresh Juices, Billiard, Water Sports, Rent a car, Tennis (with light).</p>
 
                 <h3>IMPORTANT INFO</h3>
                 <p>Pets are not allowed.<br>Accepted Cards: Visa, MasterCard, Maestro.</p>
@@ -251,42 +331,45 @@
         </div>
 
         <!-- DEUTSCH -->
-        <button class="accordion">🇩🇪 DEUTSCH (DE)</button>
+        <button class="accordion">
+            <div class="lang-title"><span class="flag">🇩🇪</span> DEUTSCH (DE)</div>
+            <span class="icon">+</span>
+        </button>
         <div class="panel">
             <div class="panel-content">
                 <div class="wifi-box">
-                    <strong>WLAN-Info:</strong> WLAN ist in der Lobby kostenlos. WLAN im gesamten Hotelbereich ist gebührenpflichtig (1 Tag: 1€ / 1 Woche: 5€ pro Person).
+                    <span>📡 <strong>WLAN-Info:</strong> WLAN ist in der Lobby kostenlos. WLAN im gesamten Hotelbereich ist gebührenpflichtig (1 Tag: 1€ / 1 Woche: 5€ pro Person).</span>
                 </div>
                 
-                <h3>ULTRA ALL-INCLUSIVE KONZEPT</h3>
+                <h3>ULTRA ALL-INCLUSIVE</h3>
                 <ul>
-                    <li><strong>Frühstück:</strong> 07:00 – 10:00</li>
-                    <li><strong>Spätaufsteher-Frühstück:</strong> 10:00 – 10:30</li>
-                    <li><strong>Mittagessen:</strong> 12:30 – 14:30</li>
-                    <li><strong>Snacks:</strong> 11:00 – 16:00</li>
-                    <li><strong>Gözleme:</strong> 11:00 – 16:00</li>
-                    <li><strong>Burger World:</strong> 11:00 – 16:00</li>
-                    <li><strong>Eiscreme (01.06 - 30.09):</strong> 14:00 – 17:00</li>
-                    <li><strong>Patisserie:</strong> 11:00 – 17:00</li>
-                    <li><strong>Abendessen:</strong> 19:00 – 21:00</li>
-                    <li><strong>A'la Carte Restaurant:</strong> 19:00 – 21:00 (Mit Reservierung)</li>
-                    <li><strong>Mitternachtssuppe:</strong> 23:00 – 24:00</li>
+                    <li><strong>Frühstück:</strong> <span>07:00 – 10:00</span></li>
+                    <li><strong>Spätaufsteher-Frühstück:</strong> <span>10:00 – 10:30</span></li>
+                    <li><strong>Mittagessen:</strong> <span>12:30 – 14:30</span></li>
+                    <li><strong>Snacks:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Gözleme:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Eiscreme (01.06-30.09):</strong> <span>14:00 – 17:00</span></li>
+                    <li><strong>Patisserie:</strong> <span>11:00 – 17:00</span></li>
+                    <li><strong>Abendessen:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>A'la Carte:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>Mitternachtssuppe:</strong> <span>23:00 – 24:00</span></li>
                 </ul>
 
                 <h3>BARS (Kostenlose Getränke)</h3>
                 <ul>
-                    <li><strong>Lobby Bar:</strong> 10:00 – 23:00</li>
-                    <li><strong>Pool Bar:</strong> 10:00 – 23:00</li>
-                    <li><strong>Snack Bar:</strong> 10:00 – 17:00</li>
-                    <li><strong>Restaurant Bar:</strong> 12:30 – 21:00</li>
-                    <li><strong>Disco Bar:</strong> 24:00 – 02:00 (Alle Getränke kostenlos)</li>
+                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Pool Bar:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Snack Bar:</strong> <span>10:00 – 17:00</span></li>
+                    <li><strong>Restaurant Bar:</strong> <span>12:30 – 21:00</span></li>
+                    <li><strong>Disco Bar:</strong> <span>24:00 – 02:00</span></li>
                 </ul>
 
                 <h3>KOSTENLOSE LEISTUNGEN</h3>
-                <p>Türkisches Bad & Sauna, Liegen und Schirme am Strand/Pool, Strandtuch (Täglicher Handtuchwechsel kostet 1€), Animation, Minifußball, Basketball, Volleyball, Tischtennis, Darts, Fitnessraum, Miniclub (3-12 Jahre).</p>
+                <p>Türkisches Bad & Sauna, Liegen und Schirme, Strandtuch (Täglicher Wechsel kostet 1€), Animation, Minifußball, Basketball, Volleyball, Tischtennis, Darts, Fitnessraum, Miniclub (3-12 Jahre).</p>
 
                 <h3>GEGEN GEBÜHR</h3>
-                <p>WLAN (ganzes Hotel), Safe, Massage & Beauty Center, Arzt, Wäscherei, Telefon/Fax, Türkischer Kaffee, Frisch gepresste Säfte, Billard, Wassersport, Autovermietung, Tennis (mit Flutlicht).</p>
+                <p>WLAN (ganzes Hotel), Safe, Massage, Arzt, Wäscherei, Telefon/Fax, Türkischer Kaffee, Frisch gepresste Säfte, Billard, Wassersport, Autovermietung, Tennis (mit Flutlicht).</p>
 
                 <h3>WICHTIGE INFO</h3>
                 <p>Haustiere sind nicht erlaubt.<br>Kreditkarten: Visa, MasterCard, Maestro.</p>
@@ -294,148 +377,155 @@
         </div>
 
         <!-- РУССКИЙ -->
-        <button class="accordion">🇷🇺 РУССКИЙ (RU)</button>
+        <button class="accordion">
+            <div class="lang-title"><span class="flag">🇷🇺</span> РУССКИЙ (RU)</div>
+            <span class="icon">+</span>
+        </button>
         <div class="panel">
             <div class="panel-content">
                 <div class="wifi-box">
-                    <strong>Wi-Fi:</strong> Wi-Fi в лобби бесплатно. Wi-Fi на всей территории отеля платный (1 день: 1€ / 1 неделя: 5€ с человека).
+                    <span>📡 <strong>Wi-Fi:</strong> Wi-Fi в лобби бесплатно. На всей территории отеля платно (1 день: 1€ / 1 неделя: 5€ с человека).</span>
                 </div>
                 
                 <h3>УЛЬТРА ВСЕ ВКЛЮЧЕНО</h3>
                 <ul>
-                    <li><strong>Завтрак:</strong> 07:00 – 10:00</li>
-                    <li><strong>Поздний завтрак:</strong> 10:00 – 10:30</li>
-                    <li><strong>Обед:</strong> 12:30 – 14:30</li>
-                    <li><strong>Закуски (Снек):</strong> 11:00 – 16:00</li>
-                    <li><strong>Гезлеме:</strong> 11:00 – 16:00</li>
-                    <li><strong>Burger World:</strong> 11:00 – 16:00</li>
-                    <li><strong>Мороженое (01.06 - 30.09):</strong> 14:00 – 17:00</li>
-                    <li><strong>Кондитерская:</strong> 11:00 – 17:00</li>
-                    <li><strong>Ужин:</strong> 19:00 – 21:00</li>
-                    <li><strong>Ресторан A'la Carte:</strong> 19:00 – 21:00 (По резервации)</li>
-                    <li><strong>Ночной суп:</strong> 23:00 – 24:00</li>
+                    <li><strong>Завтрак:</strong> <span>07:00 – 10:00</span></li>
+                    <li><strong>Поздний завтрак:</strong> <span>10:00 – 10:30</span></li>
+                    <li><strong>Обед:</strong> <span>12:30 – 14:30</span></li>
+                    <li><strong>Закуски (Снек):</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Гезлеме:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Мороженое:</strong> <span>14:00 – 17:00</span></li>
+                    <li><strong>Кондитерская:</strong> <span>11:00 – 17:00</span></li>
+                    <li><strong>Ужин:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>Ресторан A'la Carte:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>Ночной суп:</strong> <span>23:00 – 24:00</span></li>
                 </ul>
 
-                <h3>БАРЫ (Бесплатные напитки)</h3>
+                <h3>БАРЫ (Бесплатно)</h3>
                 <ul>
-                    <li><strong>Лобби-бар:</strong> 10:00 – 23:00</li>
-                    <li><strong>Бар у бассейна:</strong> 10:00 – 23:00</li>
-                    <li><strong>Снек-бар:</strong> 10:00 – 17:00</li>
-                    <li><strong>Бар в ресторане:</strong> 12:30 – 21:00</li>
-                    <li><strong>Диско-бар:</strong> 24:00 – 02:00 (Все напитки бесплатно)</li>
+                    <li><strong>Лобби-бар:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Бар у бассейна:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Снек-бар:</strong> <span>10:00 – 17:00</span></li>
+                    <li><strong>Бар в ресторане:</strong> <span>12:30 – 21:00</span></li>
+                    <li><strong>Диско-бар:</strong> <span>24:00 – 02:00</span></li>
                 </ul>
 
                 <h3>БЕСПЛАТНЫЕ УСЛУГИ</h3>
                 <p>Турецкая баня и сауна, Шезлонги и зонтики, Пляжное полотенце (Ежедневная замена 1€), Анимация, Мини-футбол, Баскетбол, Волейбол, Настольный теннис, Дартс, Фитнес-центр, Мини-клуб (3-12 лет).</p>
 
                 <h3>ПЛАТНЫЕ УСЛУГИ</h3>
-                <p>Wi-Fi (по всему отелю), Сейф, Массаж, Врач, Прачечная, Телефон/Факс, Турецкий кофе, Свежевыжатые соки, Бильярд, Водные виды спорта, Аренда авто, Теннис (с освещением).</p>
-
-                <h3>ВАЖНАЯ ИНФОРМАЦИЯ</h3>
-                <p>Размещение с животными запрещено.<br>Карты: Visa, MasterCard, Maestro.</p>
+                <p>Wi-Fi (везде), Сейф, Массаж, Врач, Прачечная, Телефон/Факс, Турецкий кофе, Свежевыжатые соки, Бильярд, Водные виды спорта, Аренда авто, Теннис.</p>
             </div>
         </div>
 
         <!-- POLSKI -->
-        <button class="accordion">🇵🇱 POLSKI (PL)</button>
+        <button class="accordion">
+            <div class="lang-title"><span class="flag">🇵🇱</span> POLSKI (PL)</div>
+            <span class="icon">+</span>
+        </button>
         <div class="panel">
             <div class="panel-content">
                 <div class="wifi-box">
-                    <strong>Info Wi-Fi:</strong> Wi-Fi w lobby jest bezpłatne. Wi-Fi na terenie całego hotelu jest płatne (1 Dzień: 1€ / 1 Tydzień: 5€ za osobę).
+                    <span>📡 <strong>Info Wi-Fi:</strong> Wi-Fi w lobby jest bezpłatne. Wi-Fi na terenie całego hotelu jest płatne (1 Dzień: 1€ / 1 Tydzień: 5€ za osobę).</span>
                 </div>
                 
                 <h3>ULTRA ALL-INCLUSIVE</h3>
                 <ul>
-                    <li><strong>Śniadanie:</strong> 07:00 – 10:00</li>
-                    <li><strong>Późne Śniadanie:</strong> 10:00 – 10:30</li>
-                    <li><strong>Obiad:</strong> 12:30 – 14:30</li>
-                    <li><strong>Przekąski (Snack):</strong> 11:00 – 16:00</li>
-                    <li><strong>Gözleme:</strong> 11:00 – 16:00</li>
-                    <li><strong>Burger World:</strong> 11:00 – 16:00</li>
-                    <li><strong>Lody (01.06 - 30.09):</strong> 14:00 – 17:00</li>
-                    <li><strong>Cukiernia:</strong> 11:00 – 17:00</li>
-                    <li><strong>Kolacja:</strong> 19:00 – 21:00</li>
-                    <li><strong>A'la Carte:</strong> 19:00 – 21:00 (Wymagana rezerwacja)</li>
-                    <li><strong>Zupa nocna:</strong> 23:00 – 24:00</li>
+                    <li><strong>Śniadanie:</strong> <span>07:00 – 10:00</span></li>
+                    <li><strong>Późne Śniadanie:</strong> <span>10:00 – 10:30</span></li>
+                    <li><strong>Obiad:</strong> <span>12:30 – 14:30</span></li>
+                    <li><strong>Przekąski (Snack):</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Gözleme:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Lody:</strong> <span>14:00 – 17:00</span></li>
+                    <li><strong>Cukiernia:</strong> <span>11:00 – 17:00</span></li>
+                    <li><strong>Kolacja:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>A'la Carte:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>Zupa nocna:</strong> <span>23:00 – 24:00</span></li>
                 </ul>
 
                 <h3>BARY (Darmowe Napoje)</h3>
                 <ul>
-                    <li><strong>Lobby Bar:</strong> 10:00 – 23:00</li>
-                    <li><strong>Pool Bar:</strong> 10:00 – 23:00</li>
-                    <li><strong>Snack Bar:</strong> 10:00 – 17:00</li>
-                    <li><strong>Restaurant Bar:</strong> 12:30 – 21:00</li>
-                    <li><strong>Disco Bar:</strong> 24:00 – 02:00 (Wszystkie napoje GRATIS)</li>
+                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Pool Bar:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Snack Bar:</strong> <span>10:00 – 17:00</span></li>
+                    <li><strong>Restaurant Bar:</strong> <span>12:30 – 21:00</span></li>
+                    <li><strong>Disco Bar:</strong> <span>24:00 – 02:00</span></li>
                 </ul>
 
                 <h3>BEZPŁATNE USŁUGI</h3>
-                <p>Łaźnia turecka i sauna, Leżaki i parasole, Ręczniki plażowe (Codzienna wymiana 1€), Animacje, Mini piłka nożna, Koszykówka, Siatkówka, Tenis stołowy, Rzutki, Centrum fitness, Mini Club (3-12 lat).</p>
+                <p>Łaźnia turecka i sauna, Leżaki i parasole, Ręczniki (Codzienna wymiana 1€), Animacje, Mini piłka nożna, Koszykówka, Siatkówka, Tenis stołowy, Rzutki, Centrum fitness, Mini Club (3-12 lat).</p>
 
                 <h3>USŁUGI PŁATNE</h3>
-                <p>Wi-Fi (w całym hotelu), Sejf, Masaże, Lekarz, Pralnia, Telefon/Faks, Kawa turecka, Świeżo wyciskane soki, Bilard, Sporty wodne, Wypożyczalnia samochodów, Korty tenisowe (z oświetleniem).</p>
-
-                <h3>WAŻNE INFORMACJE</h3>
-                <p>Zwierzęta nie są akceptowane.<br>Karty: Visa, MasterCard, Maestro.</p>
+                <p>Wi-Fi (w całym hotelu), Sejf, Masaże, Lekarz, Pralnia, Telefon/Faks, Kawa turecka, Świeżo wyciskane soki, Bilard, Sporty wodne, Wypożyczalnia samochodów, Korty tenisowe.</p>
             </div>
         </div>
 
         <!-- ROMÂNĂ -->
-        <button class="accordion">🇷🇴 ROMÂNĂ (RO)</button>
+        <button class="accordion">
+            <div class="lang-title"><span class="flag">🇷🇴</span> ROMÂNĂ (RO)</div>
+            <span class="icon">+</span>
+        </button>
         <div class="panel">
             <div class="panel-content">
                 <div class="wifi-box">
-                    <strong>Info Wi-Fi:</strong> Wi-Fi este gratuit în Lobby. Wi-Fi în toate zonele hotelului este contra cost (1 Zi: 1€ / 1 Săptămână: 5€ de persoană).
+                    <span>📡 <strong>Info Wi-Fi:</strong> Wi-Fi este gratuit în Lobby. Wi-Fi în tot hotelul este contra cost (1 Zi: 1€ / 1 Săpt: 5€).</span>
                 </div>
                 
                 <h3>CONCEPT ULTRA ALL-INCLUSIVE</h3>
                 <ul>
-                    <li><strong>Mic dejun:</strong> 07:00 – 10:00</li>
-                    <li><strong>Mic dejun târziu:</strong> 10:00 – 10:30</li>
-                    <li><strong>Prânz:</strong> 12:30 – 14:30</li>
-                    <li><strong>Gustări (Snack):</strong> 11:00 – 16:00</li>
-                    <li><strong>Gözleme:</strong> 11:00 – 16:00</li>
-                    <li><strong>Burger World:</strong> 11:00 – 16:00</li>
-                    <li><strong>Înghețată (01.06 - 30.09):</strong> 14:00 – 17:00</li>
-                    <li><strong>Patiserie:</strong> 11:00 – 17:00</li>
-                    <li><strong>Cină:</strong> 19:00 – 21:00</li>
-                    <li><strong>A'la Carte:</strong> 19:00 – 21:00 (Cu rezervare)</li>
-                    <li><strong>Supă de noapte:</strong> 23:00 – 24:00</li>
+                    <li><strong>Mic dejun:</strong> <span>07:00 – 10:00</span></li>
+                    <li><strong>Mic dejun târziu:</strong> <span>10:00 – 10:30</span></li>
+                    <li><strong>Prânz:</strong> <span>12:30 – 14:30</span></li>
+                    <li><strong>Gustări (Snack):</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Gözleme:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
+                    <li><strong>Înghețată:</strong> <span>14:00 – 17:00</span></li>
+                    <li><strong>Patiserie:</strong> <span>11:00 – 17:00</span></li>
+                    <li><strong>Cină:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>A'la Carte:</strong> <span>19:00 – 21:00</span></li>
+                    <li><strong>Supă de noapte:</strong> <span>23:00 – 24:00</span></li>
                 </ul>
 
                 <h3>BARURI (Băuturi Gratuite)</h3>
                 <ul>
-                    <li><strong>Lobby Bar:</strong> 10:00 – 23:00</li>
-                    <li><strong>Pool Bar:</strong> 10:00 – 23:00</li>
-                    <li><strong>Snack Bar:</strong> 10:00 – 17:00</li>
-                    <li><strong>Restaurant Bar:</strong> 12:30 – 21:00</li>
-                    <li><strong>Disco Bar:</strong> 24:00 – 02:00 (Toate băuturile sunt GRATUITE)</li>
+                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Pool Bar:</strong> <span>10:00 – 23:00</span></li>
+                    <li><strong>Snack Bar:</strong> <span>10:00 – 17:00</span></li>
+                    <li><strong>Restaurant Bar:</strong> <span>12:30 – 21:00</span></li>
+                    <li><strong>Disco Bar:</strong> <span>24:00 – 02:00</span></li>
                 </ul>
 
                 <h3>SERVICII GRATUITE</h3>
                 <p>Baie Turcească și Saună, Șezlonguri și umbrele, Prosop de plajă (Schimbarea zilnică costă 1€), Animație, Mini Fotbal, Baschet, Volei, Tenis de masă, Darts, Sală de fitness, Mini Club (3-12 ani).</p>
 
                 <h3>SERVICII CONTRA COST</h3>
-                <p>Wi-Fi (tot hotelul), Seif, Masaj, Doctor, Spălătorie, Telefon/Fax, Cafea turcească, Sucuri naturale, Biliard, Sporturi nautice, Închirieri auto, Tenis (cu nocturnă).</p>
-
-                <h3>INFORMAȚII IMPORTANTE</h3>
-                <p>Animalele de companie nu sunt permise.<br>Carduri acceptate: Visa, MasterCard, Maestro.</p>
+                <p>Wi-Fi (tot hotelul), Seif, Masaj, Doctor, Spălătorie, Telefon/Fax, Cafea turcească, Sucuri naturale, Biliard, Sporturi nautice, Închirieri auto, Tenis.</p>
             </div>
         </div>
 
     </div>
 
     <div class="footer">
-        &copy; 2024 Concordia Celes Hotel. All Rights Reserved.
+        &copy; 2024 <span>Concordia Celes Hotel</span>. All Rights Reserved.
     </div>
 
     <script>
-        // Akordeon Menü (Açılır Kapanır Özellik) JavaScript Kodu
         var acc = document.getElementsByClassName("accordion");
         var i;
 
         for (i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
-                // Diğer açık olanları kapatmak isterseniz bu bloğu kullanabilirsiniz (şu an aktif birine tıklanınca sadece o açılır/kapanır)
+                // Tıklanan hariç diğer tüm açık panelleri kapat (Daha temiz görünüm için)
+                for (var j = 0; j < acc.length; j++) {
+                    if (acc[j] !== this) {
+                        acc[j].classList.remove("active");
+                        acc[j].nextElementSibling.style.maxHeight = null;
+                    }
+                }
+
+                // Tıklanana açma/kapama işlemi yap
                 this.classList.toggle("active");
                 var panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
