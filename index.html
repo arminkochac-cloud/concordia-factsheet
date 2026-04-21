@@ -4,461 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Concordia Celes Hotel - Digital Guide</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome İkonları -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #1b2a33 0%, #111a20 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            padding: 30px 15px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Arka plan efektleri */
-        .bg-shape {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background: rgba(255,255,255,0.02);
-            transform: rotate(45deg);
-            border-radius: 20px;
-            z-index: -1;
-        }
-        .shape1 { top: 10%; left: -50px; }
-        .shape2 { bottom: 20%; right: -50px; }
-
-        .container {
-            width: 100%;
-            max-width: 420px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 1;
-        }
-
-        /* Üst Logo ve Başlık Kartı */
-        .main-card {
-            background: #243642;
-            border: 1.5px solid #d1a751;
-            border-radius: 12px;
-            width: 100%;
-            padding: 25px 20px;
-            text-align: center;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #1b2a33 0%, #111a20 100%); color: #ffffff; min-height: 100vh; display: flex; justify-content: center; padding: 30px 15px; position: relative; overflow-x: hidden; }
+        
+        .bg-shape { position: absolute; width: 150px; height: 150px; background: rgba(255,255,255,0.02); transform: rotate(45deg); border-radius: 20px; z-index: -1; }
+        .shape1 { top: 10%; left: -50px; } .shape2 { bottom: 20%; right: -50px; }
+        
+        .container { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; z-index: 1; }
+        
+        .main-card { background: #243642; border: 1.5px solid #d1a751; border-radius: 12px; width: 100%; padding: 25px 20px; text-align: center; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
         .main-card .hotel-icon { font-size: 36px; color: #ff6b6b; margin-bottom: 12px; }
         .main-card h1 { font-size: 19px; font-weight: 800; margin-bottom: 5px; letter-spacing: 0.5px; }
         .main-card h2 { font-size: 10px; color: #d1a751; letter-spacing: 1.5px; margin-bottom: 8px; text-transform: uppercase; }
         .main-card p { font-size: 9px; color: #9baab3; }
-
+        
         .lang-title { font-size: 11px; color: #e0e0e0; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
         .lang-title i { color: #4ba3e3; font-size: 14px;}
-
-        /* Dil Butonları Alanı */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            width: 100%;
-            margin-bottom: 12px;
-        }
         
-        /* ÖNEMLİ: Link(href) kullanılmadı, sadece JavaScript tıklaması var */
-        .lang-btn {
-            background: #243642;
-            border-radius: 10px;
-            padding: 16px;
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            border: 1px solid transparent;
-            user-select: none;
-        }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin-bottom: 12px; }
+        .lang-btn { background: #243642; border-radius: 10px; padding: 16px; text-align: left; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 1px solid transparent; user-select: none; }
         .lang-btn:active { transform: scale(0.96); }
         .lang-btn h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #ffffff;}
         .lang-btn p { font-size: 12px; font-weight: 600; color: #d1a751; margin-bottom: 2px;}
         .lang-btn span { font-size: 8px; color: #9baab3; text-transform: uppercase; letter-spacing: 0.5px;}
-
-        /* Alt 3'lü İletişim Kutuları */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        .action-btn {
-            background: #243642;
-            border-radius: 10px;
-            padding: 15px 5px;
-            text-align: center;
-        }
+        
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; width: 100%; margin-bottom: 10px; }
+        .action-btn { background: #243642; border-radius: 10px; padding: 15px 5px; text-align: center; }
         .action-btn i { font-size: 20px; margin-bottom: 8px; }
         .action-btn h4 { font-size: 10px; font-weight: 600; margin-bottom: 4px; color: #d1a751;}
         .action-btn p { font-size: 7px; color: #9baab3; line-height: 1.3;}
-        
         .action-btn.full-width { grid-column: span 3; cursor: pointer; padding: 15px;}
         .action-btn.full-width:active { transform: scale(0.98); }
-
-        .ic-wifi { color: #4ba3e3; }
-        .ic-phone { color: #ff6b6b; }
-        .ic-mail { color: #e0e0e0; }
-        .ic-web { color: #4ba3e3; }
-
+        .ic-wifi { color: #4ba3e3; } .ic-phone { color: #ff6b6b; } .ic-mail { color: #e0e0e0; } .ic-web { color: #4ba3e3; }
+        
         .footer { margin-top: 30px; text-align: center; }
         .stars { color: #d1a751; font-size: 10px; margin-bottom: 8px; letter-spacing: 2px;}
         .footer p { font-size: 8px; color: #748894; margin-bottom: 4px; }
 
-        /* ================= MODAL PENCERE KODLARI ================= */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            display: none;
-            justify-content: center;
-            align-items: flex-end;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
+        /* MODAL (AÇILIR PENCERE) CSS */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: flex-end; z-index: 1000; opacity: 0; transition: opacity 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
-
-        .modal-content {
-            background: #ffffff;
-            color: #222;
-            width: 100%;
-            max-width: 500px;
-            height: 85vh;
-            border-radius: 20px 20px 0 0;
-            padding: 25px 20px;
-            overflow-y: auto;
-            transform: translateY(100%);
-            transition: transform 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
-            position: relative;
-        }
+        .modal-content { background: #ffffff; color: #222; width: 100%; max-width: 500px; height: 85vh; border-radius: 20px 20px 0 0; padding: 25px 20px; overflow-y: auto; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.1, 0.9, 0.2, 1); position: relative; }
         .modal-overlay.active .modal-content { transform: translateY(0); }
-
-        .close-btn {
-            position: sticky;
-            top: 0; right: 0; float: right;
-            background: #f0f0f0;
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            cursor: pointer;
-            font-size: 18px; color: #333;
-            z-index: 10;
-        }
-
+        .close-btn { position: sticky; top: 0; right: 0; float: right; background: #f0f0f0; width: 36px; height: 36px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 18px; color: #333; z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .modal-body h2 { font-size: 22px; color: #1b2a33; margin-bottom: 15px; font-weight: 800;}
         .wifi-alert { background: #e3f2fd; color: #0277bd; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 500; margin-bottom: 20px;}
         .modal-body h3 { font-size: 13px; color: #d1a751; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px; margin: 20px 0 10px 0; font-weight: 700;}
         .modal-body p { font-size: 13px; line-height: 1.6; margin-bottom: 10px; color: #444;}
         .modal-body ul { list-style: none; margin-bottom: 15px; }
-        .modal-body ul li {
-            font-size: 13px; padding: 8px 12px; background: #f8f9fa; margin-bottom: 6px;
-            border-radius: 6px; border-left: 4px solid #d1a751;
-            display: flex; justify-content: space-between; align-items: center; color: #444;
-        }
+        .modal-body ul li { font-size: 13px; padding: 8px 12px; background: #f8f9fa; margin-bottom: 6px; border-radius: 6px; border-left: 4px solid #d1a751; display: flex; justify-content: space-between; align-items: center; color: #444; }
         .modal-body ul li strong { color: #1b2a33; font-weight: 600;}
-    </style>
-</head>
-<body>
-
-    <div class="bg-shape shape1"></div>
-    <div class="bg-shape shape2"></div>
-
-    <div class="container">
-        
-        <div class="main-card">
-            <i class="fa-solid fa-hotel hotel-icon"></i>
-            <h1>CONCORDIA CELES HOTEL</h1>
-            <h2>DIGITAL GUEST GUIDE</h2>
-            <p>Your Perfect Mediterranean Escape</p>
-        </div>
-
-        <div class="lang-title">
-            <i class="fa-solid fa-globe"></i> Select Your Language / Dil Seçiniz
-        </div>
-
-        <!-- BUTONLAR (href yoktur, sadece onclick vardır) -->
-        <div class="grid-2">
-            <div class="lang-btn" onclick="openModal('tr')">
-                <h3>TR</h3><p>Türkçe</p><span>Turkish</span>
-            </div>
-            <div class="lang-btn" onclick="openModal('en')">
-                <h3>GB</h3><p>English</p><span>English</span>
-            </div>
-            <div class="lang-btn" onclick="openModal('de')">
-                <h3>DE</h3><p>Deutsch</p><span>German</span>
-            </div>
-            <div class="lang-btn" onclick="openModal('ru')">
-                <h3>RU</h3><p>Русский</p><span>Russian</span>
-            </div>
-            <div class="lang-btn" onclick="openModal('pl')">
-                <h3>PL</h3><p>Polski</p><span>Polish</span>
-            </div>
-            <div class="lang-btn" onclick="openModal('ro')">
-                <h3>RO</h3><p>Română</p><span>Romanian</span>
-            </div>
-        </div>
-
-        <div class="grid-3">
-            <div class="action-btn">
-                <i class="fa-solid fa-signal ic-wifi"></i>
-                <h4>WIFI Access</h4>
-                <p>Lobby: FREE<br>Full Hotel: 1€/day - 5€/week</p>
-            </div>
-            <div class="action-btn">
-                <i class="fa-solid fa-phone ic-phone"></i>
-                <h4>24/7 Reception</h4>
-                <p><br>+90 242 527 50 05</p>
-            </div>
-            <div class="action-btn">
-                <i class="fa-solid fa-envelope ic-mail"></i>
-                <h4>Email Us</h4>
-                <p><br>info@concordiaceles.com</p>
-            </div>
-            <div class="action-btn full-width" onclick="window.open('https://www.concordiaceles.com', '_blank')">
-                <i class="fa-solid fa-globe ic-web"></i>
-                <h4>Website</h4>
-                <p>concordiaceles.com</p>
-            </div>
-        </div>
-
-        <div class="footer">
-            <div class="stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p>Five Stars Hotel</p>
-            <p>Okurcalar / Alanya / Antalya, Turkey</p>
-            <p>&copy; 2024 Concordia Celes Hotel. All Rights Reserved.</p>
-        </div>
-    </div>
-
-    <!-- MODAL (Ekranda Açılan Pencere) -->
-    <div id="modalOverlay" class="modal-overlay" onclick="closeModalOnOutsideClick(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
-            <div id="modalContentBody" class="modal-body"></div>
-        </div>
-    </div>
-
-    <script>
-        const langData = {
-            'tr': `
-                <h2>🇹🇷 Hoş Geldiniz!</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i> Lobi alanında Wi-Fi ücretsizdir. Tüm otel genelinde Wi-Fi ücretlidir (1 Gün: 1€ / 1 Hafta: 5€).</div>
-                <h3>ULTRA HER ŞEY DAHİL KONSEPTİ</h3>
-                <ul>
-                    <li><strong>Kahvaltı:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Geç Kahvaltı:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Öğle Yemeği:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Snack (Atıştırmalık):</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Gözleme:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Dondurma (01.06-30.09):</strong> <span>14:00 – 17:00</span></li>
-                    <li><strong>Pastane:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Akşam Yemeği:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>A'la Carte Restoran:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Gece Çorbası:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
-                <h3>BARLAR (Ücretsiz İçecekler)</h3>
-                <ul>
-                    <li><strong>Lobi Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Havuz Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Snack Bar:</strong> <span>10:00 – 17:00</span></li>
-                    <li><strong>Restoran Bar:</strong> <span>12:30 – 21:00</span></li>
-                    <li><strong>Disco Bar:</strong> <span>24:00 – 02:00</span></li>
-                </ul>
-                <h3>ÜCRETSİZ HİZMETLER</h3>
-                <p>Hamam & Sauna, Plaj/Havuz Şezlong ve Şemsiye, Plaj Havlusu (Günlük değişim ücreti 1€), Animasyon, Mini Futbol, Basketbol, Voleybol, Masa Tenisi, Dart, Fitness Salonu, Mini Club (3-12 yaş).</p>
-                <h3>ÜCRETLİ HİZMETLER</h3>
-                <p>Kasa (Oda içi), Masaj Merkezi, Doktor, Çamaşırhane, Telefon/Faks, Türk Kahvesi, Taze Sıkılmış Meyve Suları, Bilardo, Su Sporları, Araç kiralama, Işıklandırmalı Tenis kortu.</p>
-                <h3>ÖNEMLİ BİLGİLER</h3>
-                <p>Evcil hayvan kabul edilmemektedir.<br>Geçerli Kartlar: Visa, MasterCard, Maestro.</p>
-            `,
-            'en': `
-                <h2>🇬🇧 Welcome!</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i> Wi-Fi is free in the Lobby. High-speed Wi-Fi in all hotel areas is extra charge (1 Day: 1€ / 1 Week: 5€ per person).</div>
-                <h3>ULTRA ALL-INCLUSIVE</h3>
-                <ul>
-                    <li><strong>Breakfast:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Late Breakfast:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Lunch:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Snack:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Gözleme (Pancake):</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Ice-cream (01.06-30.09):</strong> <span>14:00 – 17:00</span></li>
-                    <li><strong>Patisserie:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Dinner:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>A'la Carte:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Night Soup:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
-                <h3>BARS (Free Drinks)</h3>
-                <ul>
-                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Pool Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Snack Bar:</strong> <span>10:00 – 17:00</span></li>
-                    <li><strong>Restaurant Bar:</strong> <span>12:30 – 21:00</span></li>
-                    <li><strong>Disco Bar:</strong> <span>24:00 – 02:00</span></li>
-                </ul>
-                <h3>FREE SERVICES</h3>
-                <p>Turkish Bath & Sauna, Sunbeds/Umbrellas, Beach Towel (Daily change is 1€), Animation shows, Mini Football, Basketball, Volleyball, Table Tennis, Dart, Fitness center, Mini Club (3-12 ages).</p>
-                <h3>WITH EXTRA CHARGE</h3>
-                <p>Safe box, Massage & Beauty Center, Doctor, Laundry, Telephone, Turkish Coffee, Fresh Juices, Billiard, Water Sports, Rent a car, Tennis (with light).</p>
-            `,
-            'de': `
-                <h2>🇩🇪 Willkommen!</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i> WLAN ist in der Lobby kostenlos. WLAN im gesamten Hotelbereich ist gebührenpflichtig (1 Tag: 1€ / 1 Woche: 5€ pro Person).</div>
-                <h3>ULTRA ALL-INCLUSIVE</h3>
-                <ul>
-                    <li><strong>Frühstück:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Spätaufsteher:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Mittagessen:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Snacks:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Gözleme:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Eiscreme (01.06-30.09):</strong> <span>14:00 – 17:00</span></li>
-                    <li><strong>Patisserie:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Abendessen:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>A'la Carte:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Mitternachtssuppe:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
-                <h3>BARS (Kostenlose Getränke)</h3>
-                <ul>
-                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Pool Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Snack Bar:</strong> <span>10:00 – 17:00</span></li>
-                    <li><strong>Restaurant Bar:</strong> <span>12:30 – 21:00</span></li>
-                    <li><strong>Disco Bar:</strong> <span>24:00 – 02:00</span></li>
-                </ul>
-                <h3>KOSTENLOSE LEISTUNGEN</h3>
-                <p>Türkisches Bad & Sauna, Liegen und Schirme, Strandtuch (Wechsel 1€), Animation, Minifußball, Basketball, Volleyball, Tischtennis, Darts, Fitnessraum, Miniclub.</p>
-                <h3>GEGEN GEBÜHR</h3>
-                <p>Safe, Massage, Arzt, Wäscherei, Telefon, Türkischer Kaffee, Frisch gepresste Säfte, Billard, Wassersport, Autovermietung, Tennis.</p>
-            `,
-            'ru': `
-                <h2>🇷🇺 Добро пожаловать!</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i> Wi-Fi в лобби бесплатно. На всей территории отеля платно (1 день: 1€ / 1 неделя: 5€).</div>
-                <h3>УЛЬТРА ВСЕ ВКЛЮЧЕНО</h3>
-                <ul>
-                    <li><strong>Завтрак:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Поздний завтрак:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Обед:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Закуски:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Гезлеме:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Мороженое:</strong> <span>14:00 – 17:00</span></li>
-                    <li><strong>Кондитерская:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Ужин:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Ресторан A'la Carte:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Ночной суп:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
-                <h3>БАРЫ (Бесплатно)</h3>
-                <ul>
-                    <li><strong>Лобби-бар:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Бар у бассейна:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Снек-бар:</strong> <span>10:00 – 17:00</span></li>
-                    <li><strong>Бар в ресторане:</strong> <span>12:30 – 21:00</span></li>
-                    <li><strong>Диско-бар:</strong> <span>24:00 – 02:00</span></li>
-                </ul>
-                <h3>БЕСПЛАТНЫЕ УСЛУГИ</h3>
-                <p>Турецкая баня и сауна, Шезлонги, Пляжное полотенце (замена 1€), Анимация, Мини-футбол, Баскетбол, Волейбол, Настольный теннис, Дартс, Фитнес, Мини-клуб.</p>
-            `,
-            'pl': `
-                <h2>🇵🇱 Witamy!</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i> Wi-Fi w lobby jest bezpłatne. W całym hotelu płatne (1 Dzień: 1€ / 1 Tydzień: 5€).</div>
-                <h3>ULTRA ALL-INCLUSIVE</h3>
-                <ul>
-                    <li><strong>Śniadanie:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Późne Śniadanie:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Obiad:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Przekąski:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Gözleme:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Lody:</strong> <span>14:00 – 17:00</span></li>
-                    <li><strong>Cukiernia:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Kolacja:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>A'la Carte:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Zupa nocna:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
-                <h3>BARY (Darmowe Napoje)</h3>
-                <ul>
-                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Pool Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Snack Bar:</strong> <span>10:00 – 17:00</span></li>
-                    <li><strong>Restaurant Bar:</strong> <span>12:30 – 21:00</span></li>
-                    <li><strong>Disco Bar:</strong> <span>24:00 – 02:00</span></li>
-                </ul>
-                <h3>BEZPŁATNE USŁUGI</h3>
-                <p>Łaźnia i sauna, Leżaki, Ręczniki (wymiana 1€), Animacje, Mini piłka nożna, Koszykówka, Siatkówka, Tenis stołowy, Rzutki, Fitness, Mini Club.</p>
-            `,
-            'ro': `
-                <h2>🇷🇴 Bun venit!</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i> Wi-Fi gratuit în Lobby. În tot hotelul contra cost (1 Zi: 1€ / 1 Săpt: 5€).</div>
-                <h3>CONCEPT ULTRA ALL-INCLUSIVE</h3>
-                <ul>
-                    <li><strong>Mic dejun:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Mic dejun târziu:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Prânz:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Gustări:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Gözleme:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Înghețată:</strong> <span>14:00 – 17:00</span></li>
-                    <li><strong>Patiserie:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Cină:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>A'la Carte:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Supă de noapte:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
-                <h3>BARURI (Băuturi Gratuite)</h3>
-                <ul>
-                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Pool Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Snack Bar:</strong> <span>10:00 – 17:00</span></li>
-                    <li><strong>Restaurant Bar:</strong> <span>12:30 – 21:00</span></li>
-                    <li><strong>Disco Bar:</strong> <span>24:00 – 02:00</span></li>
-                </ul>
-                <h3>SERVICII GRATUITE</h3>
-                <p>Baie Turcească, Șezlonguri, Prosop (Schimbare 1€), Animație, Mini Fotbal, Baschet, Volei, Tenis de masă, Darts, Fitness.</p>
-            `
-        };
-
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalContentBody = document.getElementById('modalContentBody');
-
-        function openModal(lang) {
-            modalContentBody.innerHTML = langData[lang];
-            modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            modalOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function closeModalOnOutsideClick(event) {
-            if (event.target === modalOverlay) closeModal();
-        }
-    </script>
-</body>
-</html>
+    
