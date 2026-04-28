@@ -1,118 +1,97 @@
+Mükemmel! Şimdi orijinal fact sheet dokümanınızı gördüm. Tüm detayları 6 dilde ekleyerek **tam profesyonel** bir versiyon hazırlıyorum.
+
+Bu çok uzun bir kod olacak. Lütfen GitHub'daki `index.html` dosyanızın içini **tamamen silip** bu kodu yapıştırın:
+
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Concordia Celes Hotel - Digital Guide</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome İkonları -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         body {
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(135deg, #1b2a33 0%, #111a20 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            padding: 30px 15px;
-            position: relative;
-            overflow-x: hidden;
+            color: #ffffff; min-height: 100vh;
+            display: flex; justify-content: center;
+            padding: 30px 15px; overflow-x: hidden;
         }
-
-        .container {
-            width: 100%;
-            max-width: 420px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 1;
-        }
-
-        .main-card {
-            background: #243642;
-            border: 1.5px solid #d1a751;
-            border-radius: 12px;
-            width: 100%;
-            padding: 25px 20px;
-            text-align: center;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
+        .bg-shape { position: absolute; width: 150px; height: 150px; background: rgba(255,255,255,0.02); transform: rotate(45deg); border-radius: 20px; z-index: 0; }
+        .shape1 { top: 10%; left: -50px; } .shape2 { bottom: 20%; right: -50px; }
+        .container { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; z-index: 1; }
+        .main-card { background: #243642; border: 1.5px solid #d1a751; border-radius: 12px; width: 100%; padding: 25px 20px; text-align: center; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
         .main-card .hotel-icon { font-size: 36px; color: #ff6b6b; margin-bottom: 12px; }
-        .main-card h1 { font-size: 19px; font-weight: 800; margin-bottom: 5px; letter-spacing: 0.5px; }
+        .main-card h1 { font-size: 19px; font-weight: 800; margin-bottom: 5px; }
         .main-card h2 { font-size: 10px; color: #d1a751; letter-spacing: 1.5px; margin-bottom: 8px; text-transform: uppercase; }
         .main-card p { font-size: 9px; color: #9baab3; }
-
         .lang-title { font-size: 11px; color: #e0e0e0; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
-        .lang-title i { color: #4ba3e3; font-size: 14px;}
-
+        .lang-title i { color: #4ba3e3; font-size: 14px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin-bottom: 12px; }
-        
-        .lang-btn {
-            background: #243642;
-            border-radius: 10px;
-            padding: 16px;
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            border: 1px solid transparent;
-            user-select: none;
-        }
+        .lang-btn { background: #243642; border-radius: 10px; padding: 16px; text-align: left; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 1px solid transparent; user-select: none; }
         .lang-btn:active { transform: scale(0.96); }
-        .lang-btn h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #ffffff;}
-        .lang-btn p { font-size: 12px; font-weight: 600; color: #d1a751; margin-bottom: 2px;}
-        .lang-btn span { font-size: 8px; color: #9baab3; text-transform: uppercase; letter-spacing: 0.5px;}
-
+        .lang-btn:hover { border-color: #d1a751; }
+        .lang-btn h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .lang-btn p { font-size: 12px; font-weight: 600; color: #d1a751; margin-bottom: 2px; }
+        .lang-btn span { font-size: 8px; color: #9baab3; text-transform: uppercase; letter-spacing: 0.5px; }
         .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; width: 100%; margin-bottom: 10px; }
         .action-btn { background: #243642; border-radius: 10px; padding: 15px 5px; text-align: center; }
         .action-btn i { font-size: 20px; margin-bottom: 8px; }
-        .action-btn h4 { font-size: 10px; font-weight: 600; margin-bottom: 4px; color: #d1a751;}
-        .action-btn p { font-size: 7px; color: #9baab3; line-height: 1.3;}
-        .action-btn.full-width { grid-column: span 3; cursor: pointer; padding: 15px;}
+        .action-btn h4 { font-size: 10px; font-weight: 600; margin-bottom: 4px; color: #d1a751; }
+        .action-btn p { font-size: 7px; color: #9baab3; line-height: 1.3; }
+        .action-btn.full-width { grid-column: span 3; cursor: pointer; padding: 15px; }
         .action-btn.full-width:active { transform: scale(0.98); }
-        .ic-wifi { color: #4ba3e3; }
-        .ic-phone { color: #ff6b6b; }
-        .ic-mail { color: #e0e0e0; }
-        .ic-web { color: #4ba3e3; }
-
+        .ic-wifi { color: #4ba3e3; } .ic-phone { color: #ff6b6b; } .ic-mail { color: #e0e0e0; } .ic-web { color: #4ba3e3; }
         .footer { margin-top: 30px; text-align: center; }
-        .stars { color: #d1a751; font-size: 10px; margin-bottom: 8px; letter-spacing: 2px;}
+        .stars { color: #d1a751; font-size: 10px; margin-bottom: 8px; letter-spacing: 2px; }
         .footer p { font-size: 8px; color: #748894; margin-bottom: 4px; }
 
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: flex-end; z-index: 1000; opacity: 0; transition: opacity 0.3s; }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: #ffffff; color: #222; width: 100%; max-width: 500px; height: 85vh; border-radius: 20px 20px 0 0; padding: 25px 20px; overflow-y: auto; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.1, 0.9, 0.2, 1); position: relative; }
+        /* MODAL */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: flex-end; z-index: 1000; }
+        .modal-overlay.active { display: flex; }
+        .modal-content { background: #ffffff; color: #222; width: 100%; max-width: 500px; height: 90vh; border-radius: 20px 20px 0 0; padding: 20px 16px; overflow-y: auto; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.1,0.9,0.2,1); position: relative; }
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .close-btn { position: sticky; top: 0; right: 0; float: right; background: #f0f0f0; width: 36px; height: 36px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 18px; color: #333; z-index: 10; }
-        .modal-body h2 { font-size: 22px; color: #1b2a33; margin-bottom: 15px; font-weight: 800;}
-        .wifi-alert { background: #e3f2fd; color: #0277bd; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 500; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;}
-        .modal-body h3 { font-size: 14px; color: #d1a751; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin: 25px 0 15px 0; font-weight: 700; text-transform: uppercase;}
-        .modal-body p { font-size: 13px; line-height: 1.6; margin-bottom: 10px; color: #444;}
-        .modal-body ul { list-style: none; margin-bottom: 15px; }
-        .modal-body ul li { font-size: 13px; padding: 10px 12px; background: #f8f9fa; margin-bottom: 6px; border-radius: 6px; border-left: 4px solid #d1a751; display: flex; justify-content: space-between; align-items: center; color: #444; }
-        .modal-body ul li strong { color: #1b2a33; font-weight: 600;}
-        .modal-body ul.service-list li { border-left: 4px solid #4ba3e3; }
-        .modal-body ul.service-list li.paid { border-left-color: #ff6b6b; }
+        .modal-body h2 { font-size: 20px; color: #1b2a33; margin-bottom: 12px; font-weight: 800; }
+        .modal-body .hotel-info-box { background: #f8f9fa; border-left: 4px solid #1b2a33; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-size: 11px; line-height: 1.8; color: #333; }
+        .modal-body .hotel-info-box strong { color: #1b2a33; }
+        .wifi-alert { background: #e3f2fd; color: #0277bd; padding: 12px; border-radius: 8px; font-size: 12px; font-weight: 500; margin-bottom: 15px; }
+        .modal-body .section-title { font-size: 13px; color: #fff; background: #1b2a33; padding: 8px 12px; border-radius: 6px; margin: 18px 0 10px 0; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .modal-body .section-title i { color: #d1a751; }
+        .modal-body .sub-title { font-size: 12px; color: #d1a751; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px; margin: 15px 0 8px 0; font-weight: 700; }
+        .modal-body p { font-size: 12px; line-height: 1.6; margin-bottom: 8px; color: #444; }
+        .modal-body ul { list-style: none; margin-bottom: 12px; }
+        .modal-body ul li { font-size: 12px; padding: 7px 10px; background: #f8f9fa; margin-bottom: 5px; border-radius: 6px; border-left: 4px solid #d1a751; display: flex; justify-content: space-between; align-items: center; color: #444; }
+        .modal-body ul li strong { color: #1b2a33; font-weight: 600; }
+        .modal-body ul li span { color: #0277bd; font-weight: 600; font-size: 11px; }
+        .modal-body .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+        .modal-body .info-card { background: #f8f9fa; border-radius: 8px; padding: 10px; }
+        .modal-body .info-card h5 { font-size: 10px; color: #d1a751; margin-bottom: 6px; font-weight: 700; text-transform: uppercase; }
+        .modal-body .info-card p { font-size: 11px; margin-bottom: 4px; color: #555; }
+        .modal-body .room-grid { display: grid; grid-template-columns: 1fr; gap: 6px; margin-bottom: 12px; }
+        .modal-body .room-item { background: #f8f9fa; border-radius: 8px; padding: 10px 12px; border-left: 4px solid #4ba3e3; }
+        .modal-body .room-item h5 { font-size: 12px; color: #1b2a33; font-weight: 700; margin-bottom: 3px; }
+        .modal-body .room-item p { font-size: 10px; color: #666; margin-bottom: 0; }
+        .modal-body .transport-item { display: flex; justify-content: space-between; align-items: center; background: #f8f9fa; padding: 8px 12px; border-radius: 6px; margin-bottom: 5px; }
+        .modal-body .transport-item .dest { font-size: 12px; font-weight: 600; color: #1b2a33; }
+        .modal-body .transport-item .info { font-size: 10px; color: #666; text-align: right; }
+        .modal-body .warning-box { background: #fff3e0; border-left: 4px solid #ff9800; padding: 10px 12px; border-radius: 6px; margin: 12px 0; font-size: 11px; color: #e65100; }
+        .modal-body .credit-cards { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+        .modal-body .credit-cards span { background: #e3f2fd; color: #0277bd; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600; }
     </style>
 </head>
 <body>
-
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
     <div class="container">
         <div class="main-card">
             <i class="fa-solid fa-hotel hotel-icon"></i>
             <h1>CONCORDIA CELES HOTEL</h1>
-            <h2>DIGITAL GUEST GUIDE</h2>
+            <h2>Digital Guest Guide</h2>
             <p>Your Perfect Mediterranean Escape</p>
         </div>
         <div class="lang-title"><i class="fa-solid fa-globe"></i> Select Your Language / Dil Seçiniz</div>
@@ -125,324 +104,644 @@
             <div class="lang-btn" onclick="openModal('ro')"><h3>RO</h3><p>Română</p><span>Romanian</span></div>
         </div>
         <div class="grid-3">
-            <div class="action-btn"><i class="fa-solid fa-signal ic-wifi"></i><h4>WIFI Access</h4><p>Lobby: FREE<br>Full Hotel: EXTRA</p></div>
-            <div class="action-btn"><i class="fa-solid fa-phone ic-phone"></i><h4>24/7 Reception</h4><p><br>+90 242 527 50 05</p></div>
-            <div class="action-btn"><i class="fa-solid fa-envelope ic-mail"></i><h4>Email Us</h4><p><br>info@concordiaceles.com</p></div>
-            <div class="action-btn full-width" onclick="window.open('https://www.concordiaceles.com', '_blank')"><i class="fa-solid fa-globe ic-web"></i><h4>Website</h4><p>concordiaceles.com</p></div>
+            <div class="action-btn"><i class="fa-solid fa-signal ic-wifi"></i><h4>WIFI</h4><p>Lobby: FREE<br>Hotel: 1€/day</p></div>
+            <div class="action-btn"><i class="fa-solid fa-phone ic-phone"></i><h4>Reception</h4><p>+90 242<br>527 50 05</p></div>
+            <div class="action-btn"><i class="fa-solid fa-envelope ic-mail"></i><h4>Email</h4><p>info@<br>concordiaceles.com</p></div>
+            <div class="action-btn full-width" onclick="window.open('https://www.concordiaceles.com','_blank')"><i class="fa-solid fa-globe ic-web"></i><h4>www.concordiaceles.com</h4></div>
         </div>
-        <div class="footer"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>Five Stars Hotel</p><p>Okurcalar / Alanya / Antalya, Turkey</p><p>&copy; 2024 Concordia Celes Hotel. All Rights Reserved.</p></div>
+        <div class="footer">
+            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p>Five Stars Hotel &bull; Okurcalar / Alanya / Antalya</p>
+            <p>&copy; 2024 Concordia Celes Hotel</p>
+        </div>
     </div>
 
     <div id="modalOverlay" class="modal-overlay" onclick="closeModalOnOutsideClick(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
-            <div id="modalContentBody" class="modal-body"></div>
+            <div id="modalBody" class="modal-body"></div>
         </div>
     </div>
 
-    <script>
-        const langData = {
-            'tr': `
-                <h2>🇹🇷 Otel Bilgi Rehberi</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i><strong>Wi-Fi:</strong> Lobi alanında ücretsiz, tüm otelde ücretlidir.</div>
-                
-                <h3>YEME & İÇME SAATLERİ</h3>
-                <ul>
-                    <li><strong>Kahvaltı:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Geç Kahvaltı:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Öğle Yemeği:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Snack (Atıştırmalık):</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Gözleme:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Pastane:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Dondurma (01.06-30.09):</strong> <span>14:30 – 15:30</span></li>
-                    <li><strong>Akşam Yemeği:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Gece Çorbası:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
+<script>
+const langData = {
+'tr': `
+<h2>🇹🇷 Hoş Geldiniz!</h2>
+<div class="hotel-info-box">
+    <strong>CONCORDIA CELES HOTEL</strong> ⭐⭐⭐⭐⭐<br>
+    Açılış: 2004 | Otel Renovasyon: 2015 | Oda Renovasyon: 2024<br>
+    <strong>Adres:</strong> Okurcalar / Alanya / Antalya<br>
+    <strong>Tel:</strong> +90 242 527 50 05 | <strong>Fax:</strong> +90 242 527 50 06<br>
+    <strong>Web:</strong> www.concordiaceles.com | <strong>E-mail:</strong> info@concordiaceles.com
+</div>
+<div class="wifi-alert"><i class="fa-solid fa-wifi"></i> Lobi Wi-Fi <strong>ücretsizdir</strong>. Otel geneli Wi-Fi: 1 Gün: 1€ / 1 Hafta: 5€</div>
 
-                <h3>BARLAR</h3>
-                <ul>
-                    <li><strong>Lobi Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Havuz Bar:</strong> <span>10:00 – 02:00</span></li>
-                    <li><strong>Restoran Servis Bar:</strong> <span>Yemek Saatleri</span></li>
-                    <li><strong>Snack Bar:</strong> <span>11:00 - 16:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-route"></i> ULAŞIM BİLGİLERİ</div>
+<div class="transport-item"><span class="dest">Antalya Şehir Merkezi</span><span class="info">105 km • Otobüs • 100 dk</span></div>
+<div class="transport-item"><span class="dest">Antalya Havalimanı</span><span class="info">90 km • Otobüs • 90 dk</span></div>
+<div class="transport-item"><span class="dest">Alanya</span><span class="info">35 km • Servis • 30 dk</span></div>
+<div class="transport-item"><span class="dest">Side</span><span class="info">30 km • Servis • 25 dk</span></div>
 
-                <h3>A'LA CARTE RESTORANLAR</h3>
-                <p>Kebap ve Balık restoranlarımız 15.05 - 31.09 tarihleri arasında hizmet vermektedir. Rezervasyon gereklidir ve ücretlidir.</p>
-                <ul>
-                    <li><strong>Servis Saati:</strong> <span>19:00 – 21:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-bed"></i> KONAKLAMA</div>
+<p><strong>Toplam:</strong> 401 Oda / 1000 Yatak</p>
+<div class="room-grid">
+    <div class="room-item"><h5>Standart Oda × 347</h5><p>24 m² • 1 çift + 1 tek kişilik yatak</p></div>
+    <div class="room-item"><h5>Junior Süit × 18</h5><p>35 m² • 1 çift + 1 tek kişilik yatak</p></div>
+    <div class="room-item"><h5>Aile Odası × 24</h5><p>45 m² • 2 oda, 1 banyo • 2 çift + 2 tek yatak</p></div>
+    <div class="room-item"><h5>Engelli Odası × 4</h5><p>24 m² • 1 çift kişilik yatak</p></div>
+    <div class="room-item"><h5>Jakuzi Odası × 11</h5><p>24 m² • 1 çift + 1 tek yatak • Teras</p></div>
+</div>
+<p><strong>Oda Özellikleri:</strong> Direkt telefon, TV (uydu), Klima, Balkon, Saç kurutma, Kasa, Banyo & Duş, Minibar (alkolsüz)</p>
 
-                <h3>AKTİVİTE & HİZMETLER</h3>
-                <ul class="service-list">
-                    <li><strong>ÜCRETSİZ:</strong> Hamam & Sauna, Fitness, Dart, Plaj Voleybolu, Masa Tenisi, Animasyon Şovları, Mini Club (03-12 yaş), Şezlong & Şemsiye.</li>
-                    <li class="paid"><strong>ÜCRETLİ:</strong> Oda Kasası, Masaj, Doktor, Çamaşırhane, Telefon/Faks, Türk Kahvesi, Taze Sıkılmış Sular, Bilardo, Işıklandırmalı Tenis, Tüm Su Sporları.</li>
-                    <li><strong>Plaj Havlusu:</strong> Havlu kartı ile ilk alım ücretsizdir. Günlük değişim 1€ ücretlidir.</li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-building"></i> TESİS ÖZELLİKLERİ</div>
+<div class="two-col">
+    <div class="info-card"><h5>Arazi</h5><p>16.000 m²</p></div>
+    <div class="info-card"><h5>Ana Bina</h5><p>5.600 m²</p></div>
+    <div class="info-card"><h5>Açık Havuz</h5><p>450 m² + Çocuk: 36 m²</p></div>
+    <div class="info-card"><h5>Kapalı Havuz</h5><p>80 m² + Çocuk: 6 m²</p></div>
+    <div class="info-card"><h5>Restoran</h5><p>1.000 m² • 800+200 kişi</p></div>
+    <div class="info-card"><h5>A'la Carte</h5><p>285 m² • 80 kişi</p></div>
+</div>
+<p><strong>A'la Carte:</strong> Kebap Restoranı ve Balık Restoranı (15.05 - 31.09) • 19:00-21:00</p>
+<p><strong>Oyun Salonu:</strong> Bilardo, Masa Tenisi, Tavla, Satranç, Kart oyunları</p>
+<p><strong>Sağlık Merkezi:</strong> Türk Hamamı, Sauna, Masaj (ücretli)</p>
+<p><strong>Çocuk Parkı:</strong> 3-12 yaş arası çocuklar için</p>
+<p><strong>Mini Club:</strong> 3-12 yaş arası çocuklar için</p>
+<p><strong>Alışveriş:</strong> Kuyumcu, Market, Kuaför, Butik, Deri Mağazası, Hediyelik, Fotoğrafçı</p>
+<p><strong>Temizlik:</strong> Günlük oda temizliği, havlular 2 günde bir değiştirilir</p>
 
-                <h3>GENEL BİLGİLER</h3>
-                <ul class="service-list">
-                    <li><strong>Oda Temizliği:</strong> Her gün yapılır. Havlular 2 günde bir değiştirilir.</li>
-                    <li><strong>Minibar:</strong> Sadece girişte soft içecekler ile doldurulur.</li>
-                    <li><strong>Evcil Hayvan:</strong> Kabul edilmemektedir.</li>
-                    <li><strong>Geçerli Kartlar:</strong> Visa, MasterCard, Maestro.</li>
-                </ul>
-            `,
-            'en': `
-                <h2>🇬🇧 Hotel Information Guide</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i><strong>Wi-Fi:</strong> Free in the lobby area, extra charge in all hotel areas.</div>
-                
-                <h3>FOOD & BEVERAGE HOURS</h3>
-                <ul>
-                    <li><strong>Breakfast:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Late Breakfast:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Lunch:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Snack:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Gözleme (Pancake):</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Patisserie:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Ice Cream (01.06-30.09):</strong> <span>14:30 – 15:30</span></li>
-                    <li><strong>Dinner:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Night Soup:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-utensils"></i> ULTRA HER ŞEY DAHİL</div>
+<ul>
+    <li><strong>Kahvaltı</strong><span>07:00 – 10:00</span></li>
+    <li><strong>Geç Kahvaltı</strong><span>10:00 – 10:30</span></li>
+    <li><strong>Öğle Yemeği</strong><span>12:30 – 14:30</span></li>
+    <li><strong>Snack</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Gözleme</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Burger World</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Pastane</strong><span>11:00 – 17:00</span></li>
+    <li><strong>Dondurma (01.06-30.09)</strong><span>14:30 – 15:30</span></li>
+    <li><strong>Akşam Yemeği</strong><span>19:00 – 21:00</span></li>
+    <li><strong>Gece Çorbası</strong><span>23:00 – 24:00</span></li>
+</ul>
 
-                <h3>BARS</h3>
-                <ul>
-                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Pool Bar:</strong> <span>10:00 – 02:00</span></li>
-                    <li><strong>Restaurant Service Bar:</strong> <span>During meal times</span></li>
-                    <li><strong>Snack Bar:</strong> <span>11:00 - 16:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-champagne-glasses"></i> BARLAR</div>
+<ul>
+    <li><strong>Lobi Bar</strong><span>10:00 – 23:00</span></li>
+    <li><strong>Restoran Bar</strong><span>12:30 – 21:00</span></li>
+    <li><strong>Havuz Bar</strong><span>10:00 – 02:00</span></li>
+    <li><strong>Snack Bar</strong><span>11:00 – 16:00</span></li>
+</ul>
 
-                <h3>A'LA CARTE RESTAURANTS</h3>
-                <p>Our Kebab and Fish restaurants are open between 15.05 - 31.09. Reservation is required and with extra charge.</p>
-                <ul>
-                    <li><strong>Service Hour:</strong> <span>19:00 – 21:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-futbol"></i> SPOR & AKTİVİTELER</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Ücretsiz</h5>
+        <p>Fitness</p><p>Wi-Fi (Lobi)</p><p>Dart</p><p>Plaj Voleybolu</p><p>Masa Tenisi</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Ücretli</h5>
+        <p>Tenis (aydınlatmalı)</p><p>Bilardo</p><p>Rüzgar Sörfü</p><p>Pedal Bot</p><p>Kano</p><p>Muz</p><p>Su Kayağı</p><p>Parasailing</p><p>Wi-Fi (Otel geneli)</p>
+    </div>
+</div>
 
-                <h3>ACTIVITIES & SERVICES</h3>
-                <ul class="service-list">
-                    <li><strong>FREE:</strong> Turkish Bath & Sauna, Fitness, Dart, Beach Volley, Table Tennis, Animation Shows, Mini Club (ages 03-12), Sunbeds & Umbrellas.</li>
-                    <li class="paid"><strong>EXTRA CHARGE:</strong> Safe Box (in room), Massage, Doctor, Laundry, Phone/Fax, Turkish Coffee, Fresh Juices, Billiard, Tennis with light, All Water Sports.</li>
-                    <li><strong>Beach Towel:</strong> First towel is free with towel card. Daily change is 1€.</li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-concierge-bell"></i> MİSAFİR HİZMETLERİ</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Ücretsiz</h5>
+        <p>Bagaj Servisi</p><p>Uyandırma</p><p>Özel Plaj</p><p>Şezlong & Şemsiye</p><p>Para Değişim</p><p>Animasyon</p><p>Türk Hamamı & Sauna</p><p>Plaj Havlusu (değişim 1€)</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Ücretli</h5>
+        <p>Doktor (günlük 2 saat)</p><p>Araç Kiralama</p><p>Masaj & Güzellik</p><p>Havalimanı Transferi</p><p>Çamaşırhane</p><p>Kasa</p><p>Telefon & Faks</p><p>Türk Kahvesi</p><p>Taze Meyve Suyu</p>
+    </div>
+</div>
 
-                <h3>GENERAL INFORMATION</h3>
-                <ul class="service-list">
-                    <li><strong>Room Cleaning:</strong> Daily. Towels are changed every 2 days.</li>
-                    <li><strong>Minibar:</strong> Filled with soft drinks only on arrival day.</li>
-                    <li><strong>Pets:</strong> Not allowed.</li>
-                    <li><strong>Accepted Cards:</strong> Visa, MasterCard, Maestro.</li>
-                </ul>
-            `,
-            'de': `
-                <h2>🇩🇪 Hotelführer</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i><strong>W-LAN:</strong> Kostenlos in der Lobby, im gesamten Hotelbereich gegen Gebühr.</div>
-                
-                <h3>ESSENS- & GETRÄNKEZEITEN</h3>
-                <ul>
-                    <li><strong>Frühstück:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Spätaufsteher-Frühstück:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Mittagessen:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Snacks:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Gözleme (Pfannkuchen):</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Patisserie:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Eiscreme (01.06-30.09):</strong> <span>14:30 – 15:30</span></li>
-                    <li><strong>Abendessen:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Nachtsuppe:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-circle-info"></i> FAYDALI BİLGİLER</div>
+<p><strong>Geçerli Kredi Kartları:</strong></p>
+<div class="credit-cards"><span>Visa</span><span>MasterCard</span><span>Maestro</span><span>Euro Kart</span></div>
+<p><strong>Diller:</strong> Türkçe (resmi), Almanca, İngilizce ve Rusça konuşulmaktadır.</p>
+<div class="warning-box">🚫 <strong>Evcil hayvan kabul edilmemektedir.</strong></div>
+`,
 
-                <h3>BARS</h3>
-                <ul>
-                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Pool Bar:</strong> <span>10:00 – 02:00</span></li>
-                    <li><strong>Restaurant Service Bar:</strong> <span>Während der Essenszeiten</span></li>
-                    <li><strong>Snack Bar:</strong> <span>11:00 - 16:00</span></li>
-                </ul>
+'en': `
+<h2>🇬🇧 Welcome!</h2>
+<div class="hotel-info-box">
+    <strong>CONCORDIA CELES HOTEL</strong> ⭐⭐⭐⭐⭐<br>
+    Opening: 2004 | Hotel Renovation: 2015 | Room Renovation: 2024<br>
+    <strong>Address:</strong> Okurcalar / Alanya / Antalya, Turkey<br>
+    <strong>Tel:</strong> +90 242 527 50 05 | <strong>Fax:</strong> +90 242 527 50 06<br>
+    <strong>Web:</strong> www.concordiaceles.com | <strong>E-mail:</strong> info@concordiaceles.com
+</div>
+<div class="wifi-alert"><i class="fa-solid fa-wifi"></i> Lobby Wi-Fi is <strong>FREE</strong>. Full hotel Wi-Fi: 1 Day: 1€ / 1 Week: 5€</div>
 
-                <h3>A'LA CARTE RESTAURANTS</h3>
-                <p>Unsere Kebab- und Fischrestaurants sind vom 15.05. bis 31.09. geöffnet. Reservierung erforderlich und gebührenpflichtig.</p>
-                <ul>
-                    <li><strong>Servicezeit:</strong> <span>19:00 – 21:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-route"></i> TRANSPORTATION</div>
+<div class="transport-item"><span class="dest">Antalya City Center</span><span class="info">105 km • Bus • 100 min</span></div>
+<div class="transport-item"><span class="dest">Antalya Airport</span><span class="info">90 km • Bus • 90 min</span></div>
+<div class="transport-item"><span class="dest">Alanya</span><span class="info">35 km • Shuttle • 30 min</span></div>
+<div class="transport-item"><span class="dest">Side</span><span class="info">30 km • Shuttle • 25 min</span></div>
 
-                <h3>AKTIVITÄTEN & DIENSTLEISTUNGEN</h3>
-                <ul class="service-list">
-                    <li><strong>KOSTENLOS:</strong> Türkisches Bad & Sauna, Fitness, Darts, Beachvolleyball, Tischtennis, Animationsshows, Mini Club (03-12 Jahre), Liegen & Schirme.</li>
-                    <li class="paid"><strong>GEGEN GEBÜHR:</strong> Safe im Zimmer, Massage, Arzt, Wäscherei, Telefon/Fax, Türkischer Kaffee, frische Säfte, Billard, Tennis mit Flutlicht, alle Wassersportarten.</li>
-                    <li><strong>Strandtuch:</strong> Erstes Handtuch mit Handtuchkarte kostenlos. Täglicher Wechsel 1€.</li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-bed"></i> ACCOMMODATION</div>
+<p><strong>Total:</strong> 401 Rooms / 1000 Beds</p>
+<div class="room-grid">
+    <div class="room-item"><h5>Standard Room × 347</h5><p>24 m² • 1 double + 1 twin bed</p></div>
+    <div class="room-item"><h5>Junior Suite × 18</h5><p>35 m² • 1 double + 1 twin bed</p></div>
+    <div class="room-item"><h5>Family Room × 24</h5><p>45 m² • 2 rooms, 1 bathroom • 2 double + 2 twin beds</p></div>
+    <div class="room-item"><h5>Handicapped Room × 4</h5><p>24 m² • 1 double bed</p></div>
+    <div class="room-item"><h5>Jacuzzi Room × 11</h5><p>24 m² • 1 double + 1 twin bed • Terrace</p></div>
+</div>
+<p><strong>Room Features:</strong> Direct telephone, TV (satellite), Air-conditioning, Balcony, Hair dryer, Safe, Bath & Shower, Minibar (soft drinks)</p>
 
-                <h3>ALLGEMEINE INFORMATIONEN</h3>
-                <ul class="service-list">
-                    <li><strong>Zimmerreinigung:</strong> Täglich. Handtuchwechsel alle 2 Tage.</li>
-                    <li><strong>Minibar:</strong> Wird nur am Anreisetag mit Softdrinks gefüllt.</li>
-                    <li><strong>Haustiere:</strong> Nicht erlaubt.</li>
-                    <li><strong>Akzeptierte Karten:</strong> Visa, MasterCard, Maestro.</li>
-                </ul>
-            `,
-            'ru': `
-                <h2>🇷🇺 Информация об отеле</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i><strong>Wi-Fi:</strong> Бесплатно в лобби, на всей территории отеля за дополнительную плату.</div>
-                
-                <h3>ЧАСЫ РАБОТЫ РЕСТОРАНОВ И БАРОВ</h3>
-                <ul>
-                    <li><strong>Завтрак:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Поздний завтрак:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Обед:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Закуски (Snack):</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Гёзлеме:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Кондитерская:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Мороженое (01.06-30.09):</strong> <span>14:30 – 15:30</span></li>
-                    <li><strong>Ужин:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Ночной суп:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-building"></i> SPECIAL FEATURES</div>
+<div class="two-col">
+    <div class="info-card"><h5>Site Surface</h5><p>16,000 m²</p></div>
+    <div class="info-card"><h5>Main Building</h5><p>5,600 m²</p></div>
+    <div class="info-card"><h5>Outdoor Pool</h5><p>450 m² + Children: 36 m²</p></div>
+    <div class="info-card"><h5>Indoor Pool</h5><p>80 m² + Children: 6 m²</p></div>
+    <div class="info-card"><h5>Restaurant</h5><p>1,000 m² • 800+200 pax</p></div>
+    <div class="info-card"><h5>A'la Carte</h5><p>285 m² • 80 pax</p></div>
+</div>
+<p><strong>A'la Carte:</strong> Kebab Restaurant & Fish Restaurant (15.05 - 31.09) • 19:00-21:00</p>
+<p><strong>Game Hall:</strong> Billiard, Table Tennis, Backgammon, Chess, Card games</p>
+<p><strong>Health Center:</strong> Turkish Bath, Sauna, Massage (extra charge)</p>
+<p><strong>Children's Park:</strong> Playground for 3-12 years</p>
+<p><strong>Mini Club:</strong> For children 3-12 years</p>
+<p><strong>Shopping:</strong> Jeweler, Market, Hairdresser, Boutique, Leather shop, Souvenir shop, Photographer</p>
+<p><strong>Cleaning:</strong> Daily room cleaning, towels changed every 2 days</p>
 
-                <h3>БАРЫ</h3>
-                <ul>
-                    <li><strong>Лобби-бар:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Бар у бассейна:</strong> <span>10:00 – 02:00</span></li>
-                    <li><strong>Сервис-бар в ресторане:</strong> <span>Во время еды</span></li>
-                    <li><strong>Снэк-бар:</strong> <span>11:00 - 16:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-utensils"></i> ULTRA ALL-INCLUSIVE</div>
+<ul>
+    <li><strong>Breakfast</strong><span>07:00 – 10:00</span></li>
+    <li><strong>Late Breakfast</strong><span>10:00 – 10:30</span></li>
+    <li><strong>Lunch</strong><span>12:30 – 14:30</span></li>
+    <li><strong>Snack</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Gözleme (Pancake)</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Burger World</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Patisserie</strong><span>11:00 – 17:00</span></li>
+    <li><strong>Ice Cream (01.06-30.09)</strong><span>14:30 – 15:30</span></li>
+    <li><strong>Dinner</strong><span>19:00 – 21:00</span></li>
+    <li><strong>Night Soup</strong><span>23:00 – 24:00</span></li>
+</ul>
 
-                <h3>РЕСТОРАНЫ A'LA CARTE</h3>
-                <p>Наши рестораны Кебаб и Рыбный открыты с 15.05 по 31.09. Требуется предварительное бронирование, услуга платная.</p>
-                <ul>
-                    <li><strong>Часы обслуживания:</strong> <span>19:00 – 21:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-champagne-glasses"></i> BARS</div>
+<ul>
+    <li><strong>Lobby Bar</strong><span>10:00 – 23:00</span></li>
+    <li><strong>Restaurant Bar</strong><span>12:30 – 21:00</span></li>
+    <li><strong>Pool Bar</strong><span>10:00 – 02:00</span></li>
+    <li><strong>Snack Bar</strong><span>11:00 – 16:00</span></li>
+</ul>
 
-                <h3>РАЗВЛЕЧЕНИЯ И УСЛУГИ</h3>
-                <ul class="service-list">
-                    <li><strong>БЕСПЛАТНО:</strong> Турецкая баня и сауна, фитнес, дартс, пляжный волейбол, настольный теннис, анимационные шоу, мини-клуб (3-12 лет), шезлонги и зонтики.</li>
-                    <li class="paid"><strong>ПЛАТНО:</strong> Сейф в номере, массаж, врач, прачечная, телефон/факс, турецкий кофе, свежевыжатые соки, бильярд, теннис с освещением, все водные виды спорта.</li>
-                    <li><strong>Пляжное полотенце:</strong> Первое полотенце по карточке бесплатно. Ежедневная смена - 1€.</li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-futbol"></i> SPORTS & ACTIVITIES</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Free</h5>
+        <p>Fitness</p><p>Wi-Fi (Lobby)</p><p>Darts</p><p>Beach Volleyball</p><p>Table Tennis</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Extra Charge</h5>
+        <p>Tennis (with lights)</p><p>Billiard</p><p>Windsurf</p><p>Pedal Boat</p><p>Canoe</p><p>Banana</p><p>Water Ski</p><p>Parasailing</p><p>Wi-Fi (All hotel)</p>
+    </div>
+</div>
 
-                <h3>ОБЩАЯ ИНФОРМАЦИЯ</h3>
-                <ul class="service-list">
-                    <li><strong>Уборка номера:</strong> Ежедневно. Смена полотенец каждые 2 дня.</li>
-                    <li><strong>Мини-бар:</strong> Заполняется безалкогольными напитками только в день заезда.</li>
-                    <li><strong>Домашние животные:</strong> Не допускаются.</li>
-                    <li><strong>Принимаемые карты:</strong> Visa, MasterCard, Maestro.</li>
-                </ul>
-            `,
-            'pl': `
-                <h2>🇵🇱 Informator Hotelowy</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i><strong>Wi-Fi:</strong> Bezpłatne w lobby, na terenie całego hotelu za dodatkową opłatą.</div>
-                
-                <h3>GODZINY POSIŁKÓW I NAPOJÓW</h3>
-                <ul>
-                    <li><strong>Śniadanie:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Późne śniadanie:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Lunch:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Przekąski:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Gözleme (naleśniki):</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Cukiernia:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Lody (01.06-30.09):</strong> <span>14:30 – 15:30</span></li>
-                    <li><strong>Kolacja:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Zupa nocna:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-concierge-bell"></i> GUEST SERVICES</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Free</h5>
+        <p>Baggage Service</p><p>Wake-up Call</p><p>Private Beach</p><p>Sunbeds & Umbrellas</p><p>Money Exchange</p><p>Animation Shows</p><p>Turkish Bath & Sauna</p><p>Beach Towel (change 1€)</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Extra Charge</h5>
+        <p>Doctor (2 hrs daily)</p><p>Car/Bike Rental</p><p>Massage & Beauty</p><p>Airport Transfer</p><p>Laundry</p><p>Safe Box</p><p>Phone & Fax</p><p>Turkish Coffee</p><p>Fresh Fruit Juices</p>
+    </div>
+</div>
 
-                <h3>BARY</h3>
-                <ul>
-                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Bar przy basenie:</strong> <span>10:00 – 02:00</span></li>
-                    <li><strong>Bar w restauracji:</strong> <span>Podczas posiłków</span></li>
-                    <li><strong>Snack Bar:</strong> <span>11:00 - 16:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-circle-info"></i> USEFUL INFORMATION</div>
+<p><strong>Credit Cards:</strong></p>
+<div class="credit-cards"><span>Visa</span><span>MasterCard</span><span>Maestro</span><span>Euro Card</span></div>
+<p><strong>Languages:</strong> Turkish (official), German, English and Russian are spoken.</p>
+<div class="warning-box">🚫 <strong>Pets are NOT allowed.</strong></div>
+`,
 
-                <h3>RESTAURACJE A'LA CARTE</h3>
-                <p>Nasze restauracje Kebab i Rybna są otwarte od 15.05 do 31.09. Wymagana rezerwacja, usługa jest płatna.</p>
-                <ul>
-                    <li><strong>Godziny serwowania:</strong> <span>19:00 – 21:00</span></li>
-                </ul>
+'de': `
+<h2>🇩🇪 Willkommen!</h2>
+<div class="hotel-info-box">
+    <strong>CONCORDIA CELES HOTEL</strong> ⭐⭐⭐⭐⭐<br>
+    Eröffnung: 2004 | Hotel-Renovierung: 2015 | Zimmer-Renovierung: 2024<br>
+    <strong>Adresse:</strong> Okurcalar / Alanya / Antalya, Türkei<br>
+    <strong>Tel:</strong> +90 242 527 50 05 | <strong>Fax:</strong> +90 242 527 50 06<br>
+    <strong>Web:</strong> www.concordiaceles.com | <strong>E-Mail:</strong> info@concordiaceles.com
+</div>
+<div class="wifi-alert"><i class="fa-solid fa-wifi"></i> Lobby-WLAN ist <strong>kostenlos</strong>. Hotel-WLAN: 1 Tag: 1€ / 1 Woche: 5€</div>
 
-                <h3>AKTYWNOŚCI I USŁUGI</h3>
-                <ul class="service-list">
-                    <li><strong>BEZPŁATNE:</strong> Łaźnia turecka i sauna, fitness, rzutki, siatkówka plażowa, tenis stołowy, pokazy animacyjne, mini klub (3-12 lat), leżaki i parasole.</li>
-                    <li class="paid"><strong>PŁATNE:</strong> Sejf w pokoju, masaż, lekarz, pralnia, telefon/faks, kawa po turecku, świeże soki, bilard, oświetlenie kortu tenisowego, wszystkie sporty wodne.</li>
-                    <li><strong>Ręcznik plażowy:</strong> Pierwszy ręcznik z kartą ręcznikową jest bezpłatny. Codzienna wymiana kosztuje 1€.</li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-route"></i> ANFAHRT</div>
+<div class="transport-item"><span class="dest">Antalya Stadtzentrum</span><span class="info">105 km • Bus • 100 Min.</span></div>
+<div class="transport-item"><span class="dest">Flughafen Antalya</span><span class="info">90 km • Bus • 90 Min.</span></div>
+<div class="transport-item"><span class="dest">Alanya</span><span class="info">35 km • Shuttle • 30 Min.</span></div>
+<div class="transport-item"><span class="dest">Side</span><span class="info">30 km • Shuttle • 25 Min.</span></div>
 
-                <h3>INFORMACJE OGÓLNE</h3>
-                <ul class="service-list">
-                    <li><strong>Sprzątanie pokoju:</strong> Codziennie. Ręczniki są zmieniane co 2 dni.</li>
-                    <li><strong>Minibar:</strong> Wypełniany napojami bezalkoholowymi tylko w dniu przyjazdu.</li>
-                    <li><strong>Zwierzęta:</strong> Niedozwolone.</li>
-                    <li><strong>Akceptowane karty:</strong> Visa, MasterCard, Maestro.</li>
-                </ul>
-            `,
-            'ro': `
-                <h2>🇷🇴 Ghid de Informații Hotel</h2>
-                <div class="wifi-alert"><i class="fa-solid fa-wifi"></i><strong>Wi-Fi:</strong> Gratuit în zona lobby, contra cost în restul hotelului.</div>
-                
-                <h3>PROGRAM MESE ȘI BĂUTURI</h3>
-                <ul>
-                    <li><strong>Mic dejun:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Mic dejun târziu:</strong> <span>10:00 – 10:30</span></li>
-                    <li><strong>Prânz:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Gustări:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Gözleme (plăcinte):</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Burger World:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Patiserie:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Înghețată (01.06-30.09):</strong> <span>14:30 – 15:30</span></li>
-                    <li><strong>Cină:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Supă de noapte:</strong> <span>23:00 – 24:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-bed"></i> UNTERKUNFT</div>
+<p><strong>Gesamt:</strong> 401 Zimmer / 1000 Betten</p>
+<div class="room-grid">
+    <div class="room-item"><h5>Standardzimmer × 347</h5><p>24 m² • 1 Doppel- + 1 Einzelbett</p></div>
+    <div class="room-item"><h5>Junior Suite × 18</h5><p>35 m² • 1 Doppel- + 1 Einzelbett</p></div>
+    <div class="room-item"><h5>Familienzimmer × 24</h5><p>45 m² • 2 Zimmer, 1 Bad • 2 Doppel- + 2 Einzelbetten</p></div>
+    <div class="room-item"><h5>Behindertenzimmer × 4</h5><p>24 m² • 1 Doppelbett</p></div>
+    <div class="room-item"><h5>Jacuzzi-Zimmer × 11</h5><p>24 m² • 1 Doppel- + 1 Einzelbett • Terrasse</p></div>
+</div>
+<p><strong>Zimmerausstattung:</strong> Telefon, TV (Satellit), Klimaanlage, Balkon, Föhn, Safe, Bad & Dusche, Minibar (alkoholfrei)</p>
 
-                <h3>BARURI</h3>
-                <ul>
-                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Bar la piscină:</strong> <span>10:00 – 02:00</span></li>
-                    <li><strong>Bar serviciu restaurant:</strong> <span>În timpul meselor</span></li>
-                    <li><strong>Snack Bar:</strong> <span>11:00 - 16:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-building"></i> HOTELEINRICHTUNGEN</div>
+<div class="two-col">
+    <div class="info-card"><h5>Grundstück</h5><p>16.000 m²</p></div>
+    <div class="info-card"><h5>Hauptgebäude</h5><p>5.600 m²</p></div>
+    <div class="info-card"><h5>Außenpool</h5><p>450 m² + Kinder: 36 m²</p></div>
+    <div class="info-card"><h5>Hallenbad</h5><p>80 m² + Kinder: 6 m²</p></div>
+    <div class="info-card"><h5>Restaurant</h5><p>1.000 m² • 800+200 Pers.</p></div>
+    <div class="info-card"><h5>A'la Carte</h5><p>285 m² • 80 Pers.</p></div>
+</div>
+<p><strong>A'la Carte:</strong> Kebab- und Fischrestaurant (15.05-31.09) • 19:00-21:00</p>
+<p><strong>Spielhalle:</strong> Billard, Tischtennis, Backgammon, Schach, Kartenspiele</p>
+<p><strong>Gesundheit:</strong> Türkisches Bad, Sauna, Massage (gegen Gebühr)</p>
+<p><strong>Kinderpark:</strong> Spielplatz für 3-12 Jahre</p>
+<p><strong>Mini Club:</strong> Für Kinder 3-12 Jahre</p>
+<p><strong>Einkaufen:</strong> Juwelier, Markt, Friseur, Boutique, Lederladen, Souvenirs, Fotograf</p>
+<p><strong>Reinigung:</strong> Tägliche Zimmerreinigung, Handtuchwechsel alle 2 Tage</p>
 
-                <h3>RESTAURANTE A'LA CARTE</h3>
-                <p>Restaurantele noastre Kebab și Peste sunt deschise între 15.05 - 31.09. Este necesară rezervare și se percepe o taxă suplimentară.</p>
-                <ul>
-                    <li><strong>Program de servire:</strong> <span>19:00 – 21:00</span></li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-utensils"></i> ULTRA ALL-INCLUSIVE</div>
+<ul>
+    <li><strong>Frühstück</strong><span>07:00 – 10:00</span></li>
+    <li><strong>Spätes Frühstück</strong><span>10:00 – 10:30</span></li>
+    <li><strong>Mittagessen</strong><span>12:30 – 14:30</span></li>
+    <li><strong>Snacks</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Gözleme</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Burger World</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Patisserie</strong><span>11:00 – 17:00</span></li>
+    <li><strong>Eiscreme (01.06-30.09)</strong><span>14:30 – 15:30</span></li>
+    <li><strong>Abendessen</strong><span>19:00 – 21:00</span></li>
+    <li><strong>Mitternachtssuppe</strong><span>23:00 – 24:00</span></li>
+</ul>
 
-                <h3>ACTIVITĂȚI ȘI SERVICII</h3>
-                <ul class="service-list">
-                    <li><strong>GRATUITE:</strong> Baie turcească și saună, fitness, darts, volei pe plajă, tenis de masă, spectacole de animație, mini club (3-12 ani), șezlonguri și umbrele.</li>
-                    <li class="paid"><strong>CONTRA COST:</strong> Seif în cameră, masaj, doctor, spălătorie, telefon/fax, cafea turcească, sucuri proaspete, biliard, tenis cu nocturnă, toate sporturile nautice.</li>
-                    <li><strong>Prosop de plajă:</strong> Primul prosop cu card este gratuit. Schimbul zilnic costă 1€.</li>
-                </ul>
+<div class="section-title"><i class="fa-solid fa-champagne-glasses"></i> BARS</div>
+<ul>
+    <li><strong>Lobby Bar</strong><span>10:00 – 23:00</span></li>
+    <li><strong>Restaurant Bar</strong><span>12:30 – 21:00</span></li>
+    <li><strong>Pool Bar</strong><span>10:00 – 02:00</span></li>
+    <li><strong>Snack Bar</strong><span>11:00 – 16:00</span></li>
+</ul>
 
-                <h3>INFORMAȚII GENERALE</h3>
-                <ul class="service-list">
-                    <li><strong>Curățenie în cameră:</strong> Zilnic. Prosoapele se schimbă la fiecare 2 zile.</li>
-                    <li><strong>Minibar:</strong> Se umple cu băuturi răcoritoare doar în ziua sosirii.</li>
-                    <li><strong>Animale de companie:</strong> Nu sunt permise.</li>
-                    <li><strong>Carduri acceptate:</strong> Visa, MasterCard, Maestro.</li>
-                </ul>
-            `
-        };
+<div class="section-title"><i class="fa-solid fa-futbol"></i> SPORT & AKTIVITÄTEN</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Kostenlos</h5>
+        <p>Fitness</p><p>WLAN (Lobby)</p><p>Darts</p><p>Beachvolleyball</p><p>Tischtennis</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Gegen Gebühr</h5>
+        <p>Tennis (beleuchtet)</p><p>Billard</p><p>Windsurfen</p><p>Tretboot</p><p>Kanu</p><p>Banana</p><p>Wasserski</p><p>Parasailing</p><p>WLAN (Hotel)</p>
+    </div>
+</div>
 
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalContentBody = document.getElementById('modalContentBody');
+<div class="section-title"><i class="fa-solid fa-concierge-bell"></i> GÄSTESERVICE</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Kostenlos</h5>
+        <p>Gepäckservice</p><p>Weckservice</p><p>Privatstrand</p><p>Liegen & Schirme</p><p>Geldwechsel</p><p>Animation</p><p>Hamam & Sauna</p><p>Strandtuch (Wechsel 1€)</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Gegen Gebühr</h5>
+        <p>Arzt (2 Std. täglich)</p><p>Autovermietung</p><p>Massage & Beauty</p><p>Flughafentransfer</p><p>Wäscherei</p><p>Safe</p><p>Telefon & Fax</p><p>Türkischer Kaffee</p><p>Frische Säfte</p>
+    </div>
+</div>
 
-        function openModal(lang) {
-            modalContentBody.innerHTML = langData[lang];
-            modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+<div class="section-title"><i class="fa-solid fa-circle-info"></i> NÜTZLICHE INFORMATIONEN</div>
+<p><strong>Kreditkarten:</strong></p>
+<div class="credit-cards"><span>Visa</span><span>MasterCard</span><span>Maestro</span><span>Euro Card</span></div>
+<p><strong>Sprachen:</strong> Türkisch (Amtssprache), Deutsch, Englisch und Russisch werden gesprochen.</p>
+<div class="warning-box">🚫 <strong>Haustiere sind NICHT erlaubt.</strong></div>
+`,
 
-        function closeModal() {
-            modalOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+'ru': `
+<h2>🇷🇺 Добро пожаловать!</h2>
+<div class="hotel-info-box">
+    <strong>CONCORDIA CELES HOTEL</strong> ⭐⭐⭐⭐⭐<br>
+    Открытие: 2004 | Реновация отеля: 2015 | Реновация номеров: 2024<br>
+    <strong>Адрес:</strong> Окурджалар / Аланья / Анталья, Турция<br>
+    <strong>Тел:</strong> +90 242 527 50 05 | <strong>Факс:</strong> +90 242 527 50 06<br>
+    <strong>Сайт:</strong> www.concordiaceles.com | <strong>E-mail:</strong> info@concordiaceles.com
+</div>
+<div class="wifi-alert"><i class="fa-solid fa-wifi"></i> Wi-Fi в лобби <strong>бесплатно</strong>. По всему отелю: 1 день: 1€ / 1 неделя: 5€</div>
 
-        function closeModalOnOutsideClick(event) {
-            if (event.target === modalOverlay) closeModal();
-        }
-    </script>
+<div class="section-title"><i class="fa-solid fa-route"></i> ТРАНСПОРТ</div>
+<div class="transport-item"><span class="dest">Центр Анталии</span><span class="info">105 км • Автобус • 100 мин</span></div>
+<div class="transport-item"><span class="dest">Аэропорт Анталии</span><span class="info">90 км • Автобус • 90 мин</span></div>
+<div class="transport-item"><span class="dest">Аланья</span><span class="info">35 км • Шаттл • 30 мин</span></div>
+<div class="transport-item"><span class="dest">Сиде</span><span class="info">30 км • Шаттл • 25 мин</span></div>
+
+<div class="section-title"><i class="fa-solid fa-bed"></i> РАЗМЕЩЕНИЕ</div>
+<p><strong>Всего:</strong> 401 номер / 1000 мест</p>
+<div class="room-grid">
+    <div class="room-item"><h5>Стандарт × 347</h5><p>24 м² • 1 двуспальная + 1 односпальная кровать</p></div>
+    <div class="room-item"><h5>Джуниор Сюит × 18</h5><p>35 м² • 1 двуспальная + 1 односпальная кровать</p></div>
+    <div class="room-item"><h5>Семейный × 24</h5><p>45 м² • 2 комнаты, 1 ванная • 2 двуспальные + 2 односпальные</p></div>
+    <div class="room-item"><h5>Для инвалидов × 4</h5><p>24 м² • 1 двуспальная кровать</p></div>
+    <div class="room-item"><h5>Джакузи × 11</h5><p>24 м² • 1 двуспальная + 1 односпальная • Терраса</p></div>
+</div>
+<p><strong>В номере:</strong> Телефон, ТВ (спутник), Кондиционер, Балкон, Фен, Сейф, Ванна и Душ, Мини-бар (безалкогольные)</p>
+
+<div class="section-title"><i class="fa-solid fa-building"></i> ИНФРАСТРУКТУРА</div>
+<div class="two-col">
+    <div class="info-card"><h5>Территория</h5><p>16 000 м²</p></div>
+    <div class="info-card"><h5>Главное здание</h5><p>5 600 м²</p></div>
+    <div class="info-card"><h5>Открытый бассейн</h5><p>450 м² + Дет.: 36 м²</p></div>
+    <div class="info-card"><h5>Крытый бассейн</h5><p>80 м² + Дет.: 6 м²</p></div>
+    <div class="info-card"><h5>Ресторан</h5><p>1 000 м² • 800+200 чел.</p></div>
+    <div class="info-card"><h5>A'la Carte</h5><p>285 м² • 80 чел.</p></div>
+</div>
+<p><strong>A'la Carte:</strong> Кебаб-ресторан и Рыбный ресторан (15.05-31.09) • 19:00-21:00</p>
+<p><strong>Игровой зал:</strong> Бильярд, Настольный теннис, Нарды, Шахматы, Карты</p>
+<p><strong>Оздоровление:</strong> Турецкая баня, Сауна, Массаж (платно)</p>
+<p><strong>Детская площадка:</strong> Для детей 3-12 лет</p>
+<p><strong>Мини-клуб:</strong> Для детей 3-12 лет</p>
+<p><strong>Магазины:</strong> Ювелирный, Маркет, Парикмахер, Бутик, Кожа, Сувениры, Фотограф</p>
+<p><strong>Уборка:</strong> Ежедневная уборка, смена полотенец каждые 2 дня</p>
+
+<div class="section-title"><i class="fa-solid fa-utensils"></i> УЛЬТРА ВСЁ ВКЛЮЧЕНО</div>
+<ul>
+    <li><strong>Завтрак</strong><span>07:00 – 10:00</span></li>
+    <li><strong>Поздний завтрак</strong><span>10:00 – 10:30</span></li>
+    <li><strong>Обед</strong><span>12:30 – 14:30</span></li>
+    <li><strong>Снеки</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Гёзлеме</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Burger World</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Кондитерская</strong><span>11:00 – 17:00</span></li>
+    <li><strong>Мороженое (01.06-30.09)</strong><span>14:30 – 15:30</span></li>
+    <li><strong>Ужин</strong><span>19:00 – 21:00</span></li>
+    <li><strong>Ночной суп</strong><span>23:00 – 24:00</span></li>
+</ul>
+
+<div class="section-title"><i class="fa-solid fa-champagne-glasses"></i> БАРЫ</div>
+<ul>
+    <li><strong>Лобби-бар</strong><span>10:00 – 23:00</span></li>
+    <li><strong>Бар ресторана</strong><span>12:30 – 21:00</span></li>
+    <li><strong>Бар у бассейна</strong><span>10:00 – 02:00</span></li>
+    <li><strong>Снек-бар</strong><span>11:00 – 16:00</span></li>
+</ul>
+
+<div class="section-title"><i class="fa-solid fa-futbol"></i> СПОРТ И РАЗВЛЕЧЕНИЯ</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Бесплатно</h5>
+        <p>Фитнес</p><p>Wi-Fi (лобби)</p><p>Дартс</p><p>Пляжный волейбол</p><p>Настольный теннис</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Платно</h5>
+        <p>Теннис (освещение)</p><p>Бильярд</p><p>Виндсерфинг</p><p>Педальная лодка</p><p>Каноэ</p><p>Банан</p><p>Водные лыжи</p><p>Парасейлинг</p><p>Wi-Fi (отель)</p>
+    </div>
+</div>
+
+<div class="section-title"><i class="fa-solid fa-concierge-bell"></i> УСЛУГИ</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Бесплатно</h5>
+        <p>Багаж</p><p>Будильник</p><p>Частный пляж</p><p>Шезлонги и зонты</p><p>Обмен валют</p><p>Анимация</p><p>Хамам и Сауна</p><p>Пляжное полотенце (замена 1€)</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Платно</h5>
+        <p>Врач (2 ч. в день)</p><p>Аренда авто</p><p>Массаж и Красота</p><p>Трансфер</p><p>Прачечная</p><p>Сейф</p><p>Телефон и Факс</p><p>Турецкий кофе</p><p>Свежие соки</p>
+    </div>
+</div>
+
+<div class="section-title"><i class="fa-solid fa-circle-info"></i> ПОЛЕЗНАЯ ИНФОРМАЦИЯ</div>
+<p><strong>Кредитные карты:</strong></p>
+<div class="credit-cards"><span>Visa</span><span>MasterCard</span><span>Maestro</span><span>Euro Card</span></div>
+<p><strong>Языки:</strong> Турецкий (официальный), Немецкий, Английский и Русский.</p>
+<div class="warning-box">🚫 <strong>Домашние животные НЕ допускаются.</strong></div>
+`,
+
+'pl': `
+<h2>🇵🇱 Witamy!</h2>
+<div class="hotel-info-box">
+    <strong>CONCORDIA CELES HOTEL</strong> ⭐⭐⭐⭐⭐<br>
+    Otwarcie: 2004 | Renowacja hotelu: 2015 | Renowacja pokoi: 2024<br>
+    <strong>Adres:</strong> Okurcalar / Alanya / Antalya, Turcja<br>
+    <strong>Tel:</strong> +90 242 527 50 05 | <strong>Fax:</strong> +90 242 527 50 06<br>
+    <strong>Strona:</strong> www.concordiaceles.com | <strong>E-mail:</strong> info@concordiaceles.com
+</div>
+<div class="wifi-alert"><i class="fa-solid fa-wifi"></i> Wi-Fi w lobby <strong>bezpłatne</strong>. W całym hotelu: 1 dzień: 1€ / 1 tydzień: 5€</div>
+
+<div class="section-title"><i class="fa-solid fa-route"></i> TRANSPORT</div>
+<div class="transport-item"><span class="dest">Centrum Antalii</span><span class="info">105 km • Autobus • 100 min</span></div>
+<div class="transport-item"><span class="dest">Lotnisko Antalya</span><span class="info">90 km • Autobus • 90 min</span></div>
+<div class="transport-item"><span class="dest">Alanya</span><span class="info">35 km • Shuttle • 30 min</span></div>
+<div class="transport-item"><span class="dest">Side</span><span class="info">30 km • Shuttle • 25 min</span></div>
+
+<div class="section-title"><i class="fa-solid fa-bed"></i> ZAKWATEROWANIE</div>
+<p><strong>Łącznie:</strong> 401 pokoi / 1000 łóżek</p>
+<div class="room-grid">
+    <div class="room-item"><h5>Standard × 347</h5><p>24 m² • 1 podwójne + 1 pojedyncze łóżko</p></div>
+    <div class="room-item"><h5>Junior Suite × 18</h5><p>35 m² • 1 podwójne + 1 pojedyncze łóżko</p></div>
+    <div class="room-item"><h5>Pokój Rodzinny × 24</h5><p>45 m² • 2 pokoje, 1 łazienka • 2 podwójne + 2 pojedyncze</p></div>
+    <div class="room-item"><h5>Pokój dla niepełnosprawnych × 4</h5><p>24 m² • 1 podwójne łóżko</p></div>
+    <div class="room-item"><h5>Pokój z Jacuzzi × 11</h5><p>24 m² • 1 podwójne + 1 pojedyncze • Taras</p></div>
+</div>
+<p><strong>Wyposażenie:</strong> Telefon, TV (satelita), Klimatyzacja, Balkon, Suszarka, Sejf, Wanna i Prysznic, Minibar (napoje bezalkoholowe)</p>
+
+<div class="section-title"><i class="fa-solid fa-building"></i> UDOGODNIENIA</div>
+<div class="two-col">
+    <div class="info-card"><h5>Teren</h5><p>16 000 m²</p></div>
+    <div class="info-card"><h5>Budynek główny</h5><p>5 600 m²</p></div>
+    <div class="info-card"><h5>Basen zewnętrzny</h5><p>450 m² + Dzieci: 36 m²</p></div>
+    <div class="info-card"><h5>Basen kryty</h5><p>80 m² + Dzieci: 6 m²</p></div>
+    <div class="info-card"><h5>Restauracja</h5><p>1 000 m² • 800+200 os.</p></div>
+    <div class="info-card"><h5>A'la Carte</h5><p>285 m² • 80 os.</p></div>
+</div>
+<p><strong>A'la Carte:</strong> Restauracja Kebab i Rybna (15.05-31.09) • 19:00-21:00</p>
+<p><strong>Sala gier:</strong> Bilard, Tenis stołowy, Backgammon, Szachy, Karty</p>
+<p><strong>Zdrowie:</strong> Łaźnia turecka, Sauna, Masaż (płatny)</p>
+<p><strong>Plac zabaw:</strong> Dla dzieci 3-12 lat</p>
+<p><strong>Mini Club:</strong> Dla dzieci 3-12 lat</p>
+<p><strong>Zakupy:</strong> Jubiler, Market, Fryzjer, Butik, Sklep skórzany, Pamiątki, Fotograf</p>
+<p><strong>Sprzątanie:</strong> Codzienne sprzątanie, zmiana ręczników co 2 dni</p>
+
+<div class="section-title"><i class="fa-solid fa-utensils"></i> ULTRA ALL-INCLUSIVE</div>
+<ul>
+    <li><strong>Śniadanie</strong><span>07:00 – 10:00</span></li>
+    <li><strong>Późne śniadanie</strong><span>10:00 – 10:30</span></li>
+    <li><strong>Obiad</strong><span>12:30 – 14:30</span></li>
+    <li><strong>Przekąski</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Gözleme</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Burger World</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Cukiernia</strong><span>11:00 – 17:00</span></li>
+    <li><strong>Lody (01.06-30.09)</strong><span>14:30 – 15:30</span></li>
+    <li><strong>Kolacja</strong><span>19:00 – 21:00</span></li>
+    <li><strong>Zupa nocna</strong><span>23:00 – 24:00</span></li>
+</ul>
+
+<div class="section-title"><i class="fa-solid fa-champagne-glasses"></i> BARY</div>
+<ul>
+    <li><strong>Lobby Bar</strong><span>10:00 – 23:00</span></li>
+    <li><strong>Bar Restauracyjny</strong><span>12:30 – 21:00</span></li>
+    <li><strong>Pool Bar</strong><span>10:00 – 02:00</span></li>
+    <li><strong>Snack Bar</strong><span>11:00 – 16:00</span></li>
+</ul>
+
+<div class="section-title"><i class="fa-solid fa-futbol"></i> SPORT I AKTYWNOŚCI</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Bezpłatne</h5>
+        <p>Fitness</p><p>Wi-Fi (lobby)</p><p>Rzutki</p><p>Siatkówka plażowa</p><p>Tenis stołowy</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Płatne</h5>
+        <p>Tenis (oświetlony)</p><p>Bilard</p><p>Windsurfing</p><p>Rower wodny</p><p>Kajak</p><p>Banan</p><p>Narty wodne</p><p>Parasailing</p><p>Wi-Fi (hotel)</p>
+    </div>
+</div>
+
+<div class="section-title"><i class="fa-solid fa-concierge-bell"></i> USŁUGI DLA GOŚCI</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Bezpłatne</h5>
+        <p>Bagaż</p><p>Budzenie</p><p>Prywatna plaża</p><p>Leżaki i parasole</p><p>Wymiana walut</p><p>Animacje</p><p>Łaźnia i Sauna</p><p>Ręcznik plażowy (zmiana 1€)</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Płatne</h5>
+        <p>Lekarz (2 godz. dziennie)</p><p>Wynajem auta</p><p>Masaż i Uroda</p><p>Transfer lotniskowy</p><p>Pralnia</p><p>Sejf</p><p>Telefon i Fax</p><p>Kawa turecka</p><p>Świeże soki</p>
+    </div>
+</div>
+
+<div class="section-title"><i class="fa-solid fa-circle-info"></i> PRZYDATNE INFORMACJE</div>
+<p><strong>Karty kredytowe:</strong></p>
+<div class="credit-cards"><span>Visa</span><span>MasterCard</span><span>Maestro</span><span>Euro Card</span></div>
+<p><strong>Języki:</strong> Turecki (urzędowy), Niemiecki, Angielski i Rosyjski.</p>
+<div class="warning-box">🚫 <strong>Zwierzęta domowe NIE są dozwolone.</strong></div>
+`,
+
+'ro': `
+<h2>🇷🇴 Bun venit!</h2>
+<div class="hotel-info-box">
+    <strong>CONCORDIA CELES HOTEL</strong> ⭐⭐⭐⭐⭐<br>
+    Deschidere: 2004 | Renovare hotel: 2015 | Renovare camere: 2024<br>
+    <strong>Adresă:</strong> Okurcalar / Alanya / Antalya, Turcia<br>
+    <strong>Tel:</strong> +90 242 527 50 05 | <strong>Fax:</strong> +90 242 527 50 06<br>
+    <strong>Web:</strong> www.concordiaceles.com | <strong>E-mail:</strong> info@concordiaceles.com
+</div>
+<div class="wifi-alert"><i class="fa-solid fa-wifi"></i> Wi-Fi în lobby <strong>gratuit</strong>. În tot hotelul: 1 zi: 1€ / 1 săptămână: 5€</div>
+
+<div class="section-title"><i class="fa-solid fa-route"></i> TRANSPORT</div>
+<div class="transport-item"><span class="dest">Centrul Antalya</span><span class="info">105 km • Autobuz • 100 min</span></div>
+<div class="transport-item"><span class="dest">Aeroportul Antalya</span><span class="info">90 km • Autobuz • 90 min</span></div>
+<div class="transport-item"><span class="dest">Alanya</span><span class="info">35 km • Shuttle • 30 min</span></div>
+<div class="transport-item"><span class="dest">Side</span><span class="info">30 km • Shuttle • 25 min</span></div>
+
+<div class="section-title"><i class="fa-solid fa-bed"></i> CAZARE</div>
+<p><strong>Total:</strong> 401 camere / 1000 paturi</p>
+<div class="room-grid">
+    <div class="room-item"><h5>Standard × 347</h5><p>24 m² • 1 pat dublu + 1 pat single</p></div>
+    <div class="room-item"><h5>Junior Suite × 18</h5><p>35 m² • 1 pat dublu + 1 pat single</p></div>
+    <div class="room-item"><h5>Cameră Familială × 24</h5><p>45 m² • 2 camere, 1 baie • 2 duble + 2 single</p></div>
+    <div class="room-item"><h5>Cameră Handicap × 4</h5><p>24 m² • 1 pat dublu</p></div>
+    <div class="room-item"><h5>Cameră Jacuzzi × 11</h5><p>24 m² • 1 dublu + 1 single • Terasă</p></div>
+</div>
+<p><strong>Dotări cameră:</strong> Telefon, TV (satelit), Aer condiționat, Balcon, Uscător de păr, Seif, Cadă și Duș, Minibar (răcoritoare)</p>
+
+<div class="section-title"><i class="fa-solid fa-building"></i> FACILITĂȚI</div>
+<div class="two-col">
+    <div class="info-card"><h5>Suprafață</h5><p>16.000 m²</p></div>
+    <div class="info-card"><h5>Clădire principală</h5><p>5.600 m²</p></div>
+    <div class="info-card"><h5>Piscină exterioară</h5><p>450 m² + Copii: 36 m²</p></div>
+    <div class="info-card"><h5>Piscină interioară</h5><p>80 m² + Copii: 6 m²</p></div>
+    <div class="info-card"><h5>Restaurant</h5><p>1.000 m² • 800+200 pers.</p></div>
+    <div class="info-card"><h5>A'la Carte</h5><p>285 m² • 80 pers.</p></div>
+</div>
+<p><strong>A'la Carte:</strong> Restaurant Kebab și Pește (15.05-31.09) • 19:00-21:00</p>
+<p><strong>Sala de jocuri:</strong> Biliard, Tenis de masă, Table, Șah, Jocuri de cărți</p>
+<p><strong>Sănătate:</strong> Baie Turcească, Saună, Masaj (contra cost)</p>
+<p><strong>Loc de joacă:</strong> Pentru copii 3-12 ani</p>
+<p><strong>Mini Club:</strong> Pentru copii 3-12 ani</p>
+<p><strong>Magazine:</strong> Bijuterie, Market, Frizer, Butic, Pielărie, Suveniruri, Fotograf</p>
+<p><strong>Curățenie:</strong> Curățenia zilnică a camerelor, schimbarea prosoapelor la fiecare 2 zile</p>
+
+<div class="section-title"><i class="fa-solid fa-utensils"></i> ULTRA ALL-INCLUSIVE</div>
+<ul>
+    <li><strong>Mic dejun</strong><span>07:00 – 10:00</span></li>
+    <li><strong>Mic dejun târziu</strong><span>10:00 – 10:30</span></li>
+    <li><strong>Prânz</strong><span>12:30 – 14:30</span></li>
+    <li><strong>Gustări</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Gözleme</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Burger World</strong><span>11:00 – 16:00</span></li>
+    <li><strong>Patiserie</strong><span>11:00 – 17:00</span></li>
+    <li><strong>Înghețată (01.06-30.09)</strong><span>14:30 – 15:30</span></li>
+    <li><strong>Cină</strong><span>19:00 – 21:00</span></li>
+    <li><strong>Supă de noapte</strong><span>23:00 – 24:00</span></li>
+</ul>
+
+<div class="section-title"><i class="fa-solid fa-champagne-glasses"></i> BARURI</div>
+<ul>
+    <li><strong>Lobby Bar</strong><span>10:00 – 23:00</span></li>
+    <li><strong>Bar Restaurant</strong><span>12:30 – 21:00</span></li>
+    <li><strong>Pool Bar</strong><span>10:00 – 02:00</span></li>
+    <li><strong>Snack Bar</strong><span>11:00 – 16:00</span></li>
+</ul>
+
+<div class="section-title"><i class="fa-solid fa-futbol"></i> SPORT ȘI ACTIVITĂȚI</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Gratuit</h5>
+        <p>Fitness</p><p>Wi-Fi (lobby)</p><p>Darts</p><p>Volei de plajă</p><p>Tenis de masă</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Contra cost</h5>
+        <p>Tenis (iluminat)</p><p>Biliard</p><p>Windsurf</p><p>Hidrobicicletă</p><p>Canoe</p><p>Banana</p><p>Schi nautic</p><p>Parasailing</p><p>Wi-Fi (hotel)</p>
+    </div>
+</div>
+
+<div class="section-title"><i class="fa-solid fa-concierge-bell"></i> SERVICII OASPEȚI</div>
+<div class="two-col">
+    <div class="info-card">
+        <h5>🟢 Gratuit</h5>
+        <p>Bagaje</p><p>Trezire</p><p>Plajă privată</p><p>Șezlonguri și umbrele</p><p>Schimb valutar</p><p>Animație</p><p>Baie Turcească și Saună</p><p>Prosop de plajă (schimb 1€)</p>
+    </div>
+    <div class="info-card">
+        <h5>🔴 Contra cost</h5>
+        <p>Doctor (2 ore/zi)</p><p>Închiriere auto</p><p>Masaj și Frumusețe</p><p>Transfer aeroport</p><p>Spălătorie</p><p>Seif</p><p>Telefon și Fax</p><p>Cafea turcească</p><p>Sucuri proaspete</p>
+    </div>
+</div>
+
+<div class="section-title"><i class="fa-solid fa-circle-info"></i> INFORMAȚII UTILE</div>
+<p><strong>Carduri de credit:</strong></p>
+<div class="credit-cards"><span>Visa</span><span>MasterCard</span><span>Maestro</span><span>Euro Card</span></div>
+<p><strong>Limbi:</strong> Turcă (oficială), Germană, Engleză și Rusă.</p>
+<div class="warning-box">🚫 <strong>Animalele de companie NU sunt permise.</strong></div>
+`
+};
+
+const modalOverlay = document.getElementById('modalOverlay');
+const modalBody = document.getElementById('modalBody');
+
+function openModal(lang) {
+    modalBody.innerHTML = langData[lang];
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+function closeModalOnOutsideClick(e) {
+    if (e.target === modalOverlay) closeModal();
+}
+</script>
 </body>
 </html>
+```
+
+## 📋 YAPMANIZ GEREKENLER:
+
+1. **GitHub'da** `index.html` dosyasını açın
+2. **Kalem (✏️) ikonuna** tıklayın
+3. **Ctrl+A** → **Delete** (tümünü silin)
+4. **Yukarıdaki TÜMS kodu** kopyalayıp yapıştırın
+5. **"Commit changes"** → tekrar **"Commit changes"**
+6. **2 dakika bekleyin**
+7. **Ctrl+Shift+N** ile gizli sekmede açın: `https://arminkochac-cloud.github.io/concordia-factsheet/`
+
+Bu kod **6 dilde tam detaylı fact sheet** içerir! 🎯
