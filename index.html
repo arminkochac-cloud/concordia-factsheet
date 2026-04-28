@@ -211,417 +211,197 @@ fac:{site:'Территория',main:'Главное здание',outpool:'О�
 food:[['fa-mug-hot','Завтрак','07:00 – 10:00'],['fa-coffee','Поздний завтрак','10:00 – 10:30'],['fa-utensils','Обед','12:30 – 14:30'],['fa-bowl-food','Снеки','11:00 – 16:00'],['fa-pizza-slice','Гёзлеме','11:00 – 16:00'],['fa-burger','Burger World','11:00 – 16:00'],['fa-cake-candles','Кондитерская','11:00 – 17:00'],['fa-ice-cream','Мороженое (01.06-30.09)','14:30 – 15:30'],['fa-utensils','Ужин','19:00 – 21:00'],['fa-bowl-rice','Ночной суп','23:00 – 24:00']],
 bars:[['fa-couch','Лобби-бар','10:00 – 23:00'],['fa-wine-glass','Бар ресторана','12:30 – 21:00'],['fa-umbrella-beach','Бар у бассейна','10:00 – 02:00'],['fa-cocktail','Снек-бар','11:00 – 16:00']],
 alac:{title:'РЕСТОРАН КЕБАБ И РЫБА',desc:'Сезон: открыт с 15 мая по 31 сентября. Необходима резервация, бесплатно.',hour:'19:00 - 21:00'},
-act_free:['Фитнес-центр','Wi-Fi <!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Concordia Celes Hotel - Digital Guide</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome İkonları -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #1b2a33 0%, #111a20 100%); color: #ffffff; min-height: 100vh; display: flex; justify-content: center; padding: 30px 15px; position: relative; overflow-x: hidden; }
-        .container { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; z-index: 1; }
-        .main-card { background: #243642; border: 1.5px solid #d1a751; border-radius: 12px; width: 100%; padding: 25px 20px; text-align: center; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
-        .main-card .hotel-icon { font-size: 36px; color: #ff6b6b; margin-bottom: 12px; }
-        .main-card h1 { font-size: 19px; font-weight: 800; margin-bottom: 5px; letter-spacing: 0.5px; }
-        .main-card h2 { font-size: 10px; color: #d1a751; letter-spacing: 1.5px; margin-bottom: 8px; text-transform: uppercase; }
-        .main-card p { font-size: 9px; color: #9baab3; }
-        .lang-title { font-size: 11px; color: #e0e0e0; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
-        .lang-title i { color: #4ba3e3; font-size: 14px;}
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin-bottom: 12px; }
-        .lang-btn { background: #243642; border-radius: 10px; padding: 16px; text-align: left; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 1px solid transparent; user-select: none; }
-        .lang-btn:active { transform: scale(0.96); }
-        .lang-btn h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #ffffff;}
-        .lang-btn p { font-size: 12px; font-weight: 600; color: #d1a751; margin-bottom: 2px;}
-        .lang-btn span { font-size: 8px; color: #9baab3; text-transform: uppercase; letter-spacing: 0.5px;}
-        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; width: 100%; margin-bottom: 10px; }
-        .action-btn { background: #243642; border-radius: 10px; padding: 15px 5px; text-align: center; }
-        .action-btn i { font-size: 20px; margin-bottom: 8px; }
-        .action-btn h4 { font-size: 10px; font-weight: 600; margin-bottom: 4px; color: #d1a751;}
-        .action-btn p { font-size: 7px; color: #9baab3; line-height: 1.3;}
-        .action-btn.full-width { grid-column: span 3; cursor: pointer; padding: 15px;}
-        .action-btn.full-width:active { transform: scale(0.98); }
-        .ic-wifi { color: #4ba3e3; } .ic-phone { color: #ff6b6b; } .ic-mail { color: #e0e0e0; } .ic-web { color: #4ba3e3; }
-        .footer { margin-top: 30px; text-align: center; }
-        .stars { color: #d1a751; font-size: 10px; margin-bottom: 8px; letter-spacing: 2px;}
-        .footer p { font-size: 8px; color: #748894; margin-bottom: 4px; }
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: flex-end; z-index: 1000; opacity: 0; transition: opacity 0.3s; }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: #ffffff; color: #222; width: 100%; max-width: 500px; height: 85vh; border-radius: 20px 20px 0 0; padding: 20px; overflow-y: auto; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.1, 0.9, 0.2, 1); position: relative; }
-        .modal-overlay.active .modal-content { transform: translateY(0); }
-        .close-btn { position: sticky; top: -20px; right: -20px; float: right; margin-bottom:-40px; background: #f0f0f0; width: 36px; height: 36px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 18px; color: #333; z-index: 10; }
-        .modal-body h2 { font-size: 20px; color: #1b2a33; margin-bottom: 15px; font-weight: 800;}
-        .modal-body h3 { font-size: 14px; color: #d1a751; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin: 25px 0 15px 0; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 8px;}
-        .modal-body h3 i { font-size: 13px; }
-        .modal-body p { font-size: 13px; line-height: 1.6; margin-bottom: 10px; color: #555;}
-        .modal-body ul { list-style: none; margin-bottom: 15px; }
-        .modal-body ul li { font-size: 13px; padding: 10px 12px; background: #f8f9fa; margin-bottom: 6px; border-radius: 6px; border-left: 4px solid #d1a751; display: flex; justify-content: space-between; align-items: center; color: #444; flex-wrap: wrap; }
-        .modal-body ul li strong { color: #1b2a33; font-weight: 600; padding-right: 10px;}
-        .modal-body ul li span { text-align: right; font-weight: 500;}
-    </style>
-</head>
-<body>
+act_free:['Фитнес-центр','Wi-Fi (лобби)','Дартс','Пляжный волейбол','Настольный теннис'],
+act_paid:['Теннис (с подсветкой)','Бильярд','Виндсёрфинг','Катамаран','Каноэ','Банан','Водные лыжи','Парасейлинг','Wi-Fi (весь отель)'],
+srv_free:['Услуги носильщика','Будильник','Частный пляж','Шезлонги и зонты','Обмен валюты','Анимационные шоу','Турецкая баня и сауна','Пляжное полотенце (обмен 1€)'],
+srv_paid:['Врач (2 ч/день)','Аренда авто/велосипеда','Массаж и Красота','Трансфер из/в аэропорт','Прачечная','Сейф (в номере)','Телефон и Факс','Турецкий кофе','Свежевыжатые соки'],
+free_label:'Бесплатно',paid_label:'Платно',
+gen:{cards:'Принимаемые карты',lang:'Языки общения',lang_v:'Турецкий (офиц.), Немецкий, Английский, Русский',pets:'Домашние животные НЕ допускаются!'}
+},
+'pl':{title:'<span class="flag">🇵🇱</span> Informacje o Hotelu',welcome:'WITAMY',subtitle:'Twój idealny urlop nad Morzem Śródziemnym',wifi:'<strong>Wi-Fi:</strong> Bezpłatne w lobby. Cały hotel: 3€/dzień lub 12€/tydzień (od osoby)',
+s_hotel:'INFORMACJE O HOTELU',s_transport:'TRANSPORT',s_rooms:'TYPY POKOI',s_facility:'INFRASTRUKTURA',s_food:'GODZINY POSIŁKÓW (ULTRA ALL-INCLUSIVE)',s_bars:'GODZINY OTWARCIA BARÓW',s_alacarte:'RESTAURACJA A\'LA CARTE',s_activity:'AKTYWNOŚCI I SPORT',s_service:'USŁUGI DLA GOŚCI',s_general:'OGÓLNE INFORMACJE',
+hotel:{open:'Data otwarcia',hren:'Renowacja hotelu',rren:'Renowacja pokoi',cat:'Kategoria',cat_v:'5 Gwiazdek (lokalnie)',region:'Region',region_v:'Centrum Turystyczne Alara',addr:'Adres',addr_v:'Okurcalar / Alanya / Antalya',tel:'Telefon',fax:'Fax',web:'Strona',mail:'E-mail'},
+trans:{a:'Centrum Antalii',b:'Lotnisko Antalya',c:'Alanya',d:'Side',bus:'Autobus',shuttle:'Shuttle',min:'min'},
+rooms:{total:'Łącznie pokoi / łóżek',std:'Pokój Standard',jr:'Junior Suite',fam:'Pokój Rodzinny',hcp:'Pokój dla niepełnosprawnych',jac:'Pokój z Jacuzzi (z tarasem)',bed1:'1 podwójne + 1 pojedyncze łóżko',bed2:'2 pokoje, 1 łazienka • 2 podwójne + 2 pojedyncze',bed3:'1 podwójne łóżko',feat_title:'WYPOSAŻENIE POKOJU',feats:['Telefon','TV satelitarna','Klimatyzacja','Balkon','Suszarka','Sejf','Wanna i Prysznic','Minibar (b/a)']},
+fac:{site:'Powierzchnia',main:'Budynek główny',outpool:'Basen zewnętrzny',inpool:'Basen kryty',rest:'Restauracja',ala:'A\'la Carte',child:'Dziecięcy',pax:'os.'},
+food:[['fa-mug-hot','Śniadanie','07:00 – 10:00'],['fa-coffee','Późne śniadanie','10:00 – 10:30'],['fa-utensils','Obiad','12:30 – 14:30'],['fa-bowl-food','Przekąski','11:00 – 16:00'],['fa-pizza-slice','Gözleme','11:00 – 16:00'],['fa-burger','Burger World','11:00 – 16:00'],['fa-cake-candles','Cukiernia','11:00 – 17:00'],['fa-ice-cream','Lody (01.06-30.09)','14:30 – 15:30'],['fa-utensils','Kolacja','19:00 – 21:00'],['fa-bowl-rice','Zupa nocna','23:00 – 24:00']],
+bars:[['fa-couch','Lobby Bar','10:00 – 23:00'],['fa-wine-glass','Bar Restauracyjny','12:30 – 21:00'],['fa-umbrella-beach','Pool Bar','10:00 – 02:00'],['fa-cocktail','Snack Bar','11:00 – 16:00']],
+alac:{title:'RESTAURACJA KEBAB & RYBNA',desc:'Sezon: czynna od 15 maja do 31 września. Wymagana rezerwacja, bezpłatnie.',hour:'19:00 - 21:00'},
+act_free:['Centrum Fitness','Wi-Fi (lobby)','Rzutki','Siatkówka plażowa','Tenis stołowy'],
+act_paid:['Tenis (oświetlony)','Bilard','Windsurfing','Rower wodny','Kajak','Banan','Narty wodne','Parasailing','Wi-Fi (cały hotel)'],
+srv_free:['Obsługa bagażowa','Budzenie','Prywatna plaża','Leżaki i parasole','Wymiana walut','Pokazy animacyjne','Łaźnia turecka i Sauna','Ręcznik plażowy (zmiana 1€)'],
+srv_paid:['Lekarz (2 godz./dzień)','Wynajem auto/rower','Masaż i Uroda','Transfer lotniskowy','Pralnia','Sejf (w pokoju)','Telefon i Fax','Kawa turecka','Świeże soki owocowe'],
+free_label:'Bezpłatne',paid_label:'Płatne',
+gen:{cards:'Akceptowane karty',lang:'Języki obsługi',lang_v:'Turecki (oficjalny), Niemiecki, Angielski, Rosyjski',pets:'Zwierzęta NIE są dozwolone!'}
+},
+'ro':{title:'<span class="flag">🇷🇴</span> Ghid Informații Hotel',welcome:'BUN VENIT',subtitle:'Vacanța ta perfectă la Marea Mediterană',wifi:'<strong>Wi-Fi:</strong> Gratuit în lobby. Tot hotelul: 3€/zi sau 12€/săptămână (per persoană)',
+s_hotel:'INFORMAȚII HOTEL',s_transport:'TRANSPORT',s_rooms:'TIPURI DE CAMERE',s_facility:'FACILITĂȚI HOTEL',s_food:'ORAR MASĂ (ULTRA ALL-INCLUSIVE)',s_bars:'PROGRAM BARURI',s_alacarte:'RESTAURANT A\'LA CARTE',s_activity:'ACTIVITĂȚI ȘI SPORT',s_service:'SERVICII OASPEȚI',s_general:'INFORMAȚII GENERALE',
+hotel:{open:'Data deschiderii',hren:'Renovare hotel',rren:'Renovare camere',cat:'Categorie',cat_v:'5 Stele (locală)',region:'Regiune',region_v:'Centrul Turistic Alara',addr:'Adresă',addr_v:'Okurcalar / Alanya / Antalya',tel:'Telefon',fax:'Fax',web:'Web',mail:'E-mail'},
+trans:{a:'Centrul Antalya',b:'Aeroport Antalya',c:'Alanya',d:'Side',bus:'Autobuz',shuttle:'Shuttle',min:'min'},
+rooms:{total:'Total camere / paturi',std:'Cameră Standard',jr:'Junior Suite',fam:'Cameră Familială',hcp:'Cameră Handicap',jac:'Cameră Jacuzzi (cu terasă)',bed1:'1 pat dublu + 1 pat single',bed2:'2 camere, 1 baie • 2 paturi duble + 2 single',bed3:'1 pat dublu',feat_title:'DOTĂRI CAMERĂ',feats:['Telefon','TV satelit','Aer condiționat','Balcon','Uscător păr','Seif','Cadă și Duș','Minibar (răcoritoare)']},
+fac:{site:'Suprafață teren',main:'Clădire principală',outpool:'Piscină exterioară',inpool:'Piscină interioară',rest:'Restaurant',ala:'A\'la Carte',child:'Copii',pax:'pers.'},
+food:[['fa-mug-hot','Mic dejun','07:00 – 10:00'],['fa-coffee','Mic dejun târziu','10:00 – 10:30'],['fa-utensils','Prânz','12:30 – 14:30'],['fa-bowl-food','Gustări','11:00 – 16:00'],['fa-pizza-slice','Gözleme','11:00 – 16:00'],['fa-burger','Burger World','11:00 – 16:00'],['fa-cake-candles','Patiserie','11:00 – 17:00'],['fa-ice-cream','Înghețată (01.06-30.09)','14:30 – 15:30'],['fa-utensils','Cină','19:00 – 21:00'],['fa-bowl-rice','Supă de noapte','23:00 – 24:00']],
+bars:[['fa-couch','Lobby Bar','10:00 – 23:00'],['fa-wine-glass','Bar Restaurant','12:30 – 21:00'],['fa-umbrella-beach','Pool Bar','10:00 – 02:00'],['fa-cocktail','Snack Bar','11:00 – 16:00']],
+alac:{title:'RESTAURANT KEBAB & PEȘTE',desc:'Sezon: deschis între 15 mai - 31 septembrie. Necesită rezervare, gratuit.',hour:'19:00 - 21:00'},
+act_free:['Sală Fitness','Wi-Fi (lobby)','Darts','Volei pe plajă','Tenis de masă'],
+act_paid:['Tenis (cu lumini)','Biliard','Windsurf','Hidrobicicletă','Canoe','Banană','Schi nautic','Parasailing','Wi-Fi (tot hotelul)'],
+srv_free:['Serviciu bagaje','Trezire','Plajă privată','Șezlonguri și umbrele','Schimb valutar','Spectacole animație','Baie Turcească și Saună','Prosop plajă (schimb 1€)'],
+srv_paid:['Doctor (2 ore/zi)','Închiriere auto/bicicletă','Masaj și Frumusețe','Transfer aeroport','Spălătorie','Seif (în cameră)','Telefon și Fax','Cafea turcească','Sucuri proaspete'],
+free_label:'Gratuit',paid_label:'Contra cost',
+gen:{cards:'Carduri acceptate',lang:'Limbi vorbite',lang_v:'Turcă (oficial), Germană, Engleză, Rusă',pets:'Animalele de companie NU sunt permise!'}
+}
+};
 
-    <div class="container">
-        <div class="main-card"><i class="fa-solid fa-hotel hotel-icon"></i><h1>CONCORDIA CELES HOTEL</h1><h2>DIGITAL GUEST GUIDE</h2><p>Your Perfect Mediterranean Escape</p></div>
-        <div class="lang-title"><i class="fa-solid fa-globe"></i> Select Your Language / Dil Seçiniz</div>
-        <div class="grid-2">
-            <div class="lang-btn" onclick="openModal('tr')"><h3>TR</h3><p>Türkçe</p><span>Turkish</span></div>
-            <div class="lang-btn" onclick="openModal('en')"><h3>GB</h3><p>English</p><span>English</span></div>
-            <div class="lang-btn" onclick="openModal('de')"><h3>DE</h3><p>Deutsch</p><span>German</span></div>
-            <div class="lang-btn" onclick="openModal('ru')"><h3>RU</h3><p>Русский</p><span>Russian</span></div>
-            <div class="lang-btn" onclick="openModal('pl')"><h3>PL</h3><p>Polski</p><span>Polish</span></div>
-            <div class="lang-btn" onclick="openModal('ro')"><h3>RO</h3><p>Română</p><span>Romanian</span></div>
-        </div>
-        <div class="grid-3">
-            <div class="action-btn"><i class="fa-solid fa-signal ic-wifi"></i><h4>WIFI Access</h4><p>Lobby: FREE<br>Full Hotel: EXTRA</p></div>
-            <div class="action-btn"><i class="fa-solid fa-phone ic-phone"></i><h4>24/7 Reception</h4><p><br>+90 242 527 50 05</p></div>
-            <div class="action-btn"><i class="fa-solid fa-envelope ic-mail"></i><h4>Email Us</h4><p><br>info@concordiaceles.com</p></div>
-            <div class="action-btn full-width" onclick="window.open('https://www.concordiaceles.com', '_blank')"><i class="fa-solid fa-globe ic-web"></i><h4>Website</h4><p>concordiaceles.com</p></div>
-        </div>
-        <div class="footer"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>Five Stars Hotel</p><p>Okurcalar / Alanya / Antalya, Turkey</p><p>&copy; 2024 Concordia Celes Hotel. All Rights Reserved.</p></div>
-    </div>
+function buildContent(lang){
+const t=T[lang];
+let html=`
+<div class="hotel-banner">
+<h3>CONCORDIA CELES HOTEL</h3>
+<div class="stars-gold">★ ★ ★ ★ ★</div>
+<p>${t.welcome} • ${t.subtitle}</p>
+</div>
+<div class="wifi-alert"><i class="fa-solid fa-wifi"></i><div>${t.wifi}</div></div>
 
-    <div id="modalOverlay" class="modal-overlay" onclick="closeModalOnOutsideClick(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
-            <div id="modalContentBody" class="modal-body"></div>
-        </div>
-    </div>
+<div class="section">
+<div class="section-title"><i class="fa-solid fa-hotel"></i>${t.s_hotel}</div>
+<div class="info-row"><span class="label">${t.hotel.cat}</span><span class="value">⭐⭐⭐⭐⭐ ${t.hotel.cat_v}</span></div>
+<div class="info-row"><span class="label">${t.hotel.region}</span><span class="value">${t.hotel.region_v}</span></div>
+<div class="info-row"><span class="label">${t.hotel.addr}</span><span class="value">${t.hotel.addr_v}</span></div>
+<div class="info-row"><span class="label">${t.hotel.open}</span><span class="value">2004</span></div>
+<div class="info-row"><span class="label">${t.hotel.hren}</span><span class="value">2015</span></div>
+<div class="info-row"><span class="label">${t.hotel.rren}</span><span class="value">2024</span></div>
+<div class="info-row"><span class="label">${t.hotel.tel}</span><span class="value">+90 242 527 50 05</span></div>
+<div class="info-row"><span class="label">${t.hotel.fax}</span><span class="value">+90 242 527 50 06</span></div>
+<div class="info-row"><span class="label">${t.hotel.web}</span><span class="value">concordiaceles.com</span></div>
+<div class="info-row"><span class="label">${t.hotel.mail}</span><span class="value">info@concordiaceles.com</span></div>
+</div>
 
-    <script>
-        const langData = {
-            'tr': `
-                <h2>🇹🇷 Otel Bilgi Föyü</h2>
-                <h3><i class="fa-solid fa-circle-info"></i>1. GENEL BİLGİLER</h3>
-                <ul>
-                    <li><strong>Otel Adı:</strong> <span>CONCORDIA CELES HOTEL</span></li>
-                    <li><strong>Kategori:</strong> <span>5 Yıldızlı Otel (Yerel)</span></li>
-                    <li><strong>Adres:</strong> <span>Okurcalar / Alanya / Antalya</span></li>
-                    <li><strong>Telefon:</strong> <span>+90 242 527 50 05</span></li>
-                    <li><strong>Faks:</strong> <span>+90 242 527 50 06</span></li>
-                    <li><strong>Web:</strong> <span>www.concordiaceles.com</span></li>
-                    <li><strong>E-posta:</strong> <span>info@concordiaceles.com</span></li>
-                    <li><strong>Açılış Tarihi:</strong> <span>2004</span></li>
-                    <li><strong>Oda Renovasyon:</strong> <span>2024</span></li>
-                </ul>
+<div class="section">
+<div class="section-title"><i class="fa-solid fa-route"></i>${t.s_transport}</div>
+<div class="transport-row"><span class="dest">${t.trans.a}</span><span class="meta"><strong>105 km</strong><br>${t.trans.bus} • 100 ${t.trans.min}</span></div>
+<div class="transport-row"><span class="dest">${t.trans.b}</span><span class="meta"><strong>90 km</strong><br>${t.trans.bus} • 90 ${t.trans.min}</span></div>
+<div class="transport-row"><span class="dest">${t.trans.c}</span><span class="meta"><strong>35 km</strong><br>${t.trans.shuttle} • 30 ${t.trans.min}</span></div>
+<div class="transport-row"><span class="dest">${t.trans.d}</span><span class="meta"><strong>30 km</strong><br>${t.trans.shuttle} • 25 ${t.trans.min}</span></div>
+</div>
 
-                <h3><i class="fa-solid fa-bus"></i>2. ULAŞIM</h3>
-                <ul>
-                    <li><strong>Antalya Havalimanı:</strong> <span>90 km / ~90 dk.</span></li>
-                    <li><strong>Antalya Merkez:</strong> <span>105 km / ~100 dk.</span></li>
-                    <li><strong>Alanya Merkez:</strong> <span>35 km / ~30 dk.</span></li>
-                    <li><strong>Side Merkez:</strong> <span>30 km / ~25 dk.</span></li>
-                </ul>
-                
-                <h3><i class="fa-solid fa-bed"></i>3. KONAKLAMA</h3>
-                <p>Toplam Oda: 401 / Toplam Yatak: 1000</p>
-                <ul>
-                    <li><strong>Standart Oda (347):</strong> <span>24 m², 1 çift + 1 tek yatak</span></li>
-                    <li><strong>Junior Suit (18):</strong> <span>35 m², 1 çift + 1 tek yatak</span></li>
-                    <li><strong>Aile Odası (24):</strong> <span>45 m², 2 oda, 1 banyo</span></li>
-                    <li><strong>Engelli Odası (4):</strong> <span>24 m²</span></li>
-                    <li><strong>Jakuzili Oda (11):</strong> <span>24 m²</span></li>
-                </ul>
-                <p>Tüm odalarda: TV, Klima, Balkon, Saç Kurutma Makinesi, Kasa (ücretli), Minibar (girişte soft içecekler) bulunur.</p>
+<div class="section">
+<div class="section-title"><i class="fa-solid fa-bed"></i>${t.s_rooms}</div>
+<div class="info-row"><span class="label">${t.rooms.total}</span><span class="value">401 / 1000</span></div>
+<div class="room-card">
+<div class="room-head"><span class="room-name">${t.rooms.std}</span><span class="room-count">×347</span></div>
+<div class="room-info"><strong>24 m²</strong> • ${t.rooms.bed1}</div>
+</div>
+<div class="room-card">
+<div class="room-head"><span class="room-name">${t.rooms.jr}</span><span class="room-count">×18</span></div>
+<div class="room-info"><strong>35 m²</strong> • ${t.rooms.bed1}</div>
+</div>
+<div class="room-card">
+<div class="room-head"><span class="room-name">${t.rooms.fam}</span><span class="room-count">×24</span></div>
+<div class="room-info"><strong>45 m²</strong> • ${t.rooms.bed2}</div>
+</div>
+<div class="room-card">
+<div class="room-head"><span class="room-name">${t.rooms.hcp}</span><span class="room-count">×4</span></div>
+<div class="room-info"><strong>24 m²</strong> • ${t.rooms.bed3}</div>
+</div>
+<div class="room-card">
+<div class="room-head"><span class="room-name">${t.rooms.jac}</span><span class="room-count">×11</span></div>
+<div class="room-info"><strong>24 m²</strong> • ${t.rooms.bed1}</div>
+</div>
+<div class="section-title" style="margin-top:12px;background:#243642;color:#d1a751"><i class="fa-solid fa-list-check"></i>${t.rooms.feat_title}</div>
+<div class="feature-grid">
+${t.rooms.feats.map(f=>`<div class="feat"><i class="fa-solid fa-check"></i>${f}</div>`).join('')}
+</div>
+</div>
 
-                <h3><i class="fa-solid fa-building"></i>4. TESİS ÖZELLİKLERİ</h3>
-                <ul>
-                    <li><strong>Tesis Alanı:</strong> <span>16.000 m²</span></li>
-                    <li><strong>Ana Bina:</strong> <span>5.600 m²</span></li>
-                    <li><strong>Açık Havuz:</strong> <span>450 m² (Çocuk: 36 m²)</span></li>
-                    <li><strong>Kapalı Havuz:</strong> <span>80 m² (Çocuk: 6 m²)</span></li>
-                    <li><strong>Ana Restoran:</strong> <span>800 kişi (iç) + 200 kişi (dış)</span></li>
-                    <li><strong>A'la Carte Restoran:</strong> <span>80 kişi kapasiteli</span></li>
-                    <li><strong>Alışveriş Merkezi:</strong> <span>Kuyumcu, Market, Kuaför, Butik, Derici, Hediyelik Eşya, Fotoğrafçı</span></li>
-                </ul>
+<div class="section">
+<div class="section-title"><i class="fa-solid fa-building"></i>${t.s_facility}</div>
+<div class="facility-grid">
+<div class="facility-card"><div class="icon"><i class="fa-solid fa-map"></i></div><h5>${t.fac.site}</h5><p>16.000 m²</p></div>
+<div class="facility-card"><div class="icon"><i class="fa-solid fa-building"></i></div><h5>${t.fac.main}</h5><p>5.600 m²</p></div>
+<div class="facility-card"><div class="icon"><i class="fa-solid fa-water"></i></div><h5>${t.fac.outpool}</h5><p>450 m²</p><div class="small">${t.fac.child}: 36 m²</div></div>
+<div class="facility-card"><div class="icon"><i class="fa-solid fa-water-ladder"></i></div><h5>${t.fac.inpool}</h5><p>80 m²</p><div class="small">${t.fac.child}: 6 m²</div></div>
+<div class="facility-card"><div class="icon"><i class="fa-solid fa-utensils"></i></div><h5>${t.fac.rest}</h5><p>1.000 m²</p><div class="small">800+200 ${t.fac.pax}</div></div>
+<div class="facility-card"><div class="icon"><i class="fa-solid fa-fish"></i></div><h5>${t.fac.ala}</h5><p>285 m²</p><div class="small">80 ${t.fac.pax}</div></div>
+</div>
+</div>
 
-                <h3><i class="fa-solid fa-concierge-bell"></i>5. YEME & İÇME (Ultra Her Şey Dahil)</h3>
-                <ul>
-                    <li><strong>Kahvaltı:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Öğle Yemeği:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Akşam Yemeği:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Gece Çorbası:</strong> <span>23:00 – 24:00</span></li>
-                    <li><strong>Snack Servis:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Pastane:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Dondurma (Yaz Sez.):</strong> <span>14:30 – 15:30</span></li>
-                </ul>
+<div class="section">
+<div class="section-title"><i class="fa-solid fa-utensils"></i>${t.s_food}</div>
+${t.food.map(f=>`<div class="time-row"><span class="meal"><i class="fa-solid ${f[0]}"></i>${f[1]}</span><span class="hours">${f[2]}</span></div>`).join('')}
+</div>
 
-                <h3><i class="fa-solid fa-martini-glass-citrus"></i>6. BARLAR</h3>
-                 <ul>
-                    <li><strong>Lobi Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Havuz Bar:</strong> <span>10:00 – 02:00</span></li>
-                    <li><strong>Snack Bar:</strong> <span>11:00 – 16:00</span></li>
-                </ul>
+<div class="section">
+<div class="section-title"><i class="fa-solid fa-champagne-glasses"></i>${t.s_bars}</div>
+${t.bars.map(b=>`<div class="bar-row"><span class="name"><i class="fa-solid ${b[0]}"></i>${b[1]}</span><span class="hrs">${b[2]}</span></div>`).join('')}
+</div>
 
-                <h3><i class="fa-solid fa-volleyball"></i>7. ÜCRETSİZ & ÜCRETLİ HİZMETLER</h3>
-                <p><strong>ÜCRETSİZ:</strong> Fitness, Lobi Wi-Fi, Dart, Plaj Voleybolu, Masa Tenisi, Animasyon, Mini Club (03-12 yaş), Hamam & Sauna, Şezlong, Şemsiye.</p>
-                <p><strong>ÜCRETLİ:</strong> Otel geneli Wi-Fi (1 Gün: 3€ / 1 Hafta: 12€ - Kişi Başı), Oda Kasası, Tenis (Işıklandırmalı), Bilardo, Tüm Su Sporları, Masaj, Doktor, Çamaşırhane, Telefon/Faks, Türk Kahvesi, Taze Sıkılmış Sular.</p>
-                <p><strong>Plaj Havlusu:</strong> İlk alım ücretsiz, günlük değişim 1€.</p>
-                
-                <h3><i class="fa-solid fa-paw"></i>8. ÖNEMLİ BİLGİLER</h3>
-                <p>Evcil hayvan kabul edilmemektedir. Geçerli Kartlar: Visa, MasterCard, Maestro.</p>
-            `,
-            'en': `
-                <h2>🇬🇧 Hotel Fact Sheet</h2>
-                <h3><i class="fa-solid fa-circle-info"></i>1. GENERAL INFORMATION</h3>
-                <ul>
-                    <li><strong>Hotel Name:</strong> <span>CONCORDIA CELES HOTEL</span></li>
-                    <li><strong>Category:</strong> <span>5 Star Hotel (Local)</span></li>
-                    <li><strong>Address:</strong> <span>Okurcalar / Alanya / Antalya</span></li>
-                    <li><strong>Phone:</strong> <span>+90 242 527 50 05</span></li>
-                    <li><strong>Fax:</strong> <span>+90 242 527 50 06</span></li>
-                    <li><strong>Web:</strong> <span>www.concordiaceles.com</span></li>
-                    <li><strong>Email:</strong> <span>info@concordiaceles.com</span></li>
-                    <li><strong>Opening Date:</strong> <span>2004</span></li>
-                    <li><strong>Room Renovation:</strong> <span>2024</span></li>
-                </ul>
+<div class="section">
+<div class="section-title"><i class="fa-solid fa-fish"></i>${t.s_alacarte}</div>
+<div class="alacarte-box">
+<h4>🍢🐟 ${t.alac.title}</h4>
+<p>${t.alac.desc}</p>
+<span class="time-tag"><i class="fa-solid fa-clock"></i> ${t.alac.hour}</span>
+</div>
+</div>
 
-                <h3><i class="fa-solid fa-bus"></i>2. TRANSPORTATION</h3>
-                <ul>
-                    <li><strong>Antalya Airport:</strong> <span>90 km / ~90 min.</span></li>
-                    <li><strong>Antalya City:</strong> <span>105 km / ~100 min.</span></li>
-                    <li><strong>Alanya City:</strong> <span>35 km / ~30 min.</span></li>
-                    <li><strong>Side City:</strong> <span>30 km / ~25 min.</span></li>
-                </ul>
-                
-                <h3><i class="fa-solid fa-bed"></i>3. ACCOMMODATION</h3>
-                <p>Total Rooms: 401 / Total Beds: 1000</p>
-                <ul>
-                    <li><strong>Standard Room (347):</strong> <span>24 m², 1 double + 1 twin bed</span></li>
-                    <li><strong>Junior Suite (18):</strong> <span>35 m², 1 double + 1 twin bed</span></li>
-                    <li><strong>Family Room (24):</strong> <span>45 m², 2 rooms, 1 bathroom</span></li>
-                    <li><strong>Handicapped Room (4):</strong> <span>24 m²</span></li>
-                    <li><strong>Jacuzzi Room (11):</strong> <span>24 m²</span></li>
-                </ul>
-                <p>All rooms include: TV, AC, Balcony, Hair Dryer, Safe Box (extra), Minibar (soft drinks on arrival).</p>
+<div class="section">
+<div class="section-title"><i class="fa-solid fa-futbol"></i>${t.s_activity}</div>
+<div class="service-section">
+<div class="service-card free">
+<h5><i class="fa-solid fa-circle-check"></i>${t.free_label}</h5>
+<ul>${t.act_free.map(s=>`<li>${s}</li>`).join('')}</ul>
+</div>
+<div class="service-card paid">
+<h5><i class="fa-solid fa-coins"></i>${t.paid_label}</h5>
+<ul>${t.act_paid.map(s=>`<li>${s}</li>`).join('')}</ul>
+</div>
+</div>
+</div>
 
-                <h3><i class="fa-solid fa-building"></i>4. FACILITY FEATURES</h3>
-                <ul>
-                    <li><strong>Site Surface:</strong> <span>16,000 m²</span></li>
-                    <li><strong>Main Building:</strong> <span>5,600 m²</span></li>
-                    <li><strong>Outdoor Pool:</strong> <span>450 m² (Children's: 36 m²)</span></li>
-                    <li><strong>Indoor Pool:</strong> <span>80 m² (Children's: 6 m²)</span></li>
-                    <li><strong>Main Restaurant:</strong> <span>800 pax (indoor) + 200 pax (outdoor)</span></li>
-                    <li><strong>A'la Carte Restaurant:</strong> <span>80 pax capacity</span></li>
-                    <li><strong>Shopping Center:</strong> <span>Jeweler, Market, Coiffeur, Boutique, Leather, Souvenir, Photographer</span></li>
-                </ul>
+<div class="section">
+<div class="section-title"><i class="fa-solid fa-concierge-bell"></i>${t.s_service}</div>
+<div class="service-section">
+<div class="service-card free">
+<h5><i class="fa-solid fa-circle-check"></i>${t.free_label}</h5>
+<ul>${t.srv_free.map(s=>`<li>${s}</li>`).join('')}</ul>
+</div>
+<div class="service-card paid">
+<h5><i class="fa-solid fa-coins"></i>${t.paid_label}</h5>
+<ul>${t.srv_paid.map(s=>`<li>${s}</li>`).join('')}</ul>
+</div>
+</div>
+</div>
 
-                <h3><i class="fa-solid fa-concierge-bell"></i>5. FOOD & BEVERAGE (Ultra All Inclusive)</h3>
-                <ul>
-                    <li><strong>Breakfast:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Lunch:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Dinner:</strong> <span>19:00 – 21:00</span></li>
-                    <li><strong>Night Soup:</strong> <span>23:00 – 24:00</span></li>
-                    <li><strong>Snack Service:</strong> <span>11:00 – 16:00</span></li>
-                    <li><strong>Patisserie:</strong> <span>11:00 – 17:00</span></li>
-                    <li><strong>Ice Cream (Summer):</strong> <span>14:30 – 15:30</span></li>
-                </ul>
+<div class="section">
+<div class="section-title"><i class="fa-solid fa-circle-info"></i>${t.s_general}</div>
+<div class="info-row" style="display:block"><span class="label">${t.gen.cards}:</span>
+<div class="cards-row"><span class="card-tag">VISA</span><span class="card-tag">MasterCard</span><span class="card-tag">Maestro</span><span class="card-tag">Euro Card</span></div>
+</div>
+<div class="lang-row" style="margin-top:6px"><strong>${t.gen.lang}:</strong><br>${t.gen.lang_v}</div>
+<div class="warning-box"><i class="fa-solid fa-ban"></i>${t.gen.pets}</div>
+</div>
+`;
+return html;
+}
 
-                <h3><i class="fa-solid fa-martini-glass-citrus"></i>6. BARS</h3>
-                 <ul>
-                    <li><strong>Lobby Bar:</strong> <span>10:00 – 23:00</span></li>
-                    <li><strong>Pool Bar:</strong> <span>10:00 – 02:00</span></li>
-                    <li><strong>Snack Bar:</strong> <span>11:00 – 16:00</span></li>
-                </ul>
+const modalOverlay=document.getElementById('modalOverlay');
+const modalBody=document.getElementById('modalBody');
+const modalTitle=document.getElementById('modalTitle');
 
-                <h3><i class="fa-solid fa-volleyball"></i>7. FREE & EXTRA SERVICES</h3>
-                <p><strong>FREE:</strong> Fitness, Lobby Wi-Fi, Dart, Beach Volley, Table Tennis, Animation, Mini Club (03-12 y/o), Turkish Bath & Sauna, Sunbeds, Umbrellas.</p>
-                <p><strong>EXTRA:</strong> Hotel-wide Wi-Fi (1 Day: 3€ / 1 Week: 12€ - Per Person), Safe Box, Tennis (with light), Billiard, All Water Sports, Massage, Doctor, Laundry, Phone/Fax, Turkish Coffee, Fresh Juices.</p>
-                <p><strong>Beach Towel:</strong> First towel is free, daily change is 1€.</p>
-
-                <h3><i class="fa-solid fa-paw"></i>8. USEFUL INFORMATION</h3>
-                <p>Pets are not allowed. Accepted Cards: Visa, MasterCard, Maestro.</p>
-            `,
-            'de': `
-                <h2>🇩🇪 Hotel-Informationsblatt</h2>
-                <h3><i class="fa-solid fa-circle-info"></i>1. ALLGEMEINE INFORMATIONEN</h3>
-                <ul>
-                    <li><strong>Hotelname:</strong> <span>CONCORDIA CELES HOTEL</span></li>
-                    <li><strong>Kategorie:</strong> <span>5 Sterne (Landeskategorie)</span></li>
-                    <li><strong>Adresse:</strong> <span>Okurcalar / Alanya / Antalya</span></li>
-                    <li><strong>Telefon:</strong> <span>+90 242 527 50 05</span></li>
-                    <li><strong>Web:</strong> <span>www.concordiaceles.com</span></li>
-                    <li><strong>Eröffnung:</strong> <span>2004</span></li>
-                    <li><strong>Zimmerrenovierung:</strong> <span>2024</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-bus"></i>2. TRANSPORT</h3>
-                <ul>
-                    <li><strong>Flughafen Antalya:</strong> <span>90 km / ~90 Min.</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-bed"></i>3. UNTERKUNFT</h3>
-                <p>Gesamt Zimmer: 401</p>
-                <ul>
-                    <li><strong>Standardzimmer (347):</strong> <span>24 m²</span></li>
-                    <li><strong>Familienzimmer (24):</strong> <span>45 m²</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-building"></i>4. AUSSTATTUNG</h3>
-                <ul>
-                    <li><strong>Anlagefläche:</strong> <span>16.000 m²</span></li>
-                    <li><strong>Außenpool:</strong> <span>450 m²</span></li>
-                    <li><strong>Hallenbad:</strong> <span>80 m²</span></li>
-                    <li><strong>Restaurant Kapazität:</strong> <span>800 (innen) + 200 (außen)</span></li>
-                    <li><strong>Geschäfte:</strong> <span>Juwelier, Markt, Friseur, Boutique, Leder, Souvenir</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-concierge-bell"></i>5. VERPFLEGUNG</h3>
-                <ul>
-                    <li><strong>Frühstück:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Mittagessen:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Abendessen:</strong> <span>19:00 – 21:00</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-volleyball"></i>6. DIENSTLEISTUNGEN</h3>
-                <p><strong>KOSTENLOS:</strong> Fitness, Lobby W-LAN, Darts, Beachvolleyball, Tischtennis, Animation, Mini Club, Hamam & Sauna.</p>
-                <p><strong>GEBÜHRENPFLICHTIG:</strong> W-LAN im Hotel (1 Tag: 3€ / 1 Woche: 12€ - pro Person), Safe, Tennis (Flutlicht), Wassersport, Massage, Arzt.</p>
-                <h3><i class="fa-solid fa-paw"></i>7. HINWEISE</h3>
-                <p>Haustiere nicht erlaubt. Karten: Visa, MasterCard.</p>
-            `,
-            'ru': `
-                <h2>🇷🇺 Информационный лист отеля</h2>
-                <h3><i class="fa-solid fa-circle-info"></i>1. ОБЩАЯ ИНФОРМАЦИЯ</h3>
-                <ul>
-                    <li><strong>Название:</strong> <span>CONCORDIA CELES HOTEL</span></li>
-                    <li><strong>Категория:</strong> <span>5 звезд (местная)</span></li>
-                    <li><strong>Адрес:</strong> <span>Окурджалар / Аланья / Анталья</span></li>
-                    <li><strong>Телефон:</strong> <span>+90 242 527 50 05</span></li>
-                    <li><strong>Сайт:</strong> <span>www.concordiaceles.com</span></li>
-                    <li><strong>Год открытия:</strong> <span>2004</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-bus"></i>2. ТРАНСПОРТ</h3>
-                <ul>
-                    <li><strong>Аэропорт Анталии:</strong> <span>90 км / ~90 мин.</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-bed"></i>3. РАЗМЕЩЕНИЕ</h3>
-                <p>Всего номеров: 401</p>
-                <ul>
-                    <li><strong>Стандартный номер (347):</strong> <span>24 м²</span></li>
-                    <li><strong>Семейный номер (24):</strong> <span>45 м²</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-building"></i>4. ХАРАКТЕРИСТИКИ</h3>
-                <ul>
-                    <li><strong>Территория:</strong> <span>16.000 м²</span></li>
-                    <li><strong>Открытый бассейн:</strong> <span>450 м²</span></li>
-                    <li><strong>Крытый бассейн:</strong> <span>80 м²</span></li>
-                    <li><strong>Вместимость ресторана:</strong> <span>800 (внутри) + 200 (снаружи)</span></li>
-                    <li><strong>Магазины:</strong> <span>Ювелирный, Маркет, Парикмахер, Бутик, Кожа, Сувениры</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-concierge-bell"></i>5. ПИТАНИЕ</h3>
-                <ul>
-                    <li><strong>Завтрак:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Обед:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Ужин:</strong> <span>19:00 – 21:00</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-volleyball"></i>6. УСЛУГИ</h3>
-                <p><strong>БЕСПЛАТНО:</strong> Фитнес, Wi-Fi в лобби, Дартс, Пляжный волейбол, Настольный теннис, Анимация, Мини-клуб, Хаммам и сауна.</p>
-                <p><strong>ПЛАТНО:</strong> Wi-Fi в отеле (1 день: 3€ / 1 неделя: 12€ - на человека), Сейф, Теннис (освещение), Водные виды спорта, Массаж, Врач.</p>
-                <h3><i class="fa-solid fa-paw"></i>7. ПРИМЕЧАНИЯ</h3>
-                <p>Домашние животные не допускаются. Карты: Visa, MasterCard.</p>
-            `,
-            'pl': `
-                <h2>🇵🇱 Karta Informacyjna Hotelu</h2>
-                <h3><i class="fa-solid fa-circle-info"></i>1. INFORMACJE OGÓLNE</h3>
-                <ul>
-                    <li><strong>Nazwa:</strong> <span>CONCORDIA CELES HOTEL</span></li>
-                    <li><strong>Kategoria:</strong> <span>5 gwiazdek (lokalna)</span></li>
-                    <li><strong>Adres:</strong> <span>Okurcalar / Alanya / Antalya</span></li>
-                    <li><strong>Telefon:</strong> <span>+90 242 527 50 05</span></li>
-                    <li><strong>Strona WWW:</strong> <span>www.concordiaceles.com</span></li>
-                    <li><strong>Data otwarcia:</strong> <span>2004</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-bus"></i>2. TRANSPORT</h3>
-                <ul>
-                    <li><strong>Lotnisko w Antalyi:</strong> <span>90 km / ~90 min.</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-bed"></i>3. ZAKWATEROWANIE</h3>
-                <p>Łączna liczba pokoi: 401</p>
-                <ul>
-                    <li><strong>Pokój standardowy (347):</strong> <span>24 m²</span></li>
-                    <li><strong>Pokój rodzinny (24):</strong> <span>45 m²</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-building"></i>4. CECHY OBIEKTU</h3>
-                <ul>
-                    <li><strong>Powierzchnia:</strong> <span>16.000 m²</span></li>
-                    <li><strong>Basen zewnętrzny:</strong> <span>450 m²</span></li>
-                    <li><strong>Basen wewnętrzny:</strong> <span>80 m²</span></li>
-                    <li><strong>Pojemność restauracji:</strong> <span>800 (wewnątrz) + 200 (na zewnątrz)</span></li>
-                    <li><strong>Sklepy:</strong> <span>Jubiler, Market, Fryzjer, Butik, Skóra, Pamiątki</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-concierge-bell"></i>5. WYŻYWIENIE</h3>
-                <ul>
-                    <li><strong>Śniadanie:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Obiad:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Kolacja:</strong> <span>19:00 – 21:00</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-volleyball"></i>6. USŁUGI</h3>
-                <p><strong>BEZPŁATNE:</strong> Fitness, Wi-Fi w lobby, Rzutki, Siatkówka plażowa, Tenis stołowy, Animacje, Mini klub, Łaźnia turecka i sauna.</p>
-                <p><strong>PŁATNE:</strong> Wi-Fi w hotelu (1 Dzień: 3€ / 1 Tydzień: 12€ - za osobę), Sejf, Tenis (oświetlenie), Sporty wodne, Masaż, Lekarz.</p>
-                <h3><i class="fa-solid fa-paw"></i>7. UWAGI</h3>
-                <p>Zwierzęta nie są akceptowane. Karty: Visa, MasterCard.</p>
-            `,
-            'ro': `
-                <h2>🇷🇴 Foaie de Informații Hotel</h2>
-                <h3><i class="fa-solid fa-circle-info"></i>1. INFORMAȚII GENERALE</h3>
-                <ul>
-                    <li><strong>Nume:</strong> <span>CONCORDIA CELES HOTEL</span></li>
-                    <li><strong>Categorie:</strong> <span>5 Stele (Local)</span></li>
-                    <li><strong>Adresă:</strong> <span>Okurcalar / Alanya / Antalya</span></li>
-                    <li><strong>Telefon:</strong> <span>+90 242 527 50 05</span></li>
-                    <li><strong>Web:</strong> <span>www.concordiaceles.com</span></li>
-                    <li><strong>Data Deschiderii:</strong> <span>2004</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-bus"></i>2. TRANSPORT</h3>
-                <ul>
-                    <li><strong>Aeroport Antalya:</strong> <span>90 km / ~90 min.</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-bed"></i>3. CAZARE</h3>
-                <p>Total Camere: 401</p>
-                <ul>
-                    <li><strong>Cameră Standard (347):</strong> <span>24 m²</span></li>
-                    <li><strong>Cameră de Familie (24):</strong> <span>45 m²</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-building"></i>4. CARACTERISTICI</h3>
-                <ul>
-                    <li><strong>Suprafață:</strong> <span>16.000 m²</span></li>
-                    <li><strong>Piscina exterioară:</strong> <span>450 m²</span></li>
-                    <li><strong>Piscina interioară:</strong> <span>80 m²</span></li>
-                    <li><strong>Capacitate restaurant:</strong> <span>800 (interior) + 200 (exterior)</span></li>
-                    <li><strong>Magazine:</strong> <span>Bijuterii, Piață, Coafor, Butic, Pielărie, Suveniruri</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-concierge-bell"></i>5. MASĂ</h3>
-                <ul>
-                    <li><strong>Mic dejun:</strong> <span>07:00 – 10:00</span></li>
-                    <li><strong>Prânz:</strong> <span>12:30 – 14:30</span></li>
-                    <li><strong>Cină:</strong> <span>19:00 – 21:00</span></li>
-                </ul>
-                <h3><i class="fa-solid fa-volleyball"></i>6. SERVICII</h3>
-                <p><strong>GRATUITE:</strong> Fitness, Wi-Fi în lobby, Darts, Volei pe plajă, Tenis de masă, Animație, Mini club, Baie turcească și saună.</p>
-                <p><strong>CONTRA COST:</strong> Wi-Fi în hotel (1 Zi: 3€ / 1 Săptămână: 12€ - de persoană), Seif, Tenis (nocturnă), Sporturi nautice, Masaj, Medic.</p>
-                <h3><i class="fa-solid fa-paw"></i>7. NOTE</h3>
-                <p>Animalele de companie nu sunt permise. Carduri: Visa, MasterCard.</p>
-            `
-        };
-        
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalContentBody = document.getElementById('modalContentBody');
-
-        function openModal(lang) {
-            modalContentBody.innerHTML = langData[lang] || langData['en'];
-            modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            modalOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function closeModalOnOutsideClick(event) {
-            if (event.target === modalOverlay) closeModal();
-        }
-    </script>
+function openModal(lang){
+modalTitle.innerHTML=T[lang].title;
+modalBody.innerHTML=buildContent(lang);
+modalOverlay.classList.add('active');
+document.body.style.overflow='hidden';
+modalBody.scrollTop=0;
+}
+function closeModal(){
+modalOverlay.classList.remove('active');
+document.body.style.overflow='auto';
+}
+function closeModalOnOutsideClick(e){
+if(e.target===modalOverlay)closeModal();
+}
+</script>
 </body>
 </html>
