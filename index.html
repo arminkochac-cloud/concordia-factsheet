@@ -1,6 +1,219 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Concordia Celes Hotel - Digital Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Montserrat',sans-serif;background:linear-gradient(135deg,#1b2a33 0%,#111a20 100%);color:#fff;min-height:100vh;display:flex;justify-content:center;padding:30px 15px;overflow-x:hidden}
+.bg-shape{position:absolute;width:150px;height:150px;background:rgba(255,255,255,0.02);transform:rotate(45deg);border-radius:20px;z-index:0}
+.shape1{top:10%;left:-50px}.shape2{bottom:20%;right:-50px}
+.container{width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;z-index:1}
+.main-card{background:#243642;border:1.5px solid #d1a751;border-radius:12px;width:100%;padding:25px 20px;text-align:center;margin-bottom:25px;box-shadow:0 10px 25px rgba(0,0,0,0.3)}
+.main-card .hotel-icon{font-size:36px;color:#ff6b6b;margin-bottom:12px}
+.main-card h1{font-size:19px;font-weight:800;margin-bottom:5px}
+.main-card h2{font-size:10px;color:#d1a751;letter-spacing:1.5px;margin-bottom:8px;text-transform:uppercase}
+.main-card p{font-size:9px;color:#9baab3}
+.lang-title{font-size:11px;color:#e0e0e0;margin-bottom:15px;display:flex;align-items:center;gap:8px}
+.lang-title i{color:#4ba3e3;font-size:14px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;margin-bottom:12px}
+.lang-btn{background:#243642;border-radius:10px;padding:16px;text-align:left;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 10px rgba(0,0,0,0.15);border:1px solid transparent;user-select:none}
+.lang-btn:active{transform:scale(0.96)}
+.lang-btn:hover{border-color:#d1a751}
+.lang-btn h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.lang-btn p{font-size:12px;font-weight:600;color:#d1a751;margin-bottom:2px}
+.lang-btn span{font-size:8px;color:#9baab3;text-transform:uppercase;letter-spacing:0.5px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;width:100%;margin-bottom:10px}
+.action-btn{background:#243642;border-radius:10px;padding:15px 5px;text-align:center}
+.action-btn i{font-size:20px;margin-bottom:8px}
+.action-btn h4{font-size:10px;font-weight:600;margin-bottom:4px;color:#d1a751}
+.action-btn p{font-size:7px;color:#9baab3;line-height:1.3}
+.action-btn.full-width{grid-column:span 3;cursor:pointer;padding:15px}
+.action-btn.full-width:active{transform:scale(0.98)}
+.ic-wifi{color:#4ba3e3}.ic-phone{color:#ff6b6b}.ic-mail{color:#e0e0e0}.ic-web{color:#4ba3e3}
+.footer{margin-top:30px;text-align:center}
+.stars{color:#d1a751;font-size:10px;margin-bottom:8px;letter-spacing:2px}
+.footer p{font-size:8px;color:#748894;margin-bottom:4px}
+
+/* MODAL - DARK PROFESSIONAL */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);display:none;justify-content:center;align-items:flex-end;z-index:1000}
+.modal-overlay.active{display:flex}
+.modal-content{background:#1b2a33;color:#e0e0e0;width:100%;max-width:500px;height:92vh;border-radius:20px 20px 0 0;padding:0;overflow-y:auto;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.1,0.9,0.2,1);position:relative;border-top:3px solid #d1a751}
+.modal-overlay.active .modal-content{transform:translateY(0)}
+.modal-header{position:sticky;top:0;background:linear-gradient(135deg,#243642 0%,#1b2a33 100%);padding:18px 20px;border-bottom:1px solid #2d4452;display:flex;justify-content:space-between;align-items:center;z-index:100;border-radius:20px 20px 0 0}
+.modal-header h2{font-size:16px;color:#fff;font-weight:700;display:flex;align-items:center;gap:8px}
+.modal-header h2 .flag{font-size:22px}
+.close-btn{background:#d1a751;width:34px;height:34px;border-radius:50%;display:flex;justify-content:center;align-items:center;cursor:pointer;font-size:16px;color:#1b2a33;border:none}
+.close-btn:active{transform:scale(0.92)}
+.modal-body{padding:18px 16px}
+.hotel-banner{background:linear-gradient(135deg,#d1a751 0%,#b8893a 100%);padding:14px;border-radius:10px;margin-bottom:14px;text-align:center;color:#1b2a33}
+.hotel-banner h3{font-size:14px;font-weight:800;margin-bottom:4px;letter-spacing:0.5px}
+.hotel-banner .stars-gold{font-size:12px;letter-spacing:3px;margin-bottom:5px}
+.hotel-banner p{font-size:10px;font-weight:600}
+.wifi-alert{background:rgba(75,163,227,0.15);border:1px solid #4ba3e3;color:#7cc3f0;padding:11px 13px;border-radius:8px;font-size:11px;margin-bottom:14px;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.wifi-alert i{font-size:16px;color:#4ba3e3;margin-top:1px}
+.section{margin-bottom:18px}
+.section-title{font-size:12px;color:#1b2a33;background:linear-gradient(90deg,#d1a751,#e6c068);padding:9px 13px;border-radius:7px;margin-bottom:10px;font-weight:800;display:flex;align-items:center;gap:8px;letter-spacing:0.3px;text-transform:uppercase}
+.section-title i{font-size:13px}
+.info-row{background:#243642;padding:10px 13px;border-radius:7px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;border-left:3px solid #d1a751;font-size:11px}
+.info-row .label{color:#9baab3;font-weight:600}
+.info-row .value{color:#fff;font-weight:600;text-align:right}
+.transport-row{background:#243642;padding:11px 13px;border-radius:7px;margin-bottom:6px;border-left:3px solid #4ba3e3;display:flex;justify-content:space-between;align-items:center}
+.transport-row .dest{font-size:12px;font-weight:700;color:#fff}
+.transport-row .meta{font-size:10px;color:#9baab3;text-align:right;line-height:1.5}
+.transport-row .meta strong{color:#d1a751}
+.room-card{background:#243642;border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid #ff6b6b}
+.room-card .room-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.room-card .room-name{font-size:13px;font-weight:700;color:#fff}
+.room-card .room-count{background:#d1a751;color:#1b2a33;font-size:10px;font-weight:700;padding:3px 9px;border-radius:12px}
+.room-card .room-info{font-size:10px;color:#9baab3;line-height:1.5}
+.room-card .room-info strong{color:#d1a751}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.feature-grid .feat{background:#1b2a33;padding:7px 9px;border-radius:5px;font-size:9.5px;color:#9baab3;display:flex;align-items:center;gap:5px}
+.feature-grid .feat i{color:#4ba3e3;font-size:9px}
+.facility-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.facility-card{background:#243642;border-radius:8px;padding:10px;text-align:center;border-top:2px solid #d1a751}
+.facility-card .icon{font-size:18px;color:#d1a751;margin-bottom:5px}
+.facility-card h5{font-size:10px;color:#9baab3;margin-bottom:3px;text-transform:uppercase;font-weight:600}
+.facility-card p{font-size:11px;color:#fff;font-weight:700}
+.facility-card .small{font-size:9px;color:#7cc3f0;font-weight:500;margin-top:2px}
+.time-row{background:#243642;padding:10px 13px;border-radius:7px;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center;border-left:3px solid #4caf50}
+.time-row .meal{font-size:11.5px;font-weight:600;color:#fff;display:flex;align-items:center;gap:7px}
+.time-row .meal i{color:#d1a751;font-size:11px;width:14px}
+.time-row .hours{font-size:11px;font-weight:700;color:#7cc3f0;background:rgba(75,163,227,0.15);padding:4px 9px;border-radius:5px}
+.bar-row{background:#243642;padding:10px 13px;border-radius:7px;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center;border-left:3px solid #d1a751}
+.bar-row .name{font-size:11.5px;font-weight:600;color:#fff;display:flex;align-items:center;gap:7px}
+.bar-row .name i{color:#d1a751;font-size:12px}
+.bar-row .hrs{font-size:11px;font-weight:700;color:#d1a751}
+.alacarte-box{background:linear-gradient(135deg,#243642 0%,#1b2a33 100%);border:1px solid #d1a751;border-radius:8px;padding:13px;margin-bottom:10px}
+.alacarte-box h4{font-size:12px;color:#d1a751;margin-bottom:7px;font-weight:700}
+.alacarte-box p{font-size:11px;color:#e0e0e0;line-height:1.5;margin-bottom:5px}
+.alacarte-box .time-tag{display:inline-block;background:#d1a751;color:#1b2a33;padding:3px 9px;border-radius:4px;font-size:10px;font-weight:700;margin-top:4px}
+.service-section{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.service-card{background:#243642;border-radius:8px;padding:11px;border-top:3px solid #4caf50}
+.service-card.paid{border-top-color:#ff6b6b}
+.service-card h5{font-size:11px;color:#fff;margin-bottom:8px;font-weight:700;display:flex;align-items:center;gap:5px}
+.service-card.free h5 i{color:#4caf50}
+.service-card.paid h5 i{color:#ff6b6b}
+.service-card ul{list-style:none}
+.service-card li{font-size:10px;color:#c4d0d8;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:5px}
+.service-card li:last-child{border-bottom:none}
+.service-card li::before{content:"•";color:#d1a751;font-weight:700}
+.warning-box{background:rgba(255,107,107,0.12);border:1px solid #ff6b6b;color:#ff9b9b;padding:11px 13px;border-radius:8px;margin:12px 0;font-size:11px;display:flex;align-items:center;gap:8px;font-weight:600}
+.warning-box i{font-size:16px}
+.cards-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.cards-row .card-tag{background:linear-gradient(135deg,#4ba3e3,#2980b9);color:#fff;padding:5px 11px;border-radius:5px;font-size:10px;font-weight:700;letter-spacing:0.3px}
+.lang-row{background:#243642;padding:10px 13px;border-radius:7px;font-size:11px;color:#c4d0d8;line-height:1.6;border-left:3px solid #4ba3e3}
+.lang-row strong{color:#d1a751}
+</style>
+</head>
+<body>
+<div class="bg-shape shape1"></div>
+<div class="bg-shape shape2"></div>
+<div class="container">
+<div class="main-card">
+<i class="fa-solid fa-hotel hotel-icon"></i>
+<h1>CONCORDIA CELES HOTEL</h1>
+<h2>Digital Guest Guide</h2>
+<p>Your Perfect Mediterranean Escape</p>
+</div>
+<div class="lang-title"><i class="fa-solid fa-globe"></i> Select Your Language / Dil Seçiniz</div>
+<div class="grid-2">
+<div class="lang-btn" onclick="openModal('tr')"><h3>TR</h3><p>Türkçe</p><span>Turkish</span></div>
+<div class="lang-btn" onclick="openModal('en')"><h3>GB</h3><p>English</p><span>English</span></div>
+<div class="lang-btn" onclick="openModal('de')"><h3>DE</h3><p>Deutsch</p><span>German</span></div>
+<div class="lang-btn" onclick="openModal('ru')"><h3>RU</h3><p>Русский</p><span>Russian</span></div>
+<div class="lang-btn" onclick="openModal('pl')"><h3>PL</h3><p>Polski</p><span>Polish</span></div>
+<div class="lang-btn" onclick="openModal('ro')"><h3>RO</h3><p>Română</p><span>Romanian</span></div>
+</div>
+<div class="grid-3">
+<div class="action-btn"><i class="fa-solid fa-signal ic-wifi"></i><h4>WIFI</h4><p>Lobby: FREE<br>Hotel: 3€/day</p></div>
+<div class="action-btn"><i class="fa-solid fa-phone ic-phone"></i><h4>Reception</h4><p>+90 242<br>527 50 05</p></div>
+<div class="action-btn"><i class="fa-solid fa-envelope ic-mail"></i><h4>Email</h4><p>info@<br>concordiaceles.com</p></div>
+<div class="action-btn full-width" onclick="window.open('https://www.concordiaceles.com','_blank')"><i class="fa-solid fa-globe ic-web"></i><h4>www.concordiaceles.com</h4></div>
+</div>
+<div class="footer">
+<div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+<p>Five Stars Hotel &bull; Okurcalar / Alanya / Antalya</p>
+<p>&copy; 2024 Concordia Celes Hotel</p>
+</div>
+</div>
+
+<div id="modalOverlay" class="modal-overlay" onclick="closeModalOnOutsideClick(event)">
+<div class="modal-content" onclick="event.stopPropagation()">
+<div class="modal-header">
+<h2 id="modalTitle"></h2>
+<div class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
+</div>
+<div id="modalBody" class="modal-body"></div>
+</div>
+</div>
+
+<script>
+const T = {
+'tr':{title:'<span class="flag">🇹🇷</span> Otel Bilgi Rehberi',welcome:'HOŞ GELDİNİZ',subtitle:'Akdeniz\'deki Mükemmel Tatiliniz',wifi:'<strong>Wi-Fi:</strong> Lobide ücretsiz. Tüm otel: 3€/gün veya 12€/hafta (kişi başı)',
+s_hotel:'OTEL BİLGİLERİ',s_transport:'ULAŞIM',s_rooms:'ODA TİPLERİ',s_facility:'TESİS ÖZELLİKLERİ',s_food:'YEMEK SAATLERİ (ULTRA HER ŞEY DAHİL)',s_bars:'BAR SAATLERİ',s_alacarte:'A\'LA CARTE RESTORAN',s_activity:'AKTİVİTELER & SPOR',s_service:'MİSAFİR HİZMETLERİ',s_general:'GENEL BİLGİLER',
+hotel:{open:'Açılış Tarihi',hren:'Otel Renovasyon',rren:'Oda Renovasyon',cat:'Kategori',cat_v:'5 Yıldız (Yerel)',region:'Bölge',region_v:'Alara Turizm Merkezi',addr:'Adres',addr_v:'Okurcalar / Alanya / Antalya',tel:'Telefon',fax:'Faks',web:'Web',mail:'E-mail'},
+trans:{a:'Antalya Şehir Merkezi',b:'Antalya Havalimanı',c:'Alanya',d:'Side',bus:'Otobüs',shuttle:'Servis',min:'dk'},
+rooms:{total:'Toplam Oda / Yatak',std:'Standart Oda',jr:'Junior Süit',fam:'Aile Odası',hcp:'Engelli Odası',jac:'Jakuzi Odası (Teraslı)',bed1:'1 çift + 1 tek yatak',bed2:'2 oda, 1 banyo • 2 çift + 2 tek yatak',bed3:'1 çift kişilik yatak',feat_title:'ODA İÇİ ÖZELLİKLER',feats:['Direkt Telefon','Uydu TV','Klima','Balkon','Saç Kurutma','Kasa','Banyo & Duş','Minibar (Alkolsüz)']},
+fac:{site:'Toplam Arazi',main:'Ana Bina',outpool:'Açık Havuz',inpool:'Kapalı Havuz',rest:'Restoran',ala:'A\'la Carte',child:'Çocuk',pax:'kişi'},
+food:[['fa-mug-hot','Kahvaltı','07:00 – 10:00'],['fa-coffee','Geç Kahvaltı','10:00 – 10:30'],['fa-utensils','Öğle Yemeği','12:30 – 14:30'],['fa-bowl-food','Snack','11:00 – 16:00'],['fa-pizza-slice','Gözleme','11:00 – 16:00'],['fa-burger','Burger World','11:00 – 16:00'],['fa-cake-candles','Pastane','11:00 – 17:00'],['fa-ice-cream','Dondurma (01.06-30.09)','14:30 – 15:30'],['fa-utensils','Akşam Yemeği','19:00 – 21:00'],['fa-bowl-rice','Gece Çorbası','23:00 – 24:00']],
+bars:[['fa-couch','Lobi Bar','10:00 – 23:00'],['fa-wine-glass','Restoran Bar','12:30 – 21:00'],['fa-umbrella-beach','Havuz Bar','10:00 – 02:00'],['fa-cocktail','Snack Bar','11:00 – 16:00']],
+alac:{title:'KEBAP & BALIK RESTORANI',desc:'Sezon: 15 Mayıs - 31 Eylül arası açıktır. Rezervasyon gereklidir, ücretsizdir.',hour:'19:00 - 21:00'},
+act_free:['Fitness Salonu','Wi-Fi (Lobi)','Dart','Plaj Voleybolu','Masa Tenisi'],
+act_paid:['Tenis (Aydınlatmalı)','Bilardo','Rüzgar Sörfü','Pedal Bot','Kano','Muz','Su Kayağı','Parasailing','Wi-Fi (Otel Geneli)'],
+srv_free:['Bagaj Servisi','Uyandırma','Özel Plaj','Şezlong & Şemsiye','Para Değişimi','Animasyon Şovları','Türk Hamamı & Sauna','Plaj Havlusu (Değişim 1€)'],
+srv_paid:['Doktor (Günlük 2 saat)','Araç/Bisiklet Kiralama','Masaj & Güzellik','Havalimanı Transferi','Çamaşırhane','Kasa (Oda)','Telefon & Faks','Türk Kahvesi','Taze Meyve Suları'],
+free_label:'Ücretsiz',paid_label:'Ücretli',
+gen:{cards:'Geçerli Kredi Kartları',lang:'Konuşulan Diller',lang_v:'Türkçe (resmi), Almanca, İngilizce, Rusça',pets:'Evcil hayvan kabul edilmemektedir!'}
+},
+'en':{title:'<span class="flag">🇬🇧</span> Hotel Information Guide',welcome:'WELCOME',subtitle:'Your Perfect Mediterranean Escape',wifi:'<strong>Wi-Fi:</strong> Free in lobby. Whole hotel: 3€/day or 12€/week (per person)',
+s_hotel:'HOTEL INFORMATION',s_transport:'TRANSPORTATION',s_rooms:'ROOM TYPES',s_facility:'HOTEL FACILITIES',s_food:'MEAL HOURS (ULTRA ALL-INCLUSIVE)',s_bars:'BAR HOURS',s_alacarte:'A\'LA CARTE RESTAURANT',s_activity:'ACTIVITIES & SPORTS',s_service:'GUEST SERVICES',s_general:'GENERAL INFORMATION',
+hotel:{open:'Opening Date',hren:'Hotel Renovation',rren:'Room Renovation',cat:'Category',cat_v:'5 Stars (Local)',region:'Region',region_v:'Alara Tourism Center',addr:'Address',addr_v:'Okurcalar / Alanya / Antalya',tel:'Telephone',fax:'Fax',web:'Web',mail:'E-mail'},
+trans:{a:'Antalya City Center',b:'Antalya Airport',c:'Alanya',d:'Side',bus:'Bus',shuttle:'Shuttle',min:'min'},
+rooms:{total:'Total Rooms / Beds',std:'Standard Room',jr:'Junior Suite',fam:'Family Room',hcp:'Handicapped Room',jac:'Jacuzzi Room (with Terrace)',bed1:'1 double + 1 twin bed',bed2:'2 rooms, 1 bath • 2 double + 2 twin beds',bed3:'1 double bed',feat_title:'IN-ROOM FEATURES',feats:['Direct Telephone','Satellite TV','Air-Conditioning','Balcony','Hair Dryer','Safe Box','Bath & Shower','Minibar (Soft Drinks)']},
+fac:{site:'Site Surface',main:'Main Building',outpool:'Outdoor Pool',inpool:'Indoor Pool',rest:'Restaurant',ala:'A\'la Carte',child:'Children',pax:'pax'},
+food:[['fa-mug-hot','Breakfast','07:00 – 10:00'],['fa-coffee','Late Breakfast','10:00 – 10:30'],['fa-utensils','Lunch','12:30 – 14:30'],['fa-bowl-food','Snack','11:00 – 16:00'],['fa-pizza-slice','Gözleme (Pancake)','11:00 – 16:00'],['fa-burger','Burger World','11:00 – 16:00'],['fa-cake-candles','Patisserie','11:00 – 17:00'],['fa-ice-cream','Ice Cream (01.06-30.09)','14:30 – 15:30'],['fa-utensils','Dinner','19:00 – 21:00'],['fa-bowl-rice','Night Soup','23:00 – 24:00']],
+bars:[['fa-couch','Lobby Bar','10:00 – 23:00'],['fa-wine-glass','Restaurant Bar','12:30 – 21:00'],['fa-umbrella-beach','Pool Bar','10:00 – 02:00'],['fa-cocktail','Snack Bar','11:00 – 16:00']],
+alac:{title:'KEBAB & FISH RESTAURANT',desc:'Season: Open between 15 May - 31 September. Reservation required, free of charge.',hour:'19:00 - 21:00'},
+act_free:['Fitness Center','Wi-Fi (Lobby)','Darts','Beach Volleyball','Table Tennis'],
+act_paid:['Tennis (with Lights)','Billiard','Windsurf','Pedal Boat','Canoe','Banana','Water Ski','Parasailing','Wi-Fi (Whole Hotel)'],
+srv_free:['Baggage Service','Wake-up Call','Private Beach','Sunbeds & Umbrellas','Money Exchange','Animation Shows','Turkish Bath & Sauna','Beach Towel (Change 1€)'],
+srv_paid:['Doctor (Daily 2 hrs)','Car/Bike Rental','Massage & Beauty','Airport Transfer','Laundry Service','Safe Box (Room)','Telephone & Fax','Turkish Coffee','Fresh Fruit Juices'],
+free_label:'Free',paid_label:'Extra Charge',
+gen:{cards:'Accepted Credit Cards',lang:'Spoken Languages',lang_v:'Turkish (official), German, English, Russian',pets:'Pets are NOT allowed!'}
+},
+'de':{title:'<span class="flag">🇩🇪</span> Hotel-Informationsführer',welcome:'WILLKOMMEN',subtitle:'Ihr perfekter Mittelmeer-Urlaub',wifi:'<strong>WLAN:</strong> In der Lobby kostenlos. Gesamtes Hotel: 3€/Tag oder 12€/Woche (pro Person)',
+s_hotel:'HOTELINFORMATIONEN',s_transport:'ANFAHRT',s_rooms:'ZIMMERTYPEN',s_facility:'HOTELEINRICHTUNGEN',s_food:'MAHLZEITEN (ULTRA ALL-INCLUSIVE)',s_bars:'BAR-ÖFFNUNGSZEITEN',s_alacarte:'A\'LA CARTE RESTAURANT',s_activity:'AKTIVITÄTEN & SPORT',s_service:'GÄSTESERVICE',s_general:'ALLGEMEINE INFORMATIONEN',
+hotel:{open:'Eröffnungsdatum',hren:'Hotel-Renovierung',rren:'Zimmer-Renovierung',cat:'Kategorie',cat_v:'5 Sterne (Lokal)',region:'Region',region_v:'Alara Tourismuszentrum',addr:'Adresse',addr_v:'Okurcalar / Alanya / Antalya',tel:'Telefon',fax:'Fax',web:'Web',mail:'E-Mail'},
+trans:{a:'Antalya Stadtzentrum',b:'Flughafen Antalya',c:'Alanya',d:'Side',bus:'Bus',shuttle:'Shuttle',min:'Min'},
+rooms:{total:'Zimmer / Betten gesamt',std:'Standardzimmer',jr:'Junior Suite',fam:'Familienzimmer',hcp:'Behindertenzimmer',jac:'Jacuzzi-Zimmer (mit Terrasse)',bed1:'1 Doppel- + 1 Einzelbett',bed2:'2 Zimmer, 1 Bad • 2 Doppel- + 2 Einzelbetten',bed3:'1 Doppelbett',feat_title:'ZIMMERAUSSTATTUNG',feats:['Telefon','Satelliten-TV','Klimaanlage','Balkon','Föhn','Safe','Bad & Dusche','Minibar (alkoholfrei)']},
+fac:{site:'Grundstücksfläche',main:'Hauptgebäude',outpool:'Außenpool',inpool:'Hallenbad',rest:'Restaurant',ala:'A\'la Carte',child:'Kinder',pax:'Pers.'},
+food:[['fa-mug-hot','Frühstück','07:00 – 10:00'],['fa-coffee','Spätes Frühstück','10:00 – 10:30'],['fa-utensils','Mittagessen','12:30 – 14:30'],['fa-bowl-food','Snacks','11:00 – 16:00'],['fa-pizza-slice','Gözleme','11:00 – 16:00'],['fa-burger','Burger World','11:00 – 16:00'],['fa-cake-candles','Patisserie','11:00 – 17:00'],['fa-ice-cream','Eis (01.06-30.09)','14:30 – 15:30'],['fa-utensils','Abendessen','19:00 – 21:00'],['fa-bowl-rice','Mitternachtssuppe','23:00 – 24:00']],
+bars:[['fa-couch','Lobby Bar','10:00 – 23:00'],['fa-wine-glass','Restaurant Bar','12:30 – 21:00'],['fa-umbrella-beach','Pool Bar','10:00 – 02:00'],['fa-cocktail','Snack Bar','11:00 – 16:00']],
+alac:{title:'KEBAB- & FISCHRESTAURANT',desc:'Saison: Geöffnet vom 15. Mai bis 31. September. Reservierung erforderlich, kostenlos.',hour:'19:00 - 21:00'},
+act_free:['Fitnessraum','WLAN (Lobby)','Darts','Beachvolleyball','Tischtennis'],
+act_paid:['Tennis (beleuchtet)','Billard','Windsurfen','Tretboot','Kanu','Banana','Wasserski','Parasailing','WLAN (gesamtes Hotel)'],
+srv_free:['Gepäckservice','Weckruf','Privatstrand','Liegen & Schirme','Geldwechsel','Animationsshows','Türkisches Bad & Sauna','Strandtuch (Wechsel 1€)'],
+srv_paid:['Arzt (täglich 2 Std.)','Auto-/Fahrradverleih','Massage & Beauty','Flughafentransfer','Wäscherei','Safe (Zimmer)','Telefon & Fax','Türkischer Kaffee','Frische Fruchtsäfte'],
+free_label:'Kostenlos',paid_label:'Gegen Gebühr',
+gen:{cards:'Akzeptierte Kreditkarten',lang:'Gesprochene Sprachen',lang_v:'Türkisch (offiziell), Deutsch, Englisch, Russisch',pets:'Haustiere sind NICHT erlaubt!'}
+},
+'ru':{title:'<span class="flag">🇷🇺</span> Информация об отеле',welcome:'ДОБРО ПОЖАЛОВАТЬ',subtitle:'Идеальный отдых на Средиземном море',wifi:'<strong>Wi-Fi:</strong> Бесплатно в лобби. Весь отель: 3€/день или 12€/неделя (с человека)',
+s_hotel:'ИНФОРМАЦИЯ ОБ ОТЕЛЕ',s_transport:'ТРАНСПОРТ',s_rooms:'ТИПЫ НОМЕРОВ',s_facility:'ИНФРАСТРУКТУРА',s_food:'ВРЕМЯ ПИТАНИЯ (УЛЬТРА ВСЁ ВКЛЮЧЕНО)',s_bars:'РАБОТА БАРОВ',s_alacarte:'РЕСТОРАН A\'LA CARTE',s_activity:'АКТИВНОСТИ И СПОРТ',s_service:'УСЛУГИ ДЛЯ ГОСТЕЙ',s_general:'ОБЩАЯ ИНФОРМАЦИЯ',
+hotel:{open:'Дата открытия',hren:'Реновация отеля',rren:'Реновация номеров',cat:'Категория',cat_v:'5 Звёзд (местная)',region:'Регион',region_v:'Туристический центр Алара',addr:'Адрес',addr_v:'Окурджалар / Аланья / Анталья',tel:'Телефон',fax:'Факс',web:'Сайт',mail:'E-mail'},
+trans:{a:'Центр Антальи',b:'Аэропорт Антальи',c:'Аланья',d:'Сиде',bus:'Автобус',shuttle:'Шаттл',min:'мин'},
+rooms:{total:'Всего номеров / мест',std:'Стандартный номер',jr:'Джуниор Сюит',fam:'Семейный номер',hcp:'Номер для инвалидов',jac:'Номер с Джакузи (терраса)',bed1:'1 двуспальная + 1 односпальная',bed2:'2 комнаты, 1 ванная • 2 двуспальные + 2 односпальные',bed3:'1 двуспальная кровать',feat_title:'В НОМЕРЕ',feats:['Телефон','Спутниковое ТВ','Кондиционер','Балкон','Фен','Сейф','Ванна и Душ','Мини-бар (б/а)']},
+fac:{site:'Территория',main:'Главное здание',outpool:'Открытый бассейн',inpool:'Крытый бассейн',rest:'Ресторан',ala:'A\'la Carte',child:'Детский',pax:'чел.'},
+food:[['fa-mug-hot','Завтрак','07:00 – 10:00'],['fa-coffee','Поздний завтрак','10:00 – 10:30'],['fa-utensils','Обед','12:30 – 14:30'],['fa-bowl-food','Снеки','11:00 – 16:00'],['fa-pizza-slice','Гёзлеме','11:00 – 16:00'],['fa-burger','Burger World','11:00 – 16:00'],['fa-cake-candles','Кондитерская','11:00 – 17:00'],['fa-ice-cream','Мороженое (01.06-30.09)','14:30 – 15:30'],['fa-utensils','Ужин','19:00 – 21:00'],['fa-bowl-rice','Ночной суп','23:00 – 24:00']],
+bars:[['fa-couch','Лобби-бар','10:00 – 23:00'],['fa-wine-glass','Бар ресторана','12:30 – 21:00'],['fa-umbrella-beach','Бар у бассейна','10:00 – 02:00'],['fa-cocktail','Снек-бар','11:00 – 16:00']],
+alac:{title:'РЕСТОРАН КЕБАБ И РЫБА',desc:'Сезон: открыт с 15 мая по 31 сентября. Необходима резервация, бесплатно.',hour:'19:00 - 21:00'},
+act_free:['Фитнес-центр','Wi-Fi <!DOCTYPE html>
+<html lang="tr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Concordia Celes Hotel - Digital Guide</title>
